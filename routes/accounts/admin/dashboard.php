@@ -1,7 +1,7 @@
 <?php
 
-use App\Helpers\AppConst;
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
-//Route::get('/', [DashboardController::class, 'index'])->middleware(AppConst::AdminAuthMiddleware);
+Route::get('/', function () {
+    return 'Hello World';
+});

@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
 
-    Route::prefix('admin')->group(function () {
+
+    require __DIR__ . "/accounts/authMaster.php";
+
+    Route::prefix('admin')->middleware('auth:admin')->group(function () {
         require __DIR__ . "/accounts/admin/master.php";
     });
     Route::prefix('merchant')->group(function () {
