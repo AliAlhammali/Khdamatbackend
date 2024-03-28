@@ -9,6 +9,7 @@
 .env.backup
 .env.production
 Homestead.json
+composer.lock
 Homestead.yaml
 auth.json
 npm-debug.log
