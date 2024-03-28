@@ -51,61 +51,61 @@ class Handler extends ExceptionHandler
     public function register(): void
     {
         $this->renderable(function (NotFoundHttpException $e, Request $request) {
-            if ($request->is('api/*')) {
-                return response()->json([
-                    'message' => 'Page not found.'
-                ], 404);
-            }
+
+            return response()->json([
+                'message' => 'Page not found.'
+            ], 404);
+
         });
 
         $this->renderable(function (RouteNotFoundException $e, Request $request) {
-            if ($request->is('api/*')) {
-                return response()->json([
-                    'message' => $e->getMessage()
-                ], 404);
-            }
+
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 404);
+
 
         });
         $this->renderable(function (AuthenticationException $e, Request $request) {
-            if ($request->is('api/*')) {
-                return response()->json([
-                    'message' => $e->getMessage()
-                ], 401);
-            }
+
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 401);
+
 
         });
         $this->renderable(function (ValidationException $e, Request $request) {
-            if ($request->is('api/*')) {
-                return response()->json([
-                    'message' => KhadamatTeckRequest::validateRequest($e->validator)
-                ], 401);
-            }
+
+            return response()->json([
+                'message' => KhadamatTeckRequest::validateRequest($e->validator)
+            ], 401);
+
 
         });
 
         $this->renderable(function (ValidationException $e, Request $request) {
-            if ($request->is('api/*')) {
-                return response()->json([
-                    'message' => KhadamatTeckRequest::validateRequest($e->validator)
-                ], 422);
-            }
+
+            return response()->json([
+                'message' => KhadamatTeckRequest::validateRequest($e->validator)
+            ], 422);
+
 
         });
         $this->renderable(function (InternalErrorException $e, Request $request) {
-            if ($request->is('api/*')) {
-                return response()->json([
-                    'message' => $e->getMessage()
-                ], 500);
-            }
+
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 500);
+
 
         });
 
         $this->renderable(function (QueryException $e, Request $request) {
-            if ($request->is('api/*')) {
-                return response()->json([
-                    'message' => $e->getMessage()
-                ], 500);
-            }
+
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 500);
+
 
         });
 

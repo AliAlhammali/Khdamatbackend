@@ -23,3 +23,11 @@ if (!function_exists('SPAuth')) {
         return auth('service-provider');
     }
 }
+
+if (!function_exists('IsApiRequest')) {
+
+    function IsApiRequest($request)
+    {
+        return $request->is('api/*');
+    }
+}
