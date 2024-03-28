@@ -15,15 +15,6 @@ use App\KhadamatTeck\Admin\Users\Requests\Auth\VerifyPhoneLogin;
 use App\KhadamatTeck\Admin\Users\Requests\CreateUserRequest;
 use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\Base\Response;
-use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
-use App\KhadamatTeck\Users\Services\Company;
-use App\KhadamatTeck\Users\Services\CompanyDTOMapper;
-use App\KhadamatTeck\Users\Services\CompanySubscriptionAllowedModules;
-use App\KhadamatTeck\Users\Services\PmsUser;
-use App\KhadamatTeck\Users\Services\PmsUserDTOMapper;
-use App\KhadamatTeck\Users\Services\SendMail;
-use Ichtrojan\Otp\Models\Otp as ModelOtp;
-use Ichtrojan\Otp\Otp;
 use Illuminate\Http\Client\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -83,7 +74,7 @@ class AuthService
      */
     public function loginUser(LoginRequest $request)
     {
-        $user = MerchantUser::where('email', $request->email)->first();
+        $user = User::where('email', $request->email)->first();
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('Laravel Password Grant Client')->accessToken;
