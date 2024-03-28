@@ -1,0 +1,48 @@
+<?php
+namespace DummyNamespace;
+
+use App\KhadamatTeck\Base\BaseDTOMapper;
+use Illuminate\Support\Collection;
+use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
+use App\KhadamatTeck\class_name_plural_name_space\DTOs\ModelNameDTO;
+use App\KhadamatTeck\class_name_plural_name_space\DTOs\ModelNameListDTO;
+use App\KhadamatTeck\class_name_plural_name_space\Models\ModelName;
+
+class ModelNameDTOMapper extends BaseDTOMapper
+{
+    public static function mapFromRequest(KhadamatTeckRequest $request): ModelNameDTO
+    {
+
+        return self::prepareData(new ModelNameDTO(), $request);
+    }
+
+    public static function mapFromDB($ModelName): ModelNameDTO
+    {
+        return self::prepareData(new ModelNameDTO(), $ModelName);
+    }
+
+    public static function fromArray(array $data): array
+    {
+        return self::fromCollection(collect($data));
+    }
+
+    public static function fromModel($data, $listing = false): ModelNameDTO
+    {
+        if ($listing) {
+            $dto = new ModelNameListDTO();
+        } else {
+            $dto = self::prepareData(new ModelNameDTO(), $data);
+        }
+        return $dto;
+    }
+
+    public static function fromCollection(Collection $data, $listing = false): array
+    {
+        return $data->map(fn($item) => self::fromModel($item, $listing))->toArray();
+    }
+    private static function prepareData(ModelNameDTO $dto, $data)
+    {
+        all_setters_data
+        return $dto;
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "id": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "name": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "email": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "password": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "email_verified_at": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    }
+}

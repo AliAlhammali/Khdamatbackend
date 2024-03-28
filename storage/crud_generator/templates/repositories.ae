@@ -1,0 +1,58 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
+use App\KhadamatTeck\Base\Repository;
+use App\KhadamatTeck\class_name_plural_name_space\Mappers\ModelNameDTOMapper;
+use App\KhadamatTeck\class_name_plural_name_space\Models\ModelName;
+use Spatie\QueryBuilder\QueryBuilder;
+
+class ClassNamePluralRepository extends Repository
+{
+    public function __construct()
+    {
+        $this->setModel(new ModelName());
+    }
+
+    public function findAll(): array|Collection
+    {
+        return ModelName::query()->get();
+    }
+
+    public function paginateClassNamePlural($requestQuery, $perPage = 20): LengthAwarePaginator
+    {
+        return QueryBuilder::for(ModelName::class)
+            ->allowedFilters(ModelName::getAllowedFilters())
+            ->paginate($perPage)
+            ->appends($requestQuery);
+    }
+
+    public function findModelName(string $id)
+    {
+        return ModelName::findOrFail($id);
+    }
+
+    public function createModelName(array $data)
+    {
+        return ModelNameDTOMapper::fromModel(ModelName::create($data));
+    }
+
+    public function updateModelName($model, array $data)
+    {
+        $model->fill($data)->save();
+        return ModelNameDTOMapper::fromModel($model);
+    }
+
+    public function deleteModelName($model)
+    {
+        $model->delete();
+        return ModelNameDTOMapper::fromModel($model);
+    }
+
+    public function getMinimalList()
+    {
+        return ModelName::listing()->get();
+    }
+}

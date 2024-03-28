@@ -1,0 +1,50 @@
+{
+    "id": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "title": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "description": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "status": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "slug": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "sort": {
+        "validation": "",
+        "fillable": true,
+        "type": "int",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    }
+}

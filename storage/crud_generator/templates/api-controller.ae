@@ -1,0 +1,50 @@
+<?php
+namespace DummyNamespace;
+
+use App\Http\Controllers\Controller;
+use App\KhadamatTeck\Base\Response;
+use App\KhadamatTeck\class_name_plural_name_space\Requests\CreateModelNameRequest;
+use App\KhadamatTeck\class_name_plural_name_space\Requests\DeleteModelNameRequest;
+use App\KhadamatTeck\class_name_plural_name_space\Requests\ListModelNameRequest;
+use App\KhadamatTeck\class_name_plural_name_space\Requests\UpdateModelNameRequest;
+use App\KhadamatTeck\class_name_plural_name_space\Requests\ViewModelNameRequest;
+use App\KhadamatTeck\class_name_plural_name_space\Services\serviceName;
+
+class ClassNamePlural extends Controller
+{
+    /**
+     * @var serviceName $lowerSName
+     */
+    private serviceName $lowerSName;
+
+    public function __construct(serviceName $lowerSName)
+    {
+        $this->lowerSName = $lowerSName;
+    }
+
+    public function index(ListModelNameRequest $request)
+    {
+        return $this->lowerSName->paginatepluralName($request);
+    }
+
+    public function create(CreateModelNameRequest $request)
+    {
+        return $this->lowerSName->createModelName($request);
+    }
+
+
+    public function show(ViewModelNameRequest $request, string $id): Response
+    {
+        return $this->lowerSName->findModelName($request, $id);
+    }
+
+    public function update(UpdateModelNameRequest $request,string $id)
+    {
+        return $this->lowerSName->updateModelName($request,$id);
+    }
+
+    public function delete(DeleteModelNameRequest $request,string $id)
+    {
+        return $this->lowerSName->deleteModelName($request,$id);
+    }
+}

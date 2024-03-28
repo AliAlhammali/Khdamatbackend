@@ -1,0 +1,86 @@
+<?php
+namespace DummyNamespace;
+
+use App\KhadamatTeck\Base\Http\HttpStatus;
+use App\KhadamatTeck\Base\Response;
+use App\KhadamatTeck\Base\Service;
+use App\KhadamatTeck\class_name_plural_name_space\Mappers\ModelNameDTOMapper;
+use App\KhadamatTeck\class_name_plural_name_space\Models\ModelName;
+use App\KhadamatTeck\class_name_plural_name_space\Repositories\ClassNamePluralRepository;
+use App\KhadamatTeck\class_name_plural_name_space\Requests\CreateModelNameRequest;
+use App\KhadamatTeck\class_name_plural_name_space\Requests\DeleteModelNameRequest;
+use App\KhadamatTeck\class_name_plural_name_space\Requests\ListModelNameRequest;
+use App\KhadamatTeck\class_name_plural_name_space\Requests\UpdateModelNameRequest;
+use App\KhadamatTeck\class_name_plural_name_space\Requests\ViewModelNameRequest;
+
+class ClassNamePluralService extends Service
+{
+    /**
+     * @var ClassNamePluralRepository $varNameRepository
+     * AE
+     */
+    private ClassNamePluralRepository $varNameRepository;
+
+    public function __construct(ClassNamePluralRepository $varNameRepository)
+    {
+    parent::__construct($varNameRepository);
+        $this->varNameRepository = $varNameRepository;
+    }
+
+    public function paginateClassNamePlural(ListModelNameRequest $request): Response
+    {
+        $response = $this->response();
+        if ($request->has('listing')) {
+            $data = $this->varNameRepository->minimalListWithFilter();
+            $response->setData($data);
+        } else {
+            $data = $this->varNameRepository->paginateClassNamePlural(
+                $request->query(),
+                $request->query('perPage')
+            );
+            $data = ModelNameDTOMapper::fromPaginator($data);
+            $response->setData($data['items'])->setMeta($data['meta']);
+        }
+        return $response->setStatusCode(HttpStatus::HTTP_OK);
+    }
+
+
+    public function createModelName(CreateModelNameRequest $request): Response
+    {
+        $data  =$this->varNameRepository->createModelName($request->all());
+        return $this->response()
+            ->setData($data)
+            ->setStatusCode(HttpStatus::HTTP_OK);
+    }
+
+    public function updateModelName(UpdateModelNameRequest $request,$id): Response
+    {
+        $model = $this->varNameRepository->findModelName($id);
+        $data = $this->varNameRepository->updateModelName(
+            $model,
+            $request->all()
+        );
+
+        return $this->response()
+            ->setData($data)
+            ->setStatusCode(HttpStatus::HTTP_OK);
+    }
+
+    public function deleteModelName(DeleteModelNameRequest $request,$id): Response
+    {
+        $model = $this->varNameRepository->findModelName($id);
+        return $this->response()
+            ->setData($this->varNameRepository->deleteModelName($model))
+            ->setStatusCode(HttpStatus::HTTP_OK);
+    }
+
+    public function findModelName(ViewModelNameRequest $request, $id): Response
+    {
+        $model = $this->varNameRepository->findModelName($id);
+        $data = ModelNameDTOMapper::mapFromDB($model);
+
+        return $this->response()
+            ->setData($data)
+            ->setStatusCode(HttpStatus::HTTP_OK);
+    }
+}

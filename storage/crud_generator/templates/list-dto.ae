@@ -1,0 +1,10 @@
+<?php
+namespace DummyNamespace;
+
+class ModelNameListDTO extends ModelNameDTO
+{
+    public function jsonSerialize(): array
+    {
+        return []; // TODO ADD List Fields
+    }
+}

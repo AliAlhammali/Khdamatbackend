@@ -1,0 +1,11 @@
+<?php
+namespace DummyNamespace;
+
+use App\KhadamatTeck\Base\Filters\AbstractFilter;
+
+class ClassNamePluralFilter extends AbstractFilter
+{
+    protected $filters = [
+        // filters Here
+    ];
+}

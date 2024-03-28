@@ -1,0 +1,74 @@
+{
+    "id": {
+        "validation": "",
+        "fillable": true,
+        "type": "int",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "name": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "service_provider_id": {
+        "validation": "",
+        "fillable": true,
+        "type": "int",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "email": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "address": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "phone": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "role": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "password": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "status": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    }
+}

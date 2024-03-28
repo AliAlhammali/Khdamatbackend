@@ -1,0 +1,98 @@
+{
+    "id": {
+        "validation": "",
+        "fillable": true,
+        "type": "int",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "title": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "description": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "status": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "address": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "phone": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "logo": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "vat_file": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "cr_file": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "sales_agreement_file": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "cr_number": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    },
+    "vat_number": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": false,
+        "hidden": false
+    }
+}

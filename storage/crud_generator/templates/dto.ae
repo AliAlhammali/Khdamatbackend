@@ -1,0 +1,17 @@
+<?php
+
+namespace DummyNamespace;
+
+class ModelNameDTO implements \JsonSerializable
+{
+ConstructData
+
+SettersAndGetters
+
+    public function jsonSerialize()
+    {
+        return [
+            SerializedData
+        ];
+    }
+}
