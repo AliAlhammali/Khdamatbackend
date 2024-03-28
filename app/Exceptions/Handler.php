@@ -56,7 +56,6 @@ class Handler extends ExceptionHandler
                     'message' => 'Page not found.'
                 ], 404);
             }
-            return true;
         });
 
         $this->renderable(function (RouteNotFoundException $e, Request $request) {
@@ -65,7 +64,7 @@ class Handler extends ExceptionHandler
                     'message' => $e->getMessage()
                 ], 404);
             }
-            return true;
+
         });
         $this->renderable(function (AuthenticationException $e, Request $request) {
             if ($request->is('api/*')) {
@@ -73,7 +72,7 @@ class Handler extends ExceptionHandler
                     'message' => $e->getMessage()
                 ], 401);
             }
-            return true;
+
         });
         $this->renderable(function (ValidationException $e, Request $request) {
             if ($request->is('api/*')) {
@@ -81,7 +80,7 @@ class Handler extends ExceptionHandler
                     'message' => KhadamatTeckRequest::validateRequest($e->validator)
                 ], 401);
             }
-            return true;
+
         });
 
         $this->renderable(function (ValidationException $e, Request $request) {
@@ -90,7 +89,7 @@ class Handler extends ExceptionHandler
                     'message' => KhadamatTeckRequest::validateRequest($e->validator)
                 ], 422);
             }
-            return true;
+
         });
         $this->renderable(function (InternalErrorException $e, Request $request) {
             if ($request->is('api/*')) {
@@ -98,7 +97,7 @@ class Handler extends ExceptionHandler
                     'message' => $e->getMessage()
                 ], 500);
             }
-            return true;
+
         });
 
         $this->renderable(function (QueryException $e, Request $request) {
@@ -107,7 +106,7 @@ class Handler extends ExceptionHandler
                     'message' => $e->getMessage()
                 ], 500);
             }
-            return true;
+
         });
 
     }
