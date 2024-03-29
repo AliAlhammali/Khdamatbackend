@@ -8,8 +8,9 @@ use App\KhadamatTeck\Base\BaseModel;
 use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\QueryBuilder\AllowedFilter;
 
-class Merchant extends Authenticatable
+class Merchant extends BaseModel
 {
     use \Laravel\Passport\HasApiTokens, \Illuminate\Database\Eloquent\Factories\HasFactory, \Illuminate\Notifications\Notifiable;
 
