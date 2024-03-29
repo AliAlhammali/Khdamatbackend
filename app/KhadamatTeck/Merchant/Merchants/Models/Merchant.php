@@ -31,16 +31,16 @@ class Merchant extends BaseModel
 
     public function users()
     {
-        $this->hasMany(MerchantUser::class);
+        return $this->hasMany(MerchantUser::class);
     }
 
     public function categories()
     {
-        $this->hasMany(Category::class);
+        return $this->hasMany(Category::class);
     }
 
     public function services()
     {
-        $this->hasMany(ServiceModel::class);
+        return $this->hasMany(ServiceModel::class);
     }
 }

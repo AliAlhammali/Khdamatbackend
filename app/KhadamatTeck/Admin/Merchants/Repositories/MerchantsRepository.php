@@ -36,13 +36,13 @@ class MerchantsRepository extends Repository
 
     public function createMerchant(array $data)
     {
-
+        /* @var Merchant $merchant */
         $merchant = Merchant::create($data);
-
         if($data['owner']){
             $data['owner']['password'] = bcrypt(123456);
             $merchant->users()->create($data['owner']);
         }
+
         return MerchantDTOMapper::fromModel($merchant);
     }
 
