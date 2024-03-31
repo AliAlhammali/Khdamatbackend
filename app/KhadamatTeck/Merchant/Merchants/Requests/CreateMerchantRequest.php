@@ -18,8 +18,8 @@ class CreateMerchantRequest extends KhadamatTeckRequest
             "email"=>'required|email',
             "address"=>'required',
             "owner"=>'required|array',
-            "owner.*.name"=>'required',
-            "owner.*.email"=>'required|email',
+            "owner.name"=>'required',
+            "owner.email"=>'required|email',
         ];
     }
 }
