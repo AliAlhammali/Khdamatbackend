@@ -50,7 +50,7 @@ class Merchant extends BaseModel
     public static function getAllowedFilters(): array
     {
         return [
-            AllowedFilter::custom('keyword', new KeywordSearchFilter(['title', 'email', 'phone'])),
+            AllowedFilter::custom('keyword', new KeywordSearchFilter(['title', 'phone'])),
         ];
     }
 }
