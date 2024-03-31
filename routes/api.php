@@ -1,5 +1,6 @@
 <?php
 
+use App\KhadamatTeck\Actions\Controller\UploadAction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,10 @@ Route::prefix('v1')->group(function () {
     });
     Route::prefix('service-provider')->group(function () {
         require __DIR__ . "/accounts/service_provider/master.php";
+    });
+
+    Route::prefix('actions')->group(function () {
+        Route::post('upload', UploadAction::class);
     });
 
 });

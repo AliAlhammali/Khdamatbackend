@@ -25,7 +25,7 @@ class ServiceModel extends BaseModel
      * @var array
      */
 
-    protected $fillable = ['id', 'title', 'slug', 'description', 'status', 'merchant_id', 'category_id'];
+    protected $fillable = ['id', 'title','price', 'slug', 'description', 'status', 'merchant_id', 'category_id'];
     public array $translatable = ['title', 'slug'];
 
     function category()

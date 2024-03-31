@@ -51,6 +51,7 @@ class ServiceDTOMapper extends BaseDTOMapper
         $dto->setStatus($data->status);
         $dto->setMerchantId($data->merchant_id);
         $dto->setCategoryId($data->category_id);
+        $dto->setPrice($data->price);
 
         return $dto;
     }

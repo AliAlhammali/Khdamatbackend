@@ -5,9 +5,11 @@ namespace App\KhadamatTeck\ServiceProvider\ServiceProviders\Models;
 use App\KhadamatTeck\Base\BaseModel;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models\ServiceProviderUser;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Smartisan\Settings\HasSettings;
 
 class ServiceProvider extends BaseModel
 {
+    use HasSettings;
     // use SoftDeletes;
     /**
      * The database table used by the model.
