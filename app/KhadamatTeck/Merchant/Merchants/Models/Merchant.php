@@ -6,6 +6,7 @@ use App\KhadamatTeck\Admin\Categories\Models\Category;
 use App\KhadamatTeck\Admin\Services\Models\ServiceModel;
 use App\KhadamatTeck\Base\BaseModel;
 use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
+use App\KhadamatTeck\Base\Filters\KeywordSearchFilter;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Smartisan\Settings\HasSettings;
@@ -44,5 +45,12 @@ class Merchant extends BaseModel
     public function services()
     {
         return $this->hasMany(ServiceModel::class);
+    }
+
+    public static function getAllowedFilters(): array
+    {
+        return [
+            AllowedFilter::custom('keyword', new KeywordSearchFilter(['title', 'email', 'phone'])),
+        ];
     }
 }
