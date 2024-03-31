@@ -54,6 +54,7 @@ class MerchantDTOMapper extends BaseDTOMapper
             $dto->setSalesAgreementFile($data->sales_agreement_file);
             $dto->setCrNumber($data->cr_number);
             $dto->setVatNumber($data->vat_number);
+        $dto->setEmail($data->email);
 
         return $dto;
     }
