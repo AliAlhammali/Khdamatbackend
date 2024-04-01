@@ -15,6 +15,8 @@ use App\KhadamatTeck\Admin\Users\Requests\Auth\VerifyPhoneLogin;
 use App\KhadamatTeck\Admin\Users\Requests\CreateUserRequest;
 use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\Base\Response;
+use App\Mail\SendMail;
+use Ichtrojan\Otp\Otp;
 use Illuminate\Http\Client\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +25,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Validation\ValidationException;
-
+use Ichtrojan\Otp\Models\Otp as ModelOtp;
 class AuthService
 {
     /**
@@ -95,17 +97,27 @@ class AuthService
      */
     public function loginUserWithOTP(LoginRequest $request)
     {
-        if (!AdminAuth()->attempt($request->only(['email', 'password']))) {
-            throw ValidationException::withMessages([
-                'password' => [trans('auth.failed')],
-            ]);
+        $user = User::where('email', $request->email)->first();
+        if ($user) {
+            if (Hash::check($request->password, $user->password)) {
+                $request->merge([
+                    "phone" => User::where("email", $request->email)->first()->phone
+                ]);
+                $mRequest = new PhoneLoginRequest();
+                $mRequest->merge([
+                    "phone" => AdminAuth()->user()->phone,
+                ]);
+                return $this->phoneLoginUser($mRequest);
+            } else {
+                $response = ["message" => "Password mismatch"];
+                return response($response, 422);
+            }
+        } else {
+            $response = ["message" =>'User does not exist'];
+            return response($response, 422);
         }
 
-        $mRequest = new PhoneLoginRequest();
-        $mRequest->merge([
-            "phone" => AdminAuth()->user()->phone,
-        ]);
-        return $this->phoneLoginUser($mRequest);
+
     }
 
     /**
@@ -166,7 +178,7 @@ class AuthService
     public function phoneLoginUser(PhoneLoginRequest $request)
     {
         $executed = RateLimiter::attempt('send-otp:' . $request->phone, $perMinute = 1, function () use ($request) {
-            if (URL::to('/') == 'http://api.stage.operations.munjz.com' /*||URL::to('/') == 'http://127.0.0.1:8000'*/) {
+            if (URL::to('/') == 'http://khadamat-teck.com' /*||URL::to('/') == 'http://127.0.0.1:8000'*/) {
                 ModelOtp::where('identifier', $request->phone)->delete();
                 $otp = ModelOtp::create([
                     'identifier' => $request->phone,
@@ -175,9 +187,8 @@ class AuthService
                 ]);
             } else {
                 $otp = new Otp;
-                $otp = $otp->generate($request->phone);
+                $otp = $otp->generate($request->phone,'alpha_numeric',10);
             }
-
             $user = $this->usersRepository->findOneByPhone($request->phone);
             if ($user?->otp_notify_type == UserOtpNotifyTypes::SMS) {
                 send_sms($request->phone, "#$otp->token is your KhadamatTeck verification code");
@@ -239,7 +250,7 @@ class AuthService
     public function sendMail($email)
     {
         $otpClass = new Otp;
-        $otp = $otpClass->generate($email);
+        $otp = $otpClass->generate($email,'alpha_numeric',10);
         Mail::to($email)->send(new SendMail($otp->token));
     }
 

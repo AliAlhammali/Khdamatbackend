@@ -49,6 +49,7 @@ class CategoryDTOMapper extends BaseDTOMapper
         $dto->setSlug($data->getTranslations('slug'));
         $dto->setStatus($data->status);
         $dto->setMerchantId($data->merchant_id);
+        $dto->setMerchant($data->merchant);
 
         return $dto;
     }

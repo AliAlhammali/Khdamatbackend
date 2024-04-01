@@ -10,9 +10,9 @@ class ServiceDTO implements \JsonSerializable
     private ?string $description = null;
     private ?string $status = null;
     private ?int $merchant_id = null;
-    private ?int $category_id = null;
     private ?float $price = 0.00;
-
+    private mixed $category =null;
+    private mixed $merchant =null;
     /**
      * @return int|null
      */
@@ -135,6 +135,26 @@ class ServiceDTO implements \JsonSerializable
         $this->price = $price;
     }
 
+    public function getCategory(): mixed
+    {
+        return $this->category;
+    }
+
+    public function setCategory(mixed $category): void
+    {
+        $this->category = $category;
+    }
+
+    public function getMerchant(): mixed
+    {
+        return $this->merchant;
+    }
+
+    public function setMerchant(mixed $merchant): void
+    {
+        $this->merchant = $merchant;
+    }
+
     public function jsonSerialize()
     {
         return [
@@ -145,7 +165,9 @@ class ServiceDTO implements \JsonSerializable
             'status' => $this->getStatus(),
             'merchant_id' => $this->getMerchantId(),
             'category_id' => $this->getCategoryId(),
-            'price' => $this->getPrice()
+            'price' => $this->getPrice(),
+            'category'=>$this->getCategory(),
+            'merchant'=>$this->getMerchant(),
 
         ];
     }

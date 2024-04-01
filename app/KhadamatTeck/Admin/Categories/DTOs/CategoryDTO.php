@@ -9,6 +9,7 @@ class CategoryDTO implements \JsonSerializable
     private ?array $slug = null;
     private ?string $status = null;
     private ?int $merchant_id = null;
+    private mixed $merchant =null;
 
 
     /**
@@ -85,6 +86,15 @@ class CategoryDTO implements \JsonSerializable
         $this->merchant_id = $merchant_id;
     }
 
+    public function getMerchant(): mixed
+    {
+        return $this->merchant;
+    }
+
+    public function setMerchant(mixed $merchant): void
+    {
+        $this->merchant = $merchant;
+    }
 
 
     public function jsonSerialize()
@@ -95,6 +105,7 @@ class CategoryDTO implements \JsonSerializable
             'slug' => $this->getSlug(),
             'status' => $this->getStatus(),
             'merchant_id' => $this->getMerchantId(),
+            'merchant'=>$this->getMerchant(),
 
         ];
     }

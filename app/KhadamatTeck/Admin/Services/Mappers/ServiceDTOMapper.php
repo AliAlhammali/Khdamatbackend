@@ -44,6 +44,7 @@ class ServiceDTOMapper extends BaseDTOMapper
 
     private static function prepareData(ServiceDTO $dto, $data)
     {
+
         $dto->setId($data->id);
         $dto->setTitle($data->getTranslations('title'));
         $dto->setSlug($data->getTranslations('slug'));
@@ -52,6 +53,8 @@ class ServiceDTOMapper extends BaseDTOMapper
         $dto->setMerchantId($data->merchant_id);
         $dto->setCategoryId($data->category_id);
         $dto->setPrice($data->price);
+        $dto->setMerchant($data->merchant);
+        $dto->setCategory($data->category);
 
         return $dto;
     }

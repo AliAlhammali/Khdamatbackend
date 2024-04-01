@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([],function () {
     require __DIR__ . "/dashboard.php";
+    require __DIR__ . "/users.php";
     require __DIR__ . "/merchants.php";
     require __DIR__ . "/merchant-users.php";
     require __DIR__ . "/service-providers.php";

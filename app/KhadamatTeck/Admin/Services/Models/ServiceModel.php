@@ -6,6 +6,7 @@ use App\KhadamatTeck\Admin\Categories\Models\Category;
 use App\KhadamatTeck\Base\BaseModel;
 use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\Translatable\HasTranslations;
 
 class ServiceModel extends BaseModel
@@ -30,11 +31,20 @@ class ServiceModel extends BaseModel
 
     function category()
     {
-        $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     function merchant()
     {
-        $this->belongsTo(Merchant::class);
+        return $this->belongsTo(Merchant::class);
+    }
+
+    public static function getAllowedFilters(): array
+    {
+        return [
+            AllowedFilter::exact('merchant_id'),
+            AllowedFilter::exact('category_id'),
+            AllowedFilter::exact('status'),
+        ];
     }
 }

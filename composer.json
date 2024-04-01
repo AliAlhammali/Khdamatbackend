@@ -9,8 +9,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "bensampo/laravel-enum": "^6.11",
         "fakerphp/faker": "^1.9.1",
         "guzzlehttp/guzzle": "^7.2",
+        "ichtrojan/laravel-otp": "^2.0",
         "jpkleemans/attribute-events": "^1.5",
         "laravel/framework": "^10.0",
         "laravel/passport": "^12.0",

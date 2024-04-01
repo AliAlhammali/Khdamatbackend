@@ -1,0 +1,13 @@
+{
+    "The :attribute must contain at least one letter.": "The :attribute must contain at least one letter.",
+    "The :attribute must contain at least one number.": "The :attribute must contain at least one number.",
+    "The :attribute must contain at least one symbol.": "The :attribute must contain at least one symbol.",
+    "The :attribute must contain at least one uppercase and one lowercase letter.": "The :attribute must contain at least one uppercase and one lowercase letter.",
+    "The given :attribute has appeared in a data leak. Please choose a different :attribute.": "The given :attribute has appeared in a data leak. Please choose a different :attribute.",
+    "number_of_active_admins" : "Number of active admins",
+    "number_of_active_users" : "Number of active users",
+    "number_of_active_teams" :"Number of active teams",
+    "number_of_active_properties" : "Number of active properties",
+    "number_of_active_units" : "Number of active units",
+    "subscription_limit_reached": "You have reached your subscription limit of :field. Please upgrade your plan and try again"
+}

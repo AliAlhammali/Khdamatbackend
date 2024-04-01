@@ -55,4 +55,9 @@ class UsersRepository extends Repository
     {
         return User::listing()->get();
     }
+
+    public function findOneByPhone(string $phone): User
+    {
+        return User::wherePhone($phone)->first();
+    }
 }
