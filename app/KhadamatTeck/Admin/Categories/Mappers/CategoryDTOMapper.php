@@ -50,6 +50,9 @@ class CategoryDTOMapper extends BaseDTOMapper
         $dto->setStatus($data->status);
         $dto->setMerchantId($data->merchant_id);
         $dto->setMerchant($data->merchant);
+        $dto->setParent($data->parent);
+        $dto->setChildren($data->children);
+
 
         return $dto;
     }

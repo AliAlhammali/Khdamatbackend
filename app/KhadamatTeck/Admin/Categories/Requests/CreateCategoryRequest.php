@@ -13,6 +13,7 @@ class CreateCategoryRequest extends KhadamatTeckRequest
     public function rules(): array
     {
         return [
+            'parent_id' => 'sometimes|nullable'
         ];
     }
 }

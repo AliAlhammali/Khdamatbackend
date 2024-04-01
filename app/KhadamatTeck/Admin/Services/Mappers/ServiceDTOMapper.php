@@ -55,6 +55,8 @@ class ServiceDTOMapper extends BaseDTOMapper
         $dto->setPrice($data->price);
         $dto->setMerchant($data->merchant);
         $dto->setCategory($data->category);
+        $dto->setCostPrice($data->cost_price);
+        $dto->setSpPrice($data->sp_price);
 
         return $dto;
     }

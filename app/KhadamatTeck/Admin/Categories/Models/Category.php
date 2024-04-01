@@ -6,11 +6,13 @@ use App\KhadamatTeck\Admin\Services\Models\ServiceModel;
 use App\KhadamatTeck\Base\BaseModel;
 use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Kalnoy\Nestedset\NodeTrait;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\Translatable\HasTranslations;
 
 class Category extends BaseModel
 {
+    use NodeTrait;
     use HasTranslations;
 
     // use SoftDeletes;
@@ -26,7 +28,7 @@ class Category extends BaseModel
      * @var array
      */
 
-    protected $fillable = ['id', 'title', 'slug', 'status', 'merchant_id'];
+    protected $fillable = ['id', 'title', 'slug', 'status', 'merchant_id', 'parent_id'];
 
     public array $translatable = ['title', 'slug'];
 
@@ -40,6 +42,7 @@ class Category extends BaseModel
         return $this->hasMany(ServiceModel::class);
     }
 
+
     public function scopeMerchantCategories($query, $merchant_id)
     {
         return $query->where(function ($query) use ($merchant_id) {
@@ -47,11 +50,17 @@ class Category extends BaseModel
         });
     }
 
+    public function isParent()
+    {
+        return $this->parent_id == null;
+    }
+
     public static function getAllowedFilters(): array
     {
         return [
             AllowedFilter::exact('id'),
             AllowedFilter::exact('category_id'),
+            AllowedFilter::exact('parent_id'),
             AllowedFilter::exact('status'),
         ];
     }
