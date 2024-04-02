@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
 use App\Munjz\Base\Http\MunjzRequest;
 use Illuminate\Auth\AuthenticationException;
@@ -54,7 +55,7 @@ class Handler extends ExceptionHandler
 
             return response()->json([
                 'message' => 'Page not found.'
-            ], 404);
+            ], HttpStatus::HTTP_NOT_FOUND);
 
         });
 
@@ -62,7 +63,7 @@ class Handler extends ExceptionHandler
 
             return response()->json([
                 'message' => $e->getMessage()
-            ], 404);
+            ], HttpStatus::HTTP_NOT_FOUND);
 
 
         });
@@ -70,7 +71,7 @@ class Handler extends ExceptionHandler
 
             return response()->json([
                 'message' => $e->getMessage()
-            ], 401);
+            ], HttpStatus::HTTP_UNAUTHORIZED);
 
 
         });
@@ -78,16 +79,7 @@ class Handler extends ExceptionHandler
 
             return response()->json([
                 'message' => KhadamatTeckRequest::validateRequest($e->validator)
-            ], 401);
-
-
-        });
-
-        $this->renderable(function (ValidationException $e, Request $request) {
-
-            return response()->json([
-                'message' => KhadamatTeckRequest::validateRequest($e->validator)
-            ], 422);
+            ], HttpStatus::HTTP_VALIDATION_ERROR);
 
 
         });
@@ -95,7 +87,7 @@ class Handler extends ExceptionHandler
 
             return response()->json([
                 'message' => $e->getMessage()
-            ], 500);
+            ], HttpStatus::HTTP_INTERNAL_SERVER_ERROR);
 
 
         });
@@ -104,7 +96,7 @@ class Handler extends ExceptionHandler
 
             return response()->json([
                 'message' => $e->getMessage()
-            ], 500);
+            ], HttpStatus::HTTP_INTERNAL_SERVER_ERROR);
 
 
         });
