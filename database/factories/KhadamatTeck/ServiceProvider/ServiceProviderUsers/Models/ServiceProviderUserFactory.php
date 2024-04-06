@@ -1,15 +1,17 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models;
 
+use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models\ServiceProviderUser;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends Factory<ServiceProviderUser>
  */
-class UserFactory extends Factory
+class ServiceProviderUserFactory extends Factory
 {
+    protected $model = ServiceProviderUser::class;
     /**
      * Define the model's default state.
      *
@@ -19,10 +21,16 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->unique()->name(),
-            'email' => fake()->unique()->firstName .'@khadamat-teck.com',
+            'email' => strtolower(fake()->unique()->firstName) .'@khadamat-teck.com',
             'email_verified_at' => now(),
             'password' => bcrypt(123456), // password
             'remember_token' => Str::random(10),
+            'address' => fake()->address(),
+            'phone' => fake()->phoneNumber(),
+            'image' => fake()->imageUrl(),
+            'role' => 'staff',
+            'status' => 'active',
+            'service_provider_id' => 1,
         ];
     }
 
