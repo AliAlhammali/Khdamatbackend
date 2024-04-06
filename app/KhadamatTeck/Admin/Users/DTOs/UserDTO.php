@@ -9,6 +9,10 @@ class UserDTO implements \JsonSerializable
     private ?string $email;
     private ?string $password;
     private ?string $email_verified_at;
+    private ?string $status;
+    private ?string $address;
+    private ?string $phone;
+    private ?string $logo;
 
     public function getId(): ?int
     {
@@ -60,6 +64,46 @@ class UserDTO implements \JsonSerializable
         $this->email_verified_at = $email_verified_at;
     }
 
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?string $status): void
+    {
+        $this->status = $status;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?string $address): void
+    {
+        $this->address = $address;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): void
+    {
+        $this->phone = $phone;
+    }
+
+    public function getLogo(): ?string
+    {
+        return $this->logo;
+    }
+
+    public function setLogo(?string $logo): void
+    {
+        $this->logo = $logo;
+    }
+
 
     public function jsonSerialize()
     {
@@ -69,6 +113,10 @@ class UserDTO implements \JsonSerializable
             'email' => $this->getEmail(),
             'password' => $this->getPassword(),
             'email_verified_at' => $this->getEmailVerifiedAt(),
+            'status' => $this->getStatus(),
+            'address' => $this->getAddress(),
+            'phone' => $this->getPhone(),
+            'logo' => $this->getLogo(),
 
         ];
     }

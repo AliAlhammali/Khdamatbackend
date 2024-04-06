@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\Users\Mappers;
 
 use App\KhadamatTeck\Admin\Users\DTOs\UserDTO;
@@ -39,13 +40,18 @@ class UserDTOMapper extends BaseDTOMapper
     {
         return $data->map(fn($item) => self::fromModel($item, $listing))->toArray();
     }
+
     private static function prepareData(UserDTO $dto, $data)
     {
-                    $dto->setId($data->id);
-            $dto->setName($data->name);
-            $dto->setEmail($data->email);
-            $dto->setPassword($data->password);
-            $dto->setEmailVerifiedAt($data->email_verified_at);
+        $dto->setId($data->id);
+        $dto->setName($data->name);
+        $dto->setEmail($data->email);
+        $dto->setPassword($data->password);
+        $dto->setEmailVerifiedAt($data->email_verified_at);
+        $dto->setStatus($data->status);
+        $dto->setAddress($data->address);
+        $dto->setPhone($data->phone);
+        $dto->setLogo($data->logo);
 
         return $dto;
     }
