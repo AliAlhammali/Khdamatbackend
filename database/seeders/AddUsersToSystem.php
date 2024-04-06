@@ -87,7 +87,7 @@ class AddUsersToSystem extends Seeder
 
         MerchantUser::factory()->create([
             'name' => 'Merchant Admin',
-            'email' => 'merchant-admin@khadamat-teck.test',
+            'email' => 'merchant-admin@khadamat-teck.com',
             'password' => bcrypt(123456),
             'address' => fake()->address(),
             'phone' => fake()->phoneNumber(),
