@@ -26,7 +26,7 @@ class AddUsersToSystem extends Seeder
 
 
         Merchant::create([
-            'title' => fake()->title(),
+            'title' => fake()->name(),
             'description' => fake()->paragraph(),
             'address' => fake()->address(),
             'phone' => fake()->phoneNumber(),
@@ -42,7 +42,7 @@ class AddUsersToSystem extends Seeder
         ]);
 
         ServiceProvider::create([
-            'title' => fake()->title(),
+            'title' => fake()->name(),
             'description' => fake()->paragraph(),
             'address' => fake()->address(),
             'phone' => fake()->phoneNumber(),
