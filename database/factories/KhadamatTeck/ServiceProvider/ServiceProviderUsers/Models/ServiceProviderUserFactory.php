@@ -28,7 +28,7 @@ class ServiceProviderUserFactory extends Factory
             'address' => fake()->address(),
             'phone' => fake()->phoneNumber(),
             'image' => fake()->imageUrl(),
-            'role' => 'staff',
+            'role' => 'Staff',
             'status' => 'active',
             'service_provider_id' => 1,
         ];

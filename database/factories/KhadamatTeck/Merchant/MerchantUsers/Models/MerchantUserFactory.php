@@ -31,7 +31,7 @@ class MerchantUserFactory extends Factory
             'phone' => fake()->phoneNumber(),
             'image' => fake()->imageUrl(),
             'status' => 'active',
-            'role' => 'staff',
+            'role' => 'Staff',
             'merchant_id'=>1
         ];
     }

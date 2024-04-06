@@ -62,6 +62,7 @@ class AddUsersToSystem extends Seeder
             'address' => fake()->address(),
             'phone' => fake()->phoneNumber(),
             'image' => fake()->imageUrl(),
+            'role' => 'Admin',
             'status' => 'active',
         ]);
         \App\Models\User::factory(10)->create();
@@ -75,7 +76,7 @@ class AddUsersToSystem extends Seeder
             'phone' => fake()->phoneNumber(),
             'image' => fake()->imageUrl(),
             'status' => 'active',
-            'role' => 'admin',
+            'role' => 'Admin',
             'service_provider_id' => 1,
             'is_owner' => 1,
         ]);
@@ -90,7 +91,7 @@ class AddUsersToSystem extends Seeder
             'phone' => fake()->phoneNumber(),
             'image' => fake()->imageUrl(),
             'status' => 'active',
-            'role' => 'admin',
+            'role' => 'Admin',
             'merchant_id' => 1,
             'is_owner' => 1,
         ]);
