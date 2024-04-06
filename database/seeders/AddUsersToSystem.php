@@ -21,6 +21,8 @@ class AddUsersToSystem extends Seeder
         User::query()->truncate();
         ServiceProviderUser::query()->truncate();
         MerchantUser::query()->truncate();
+        Merchant::query()->truncate();
+        ServiceProvider::query()->truncate();
 
 
         Merchant::create([
