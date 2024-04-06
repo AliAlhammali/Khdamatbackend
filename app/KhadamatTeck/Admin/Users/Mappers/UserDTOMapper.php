@@ -51,7 +51,7 @@ class UserDTOMapper extends BaseDTOMapper
         $dto->setStatus($data->status);
         $dto->setAddress($data->address);
         $dto->setPhone($data->phone);
-        $dto->setLogo($data->logo);
+        $dto->setLogo($data->image);
 
         return $dto;
     }
