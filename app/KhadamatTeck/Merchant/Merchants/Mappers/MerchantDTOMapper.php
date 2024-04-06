@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\Merchant\Merchants\Mappers;
 
 use App\KhadamatTeck\Base\BaseDTOMapper;
@@ -40,20 +41,21 @@ class MerchantDTOMapper extends BaseDTOMapper
     {
         return $data->map(fn($item) => self::fromModel($item, $listing))->toArray();
     }
+
     private static function prepareData(MerchantDTO $dto, $data)
     {
-                    $dto->setId($data->id);
-            $dto->setTitle($data->title);
-            $dto->setDescription($data->description);
-            $dto->setStatus($data->status);
-            $dto->setAddress($data->address);
-            $dto->setPhone($data->phone);
-            $dto->setLogo($data->logo);
-            $dto->setVatFile($data->vat_file);
-            $dto->setCrFile($data->cr_file);
-            $dto->setSalesAgreementFile($data->sales_agreement_file);
-            $dto->setCrNumber($data->cr_number);
-            $dto->setVatNumber($data->vat_number);
+        $dto->setId($data->id);
+        $dto->setTitle($data->title);
+        $dto->setDescription($data->description);
+        $dto->setStatus($data->status);
+        $dto->setAddress($data->address);
+        $dto->setPhone($data->phone);
+        $dto->setLogo($data->logo);
+        $dto->setVatFile($data->vat_file);
+        $dto->setCrFile($data->cr_file);
+        $dto->setSalesAgreementFile($data->sales_agreement_file);
+        $dto->setCrNumber($data->cr_number);
+        $dto->setVatNumber($data->vat_number);
         $dto->setEmail($data->email);
 
         return $dto;
