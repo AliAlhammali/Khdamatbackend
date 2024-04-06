@@ -36,6 +36,10 @@ class UsersRepository extends Repository
 
     public function createUser(array $data)
     {
+        if (isset($data['password']))
+            $data['password'] = bcrypt($data['password']);
+        else
+            $data['password'] = bcrypt(123456);
         return UserDTOMapper::fromModel(User::create($data));
     }
 

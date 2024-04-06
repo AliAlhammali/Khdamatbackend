@@ -4,18 +4,18 @@ namespace App\KhadamatTeck\Admin\Users\DTOs;
 
 class UserDTO implements \JsonSerializable
 {
-    private ?string $id;
+    private ?int $id;
     private ?string $name;
     private ?string $email;
     private ?string $password;
     private ?string $email_verified_at;
 
-    public function getId(): ?string
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(?string $id): void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
