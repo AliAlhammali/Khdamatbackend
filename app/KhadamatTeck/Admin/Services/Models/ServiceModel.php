@@ -7,11 +7,13 @@ use App\KhadamatTeck\Base\BaseModel;
 use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\Sluggable\HasTranslatableSlug;
+use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
 
 class ServiceModel extends BaseModel
 {
-    use HasTranslations;
+    use HasTranslations, HasTranslatableSlug;
 
     // use SoftDeletes;
     /**
@@ -26,7 +28,7 @@ class ServiceModel extends BaseModel
      * @var array
      */
 
-    protected $fillable = ['id', 'title','price', 'slug', 'description', 'status', 'merchant_id', 'category_id'];
+    protected $fillable = ['id', 'title','price','cost_price','sp_price', 'slug', 'description', 'status', 'merchant_id', 'category_id'];
     public array $translatable = ['title', 'slug'];
 
     function category()
@@ -53,5 +55,12 @@ class ServiceModel extends BaseModel
             AllowedFilter::exact('category_id'),
             AllowedFilter::exact('status'),
         ];
+    }
+
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::createWithLocales(['en', 'ar'])
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
     }
 }

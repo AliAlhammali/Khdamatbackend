@@ -8,12 +8,15 @@ use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Kalnoy\Nestedset\NodeTrait;
 use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\Sluggable\HasTranslatableSlug;
+use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
 
 class Category extends BaseModel
 {
     use NodeTrait;
     use HasTranslations;
+    use HasTranslatableSlug;
 
     // use SoftDeletes;
     /**
@@ -63,5 +66,12 @@ class Category extends BaseModel
             AllowedFilter::exact('parent_id'),
             AllowedFilter::exact('status'),
         ];
+    }
+
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::createWithLocales(['en', 'ar'])
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
     }
 }

@@ -15,6 +15,7 @@ class ServiceDTO implements \JsonSerializable
     private ?float $sp_price = 0.00;
     private mixed $category =null;
     private mixed $merchant =null;
+
     /**
      * @return int|null
      */
@@ -192,7 +193,6 @@ class ServiceDTO implements \JsonSerializable
             'merchant'=>$this->getMerchant(),
             'cost_price'=>$this->getCostPrice(),
             'sp_price'=>$this->getSpPrice(),
-
         ];
     }
 }
