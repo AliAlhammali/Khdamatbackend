@@ -165,8 +165,6 @@ class AuthService
     {
         $user = AdminAuth()->user()->token();
         $user->revoke();
-        Request::session()->invalidate();
-        Request::session()->regenerateToken();
         return $this->response()
             ->setData([
                 'user' => (object)[],
