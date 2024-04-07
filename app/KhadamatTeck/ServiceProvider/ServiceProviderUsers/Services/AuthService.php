@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Validation\ValidationException;
-
+use Ichtrojan\Otp\Models\Otp as ModelOtp;
 class AuthService
 {
     /**
