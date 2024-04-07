@@ -144,8 +144,6 @@ class AuthService
     {
         $user = MerchantAuth()->user()->token();
         $user->revoke();
-        Request::session()->invalidate();
-        Request::session()->regenerateToken();
         return $this->response()
             ->setData([
                 'user' => (object)[],
