@@ -3,13 +3,13 @@
 namespace App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\ForgotRequest;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\LoginRequest;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\PhoneLoginRequest;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\RegisterRequest;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\ResetPasswordRequest;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\VerifyPhoneLogin;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\VerifyRequest;
+use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\Auth\ForgotRequest;
+use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\Auth\LoginRequest;
+use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\Auth\PhoneLoginRequest;
+use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\Auth\RegisterRequest;
+use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\Auth\ResetPasswordRequest;
+use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\Auth\VerifyPhoneLogin;
+use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\Auth\VerifyRequest;
 use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Services\AuthService;
 use Illuminate\Http\JsonResponse;
