@@ -39,6 +39,13 @@ class ServiceModel extends BaseModel
         return $this->belongsTo(Merchant::class);
     }
 
+    public function scopeMerchantCategories($query, $merchant_id)
+    {
+        return $query->where(function ($query) use ($merchant_id) {
+            $query->whereNull('merchant_id')->orWhere('merchant_id', $merchant_id);
+        });
+    }
+
     public static function getAllowedFilters(): array
     {
         return [

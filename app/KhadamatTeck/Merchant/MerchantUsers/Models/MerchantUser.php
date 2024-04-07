@@ -3,6 +3,7 @@
 namespace App\KhadamatTeck\Merchant\MerchantUsers\Models;
 
 use App\KhadamatTeck\Base\BaseModel;
+use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -32,6 +33,11 @@ class MerchantUser extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    function merchant()
+    {
+       return $this->belongsTo(Merchant::class);
+    }
 
     public static function getAllowedFilters(): array
     {

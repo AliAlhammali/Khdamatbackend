@@ -3,21 +3,21 @@
 namespace App\KhadamatTeck\Merchant\MerchantUsers\Services;
 
 use App\KhadamatTeck\Admin\Users\Enums\UserOtpNotifyTypes;
-use App\KhadamatTeck\Admin\Users\Mappers\UserDTOMapper;
-use App\KhadamatTeck\Admin\Users\Models\User;
-use App\KhadamatTeck\Admin\Users\Repositories\UsersRepository;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\ForgotRequest;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\LoginRequest;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\PhoneLoginRequest;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\RegisterRequest;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\ResetPasswordRequest;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\VerifyPhoneLogin;
-use App\KhadamatTeck\Admin\Users\Requests\CreateUserRequest;
+
 use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\Base\Response;
+use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\ForgotRequest;
+use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\ResetPasswordRequest;
+use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\VerifyPhoneLogin;
+use App\Mail\SendMail;
+use Ichtrojan\Otp\Models\Otp as ModelOtp;
 use App\KhadamatTeck\Merchant\MerchantUsers\Mappers\MerchantUserDTOMapper;
 use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
 use App\KhadamatTeck\Merchant\MerchantUsers\Repositories\MerchantUsersRepository;
+use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\LoginRequest;
+use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\PhoneLoginRequest;
+use App\KhadamatTeck\Merchant\MerchantUsers\Requests\CreateMerchantUserRequest;
+use Ichtrojan\Otp\Otp;
 use Illuminate\Http\Client\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -26,8 +26,6 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Validation\ValidationException;
-use function App\KhadamatTeck\Admin\Users\Services\pmsAdminAuth;
-use function App\KhadamatTeck\Admin\Users\Services\send_sms;
 
 class AuthService
 {
@@ -52,22 +50,9 @@ class AuthService
         $this->usersRepository = $usersRepository;
     }
 
-    public function registerUser(RegisterRequest $request)
-    {
-        $user = UserDTOMapper::mapFromRequest($request);
-        $user = UserDTOMapper::fromModel(
-            $this->usersRepository->create($user->toArray())
-        );
 
-        return $this->response()
-            ->setData([
-                'user' => $user,
-                'token' => $this->usersRepository->createPersonalToken($user->getId()),
-            ])
-            ->setStatusCode(HttpStatus::HTTP_OK)->json();
-    }
 
-    public function createUser(CreateUserRequest $request)
+    public function createUser(CreateMerchantUserRequest $request)
     {
         return $this->response()
             ->setData($this->usersRepository->create($request->validated()))
@@ -84,6 +69,7 @@ class AuthService
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('MerchantUser')->accessToken;
                 $response = ['token' => $token,'user'=>MerchantUserDTOMapper::fromModel($user)];
+                MerchantAuth()->setUser($user);
                 return response($response, 200);
             } else {
                 $response = ["message" => "Password mismatch"];

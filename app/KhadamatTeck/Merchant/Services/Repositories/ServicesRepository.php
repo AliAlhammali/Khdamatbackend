@@ -2,6 +2,7 @@
 
 namespace App\KhadamatTeck\Merchant\Services\Repositories;
 
+use App\KhadamatTeck\Admin\Services\Models\ServiceModel;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use App\KhadamatTeck\Base\Repository;
@@ -23,7 +24,7 @@ class ServicesRepository extends Repository
 
     public function paginateServices($requestQuery, $perPage = 20): LengthAwarePaginator
     {
-        return QueryBuilder::for(ServiceModel::class)
+        return QueryBuilder::for(ServiceModel::MerchantCategories(MerchantAuth()->id()))
             ->allowedFilters(ServiceModel::getAllowedFilters())
             ->paginate($perPage)
             ->appends($requestQuery);
@@ -31,7 +32,7 @@ class ServicesRepository extends Repository
 
     public function findService(string $id)
     {
-        return ServiceModel::findOrFail($id);
+        return ServiceModel::MerchantCategories(MerchantAuth()->id())->findOrFail($id);
     }
 
     public function createService(array $data)
@@ -53,6 +54,6 @@ class ServicesRepository extends Repository
 
     public function getMinimalList()
     {
-        return ServiceModel::listing()->get();
+        return ServiceModel::MerchantCategories(MerchantAuth()->id())->listing()->get();
     }
 }

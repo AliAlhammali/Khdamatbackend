@@ -13,7 +13,7 @@ class ServiceProviderUserDTO implements \JsonSerializable
             private ?string $role= null;
             private ?string $password= null;
             private ?string $status= null;
-
+    private mixed $service_provider= null;
 
 /**
      * @return int|null
@@ -143,6 +143,16 @@ class ServiceProviderUserDTO implements \JsonSerializable
         $this->status = $status;
     }
 
+    public function getServiceProvider(): mixed
+    {
+        return $this->service_provider;
+    }
+
+    public function setServiceProvider(mixed $service_provider): void
+    {
+        $this->service_provider = $service_provider;
+    }
+
     public function jsonSerialize()
     {
         return [
@@ -155,6 +165,7 @@ class ServiceProviderUserDTO implements \JsonSerializable
             'role'=>$this->getRole(),
             'password'=>$this->getPassword(),
             'status'=>$this->getStatus(),
+            'service_provider'=>$this->getServiceProvider(),
 
         ];
     }

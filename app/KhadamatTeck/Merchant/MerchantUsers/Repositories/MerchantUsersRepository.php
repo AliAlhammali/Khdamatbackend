@@ -23,7 +23,7 @@ class MerchantUsersRepository extends Repository
 
     public function paginateMerchantUsers($requestQuery, $perPage = 20): LengthAwarePaginator
     {
-        return QueryBuilder::for(MerchantUser::class)
+        return QueryBuilder::for(MerchantUser::where(['merchant_id'=>MerchantAuth()->id()]))
             ->allowedFilters(MerchantUser::getAllowedFilters())
             ->paginate($perPage)
             ->appends($requestQuery);

@@ -1,11 +1,10 @@
 <?php
 namespace App\KhadamatTeck\Merchant\Categories\Services;
 
+use App\KhadamatTeck\Admin\Categories\Mappers\CategoryDTOMapper;
 use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\Base\Response;
 use App\KhadamatTeck\Base\Service;
-use App\KhadamatTeck\Merchant\Categories\Mappers\CategoryDTOMapper;
-use App\KhadamatTeck\Merchant\Categories\Models\Category;
 use App\KhadamatTeck\Merchant\Categories\Repositories\CategoriesRepository;
 use App\KhadamatTeck\Merchant\Categories\Requests\CreateCategoryRequest;
 use App\KhadamatTeck\Merchant\Categories\Requests\DeleteCategoryRequest;

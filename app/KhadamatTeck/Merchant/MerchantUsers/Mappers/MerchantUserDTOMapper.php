@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\Merchant\MerchantUsers\Mappers;
 
 use App\KhadamatTeck\Base\BaseDTOMapper;
@@ -40,17 +41,19 @@ class MerchantUserDTOMapper extends BaseDTOMapper
     {
         return $data->map(fn($item) => self::fromModel($item, $listing))->toArray();
     }
+
     private static function prepareData(MerchantUserDTO $dto, $data)
     {
-                    $dto->setId($data->id);
-            $dto->setName($data->name);
-            $dto->setMerchantId($data->merchant_id);
-            $dto->setEmail($data->email);
-            $dto->setAddress($data->address);
-            $dto->setPhone($data->phone);
-            $dto->setRole($data->role);
-            $dto->setPassword($data->password);
-            $dto->setStatus($data->status);
+        $dto->setId($data->id);
+        $dto->setName($data->name);
+        $dto->setMerchantId($data->merchant_id);
+        $dto->setEmail($data->email);
+        $dto->setAddress($data->address);
+        $dto->setPhone($data->phone);
+        $dto->setRole($data->role);
+        $dto->setPassword($data->password);
+        $dto->setStatus($data->status);
+        $dto->setMerchant($data->merchant);
 
         return $dto;
     }

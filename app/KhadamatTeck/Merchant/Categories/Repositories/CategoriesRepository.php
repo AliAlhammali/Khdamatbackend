@@ -2,11 +2,11 @@
 
 namespace App\KhadamatTeck\Merchant\Categories\Repositories;
 
+use App\KhadamatTeck\Admin\Categories\Mappers\CategoryDTOMapper;
+use App\KhadamatTeck\Admin\Categories\Models\Category;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use App\KhadamatTeck\Base\Repository;
-use App\KhadamatTeck\Merchant\Categories\Mappers\CategoryDTOMapper;
-use App\KhadamatTeck\Merchant\Categories\Models\Category;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class CategoriesRepository extends Repository
@@ -23,7 +23,7 @@ class CategoriesRepository extends Repository
 
     public function paginateCategories($requestQuery, $perPage = 20): LengthAwarePaginator
     {
-        return QueryBuilder::for(Category::class)
+        return QueryBuilder::for(Category::MerchantCategories(MerchantAuth()->id()))
             ->allowedFilters(Category::getAllowedFilters())
             ->paginate($perPage)
             ->appends($requestQuery);
@@ -31,7 +31,7 @@ class CategoriesRepository extends Repository
 
     public function findCategory(string $id)
     {
-        return Category::findOrFail($id);
+        return Category::MerchantCategories(MerchantAuth()->id)->findOrFail($id);
     }
 
     public function createCategory(array $data)
@@ -53,6 +53,6 @@ class CategoriesRepository extends Repository
 
     public function getMinimalList()
     {
-        return Category::listing()->get();
+        return Category::MerchantCategories(MerchantAuth()->id())->listing()->get();
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-use App\KhadamatTeck\Admin\MerchantUsers\Controllers\MerchantUsersController;
+use App\KhadamatTeck\Merchant\MerchantUsers\Controllers\MerchantUsersController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('merchant-users')->group(function () {

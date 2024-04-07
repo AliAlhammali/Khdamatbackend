@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Mappers;
 
 use App\KhadamatTeck\Base\BaseDTOMapper;
@@ -40,18 +41,19 @@ class ServiceProviderUserDTOMapper extends BaseDTOMapper
     {
         return $data->map(fn($item) => self::fromModel($item, $listing))->toArray();
     }
+
     private static function prepareData(ServiceProviderUserDTO $dto, $data)
     {
-                    $dto->setId($data->id);
-            $dto->setName($data->name);
-            $dto->setServiceProviderId($data->service_provider_id);
-            $dto->setEmail($data->email);
-            $dto->setAddress($data->address);
-            $dto->setPhone($data->phone);
-            $dto->setRole($data->role);
-            $dto->setPassword($data->password);
-            $dto->setStatus($data->status);
-
+        $dto->setId($data->id);
+        $dto->setName($data->name);
+        $dto->setServiceProviderId($data->service_provider_id);
+        $dto->setEmail($data->email);
+        $dto->setAddress($data->address);
+        $dto->setPhone($data->phone);
+        $dto->setRole($data->role);
+        $dto->setPassword($data->password);
+        $dto->setStatus($data->status);
+        $dto->setServiceProvider($data->serviceProvider);
         return $dto;
     }
 }

@@ -3,6 +3,8 @@
 namespace App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models;
 
 use App\KhadamatTeck\Base\BaseModel;
+use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
+use App\KhadamatTeck\ServiceProvider\ServiceProviders\Models\ServiceProvider;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -29,6 +31,10 @@ class ServiceProviderUser extends Authenticatable
 
     protected $fillable = ['id', 'name', 'service_provider_id', 'email', 'address', 'phone', 'role', 'password', 'status'];
 
+    function serviceProvider()
+    {
+        return $this->belongsTo(ServiceProvider::class);
+    }
     public static function getAllowedFilters(): array
     {
         return [

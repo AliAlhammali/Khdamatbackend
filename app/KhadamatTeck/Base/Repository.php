@@ -4,6 +4,7 @@ namespace App\KhadamatTeck\Base;
 
 use App\KhadamatTeck\Base\Traits\DBSelectUtils;
 use Prettus\Repository\Eloquent\BaseRepository;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class Repository extends BaseRepository implements RepositoryInterface
 {

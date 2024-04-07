@@ -4,18 +4,19 @@ namespace App\KhadamatTeck\Merchant\MerchantUsers\Controllers;
 
 use App\Http\Controllers\Controller;
 
-use App\KhadamatTeck\Admin\Users\Requests\Auth\ForgotRequest;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\LoginRequest;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\PhoneLoginRequest;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\RegisterRequest;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\ResetPasswordRequest;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\VerifyPhoneLogin;
-use App\KhadamatTeck\Admin\Users\Requests\Auth\VerifyRequest;
+
+use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\ForgotRequest;
+use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\LoginRequest;
+use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\PhoneLoginRequest;
+use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\RegisterRequest;
+use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\ResetPasswordRequest;
+use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\VerifyPhoneLogin;
+use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\VerifyRequest;
 use App\KhadamatTeck\Merchant\MerchantUsers\Services\AuthService;
 use Illuminate\Validation\ValidationException;
 
 
-class AuthController extends Controller
+class MerchantAuthController extends Controller
 {
     /**
      * @var AuthService $authService
