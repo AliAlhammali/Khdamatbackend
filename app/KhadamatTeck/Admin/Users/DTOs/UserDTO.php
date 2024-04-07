@@ -13,7 +13,7 @@ class UserDTO implements \JsonSerializable
     private ?string $address;
     private ?string $phone;
     private ?string $logo;
-
+    private ?string $role;
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +104,16 @@ class UserDTO implements \JsonSerializable
         $this->logo = $logo;
     }
 
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(?string $role): void
+    {
+        $this->role = $role;
+    }
+
 
     public function jsonSerialize()
     {
@@ -117,6 +127,7 @@ class UserDTO implements \JsonSerializable
             'address' => $this->getAddress(),
             'phone' => $this->getPhone(),
             'logo' => $this->getLogo(),
+            'role' => $this->getRole(),
 
         ];
     }
