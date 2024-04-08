@@ -1,6 +1,6 @@
 <?php
 
-use App\KhadamatTeck\Admin\ServiceProviderUsers\Controllers\ServiceProviderUsersController;
+use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Controllers\ServiceProviderUsersController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('service-provider-users')->group(function () {

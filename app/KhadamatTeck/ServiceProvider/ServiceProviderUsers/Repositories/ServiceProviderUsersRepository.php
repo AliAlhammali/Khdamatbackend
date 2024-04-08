@@ -36,6 +36,8 @@ class ServiceProviderUsersRepository extends Repository
 
     public function createServiceProviderUser(array $data)
     {
+        if(!isset($data['service_provider_id']))
+            $data['service_provider_id'] = SPAuth()->user()->serviceProvider->id;
         return ServiceProviderUserDTOMapper::fromModel(ServiceProviderUser::create($data));
     }
 
