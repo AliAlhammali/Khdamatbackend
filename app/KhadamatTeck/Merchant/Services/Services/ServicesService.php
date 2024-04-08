@@ -1,10 +1,10 @@
 <?php
 namespace App\KhadamatTeck\Merchant\Services\Services;
 
+use App\KhadamatTeck\Admin\Services\Mappers\ServiceDTOMapper;
 use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\Base\Response;
 use App\KhadamatTeck\Base\Service;
-use App\KhadamatTeck\Merchant\Services\Mappers\ServiceDTOMapper;
 use App\KhadamatTeck\Merchant\Services\Repositories\ServicesRepository;
 use App\KhadamatTeck\Merchant\Services\Requests\CreateServiceRequest;
 use App\KhadamatTeck\Merchant\Services\Requests\DeleteServiceRequest;
