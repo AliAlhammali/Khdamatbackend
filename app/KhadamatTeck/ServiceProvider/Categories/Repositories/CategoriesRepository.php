@@ -2,11 +2,11 @@
 
 namespace App\KhadamatTeck\ServiceProvider\Categories\Repositories;
 
+use App\KhadamatTeck\Admin\Categories\Mappers\CategoryDTOMapper;
+use App\KhadamatTeck\Admin\Categories\Models\Category;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use App\KhadamatTeck\Base\Repository;
-use App\KhadamatTeck\ServiceProvider\Categories\Mappers\CategoryDTOMapper;
-use App\KhadamatTeck\ServiceProvider\Categories\Models\Category;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class CategoriesRepository extends Repository
