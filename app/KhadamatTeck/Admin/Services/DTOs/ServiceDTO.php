@@ -15,6 +15,10 @@ class ServiceDTO implements \JsonSerializable
     private ?float $sp_price = 0.00;
     private mixed $category =null;
     private mixed $merchant =null;
+    private ?string $main_category_id = null;
+
+    private ?string $category_id = null;
+    private mixed $main_category =null;
 
     /**
      * @return int|null
@@ -178,6 +182,26 @@ class ServiceDTO implements \JsonSerializable
         $this->sp_price = $sp_price;
     }
 
+    public function getMainCategoryId(): ?string
+    {
+        return $this->main_category_id;
+    }
+
+    public function setMainCategoryId(?string $main_category_id): void
+    {
+        $this->main_category_id = $main_category_id;
+    }
+
+    public function getMainCategory(): mixed
+    {
+        return $this->main_category;
+    }
+
+    public function setMainCategory(mixed $main_category): void
+    {
+        $this->main_category = $main_category;
+    }
+
     public function jsonSerialize()
     {
         return [
@@ -188,8 +212,10 @@ class ServiceDTO implements \JsonSerializable
             'status' => $this->getStatus(),
             'merchant_id' => $this->getMerchantId(),
             'category_id' => $this->getCategoryId(),
+            'main_category_id' => $this->getMainCategoryId(),
             'price' => $this->getPrice(),
             'category'=>$this->getCategory(),
+            'main_category' => $this->getMainCategory(),
             'merchant'=>$this->getMerchant(),
             'cost_price'=>$this->getCostPrice(),
             'sp_price'=>$this->getSpPrice(),

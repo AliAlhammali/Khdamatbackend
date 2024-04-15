@@ -28,12 +28,17 @@ class ServiceModel extends BaseModel
      * @var array
      */
 
-    protected $fillable = ['id', 'title','price','cost_price','sp_price', 'slug', 'description', 'status', 'merchant_id', 'category_id'];
+    protected $fillable = ['id', 'title','price','cost_price','sp_price', 'slug', 'description', 'status', 'merchant_id', 'category_id', 'main_category_id'];
     public array $translatable = ['title', 'slug'];
 
     function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    function mainCategory()
+    {
+        return $this->belongsTo(Category::class,'main_category_id');
     }
 
     function merchant()
@@ -53,6 +58,7 @@ class ServiceModel extends BaseModel
         return [
             AllowedFilter::exact('merchant_id'),
             AllowedFilter::exact('category_id'),
+            AllowedFilter::exact('main_category_id'),
             AllowedFilter::exact('status'),
         ];
     }
