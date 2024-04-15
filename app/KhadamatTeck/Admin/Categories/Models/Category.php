@@ -62,10 +62,16 @@ class Category extends BaseModel
     {
         return [
             AllowedFilter::exact('id'),
-            AllowedFilter::exact('category_id'),
             AllowedFilter::exact('parent_id'),
+            AllowedFilter::exact('merchant_id'),
             AllowedFilter::exact('status'),
+            AllowedFilter::scope('isParent','isParent'),
         ];
+    }
+
+    public function scopeIsParent($query)
+    {
+        return $query->whereNull('parent_id');
     }
 
     public function getSlugOptions() : SlugOptions
