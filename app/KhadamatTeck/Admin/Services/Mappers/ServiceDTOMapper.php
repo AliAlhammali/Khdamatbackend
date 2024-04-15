@@ -54,11 +54,11 @@ class ServiceDTOMapper extends BaseDTOMapper
         $dto->setCategoryId($data->category_id);
         $dto->setMainCategoryId($data->main_category_id);
         $dto->setPrice($data->price);
-        if (request('includeServiceMerchant'))
+        if (request('includeServiceMerchant',true))
             $dto->setMerchant($data->merchant);
-        if (request('includeServiceCategory'))
+        if (request('includeServiceCategory',true))
             $dto->setCategory($data->category);
-        if (request('includeServiceMainCategory'))
+        if (request('includeServiceMainCategory',true))
             $dto->setMainCategory($data->mainCategory);
         $dto->setCostPrice($data->cost_price);
         $dto->setSpPrice($data->sp_price);

@@ -49,11 +49,11 @@ class CategoryDTOMapper extends BaseDTOMapper
         $dto->setSlug($data->getTranslations('slug'));
         $dto->setStatus($data->status);
         $dto->setMerchantId($data->merchant_id);
-        if (request('includeCategoryMerchant'))
+        if (request('includeCategoryMerchant',true))
             $dto->setMerchant($data->merchant);
-        if (request('includeCategoryParent'))
+        if (request('includeCategoryParent',true))
             $dto->setParent($data->parent);
-        if (request('includeCategoryChildren'))
+        if (request('includeCategoryChildren',true))
             $dto->setChildren($data->children);
 
 
