@@ -12,6 +12,7 @@ Route::middleware('auth:merchant')->group(function () {
     require __DIR__ . "/services.php";
     require __DIR__ . "/branches.php";
     require __DIR__ . "/clients.php";
+    require __DIR__ . "/orders.php";
 });
 
 
