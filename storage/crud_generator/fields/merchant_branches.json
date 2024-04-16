@@ -1,0 +1,51 @@
+{
+    "id": {
+        "validation": "",
+        "fillable": true,
+        "type": "int",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "location": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "name": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "merchant_id": {
+        "validation": "",
+        "fillable": true,
+        "type": "int",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+
+    "address": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "is_active": {
+        "validation": "",
+        "fillable": true,
+        "type": "boolean",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    }
+}

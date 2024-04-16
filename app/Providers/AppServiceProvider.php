@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use MatanYadaev\EloquentSpatial\Objects\Geometry;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Geometry::macro('pointToArray', function (): array {
+            /** @var Geometry $this */
+            $coordinates = [
+                $this->latitude,
+                $this->longitude,
+            ];
+            return [
+                "type" => "Point",
+                "coordinates" => $coordinates,
+            ];
+        });
     }
 }
