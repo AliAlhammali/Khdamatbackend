@@ -1,0 +1,90 @@
+{
+    "id": {
+        "validation": "",
+        "fillable": true,
+        "type": "int",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "merchant_id": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "merchant_user_id": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "merchant_client_id": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "main_category_id": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "category_id": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "status": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "order_otp": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "created_at": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "pick_up_type": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "merchant_branch_id": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    }
+}

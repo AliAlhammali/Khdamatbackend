@@ -20,5 +20,5 @@ class Order extends BaseModel
      * @var array
      */
 
-    protected $fillable = [];
+    protected $fillable = ['id','merchant_id','merchant_user_id','merchant_client_id','main_category_id','category_id','status','order_otp','created_at','pick_up_type','merchant_branch_id'];
 }

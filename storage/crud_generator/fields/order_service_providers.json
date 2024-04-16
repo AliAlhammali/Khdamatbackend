@@ -1,0 +1,34 @@
+{
+    "id": {
+        "validation": "",
+        "fillable": true,
+        "type": "int",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "order_id": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "service_provider_id": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "active": {
+        "validation": "",
+        "fillable": true,
+        "type": "bool",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    }
+}

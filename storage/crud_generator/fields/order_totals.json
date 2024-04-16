@@ -1,0 +1,138 @@
+{
+    "id": {
+        "validation": "",
+        "fillable": true,
+        "type": "int",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "order_id": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "merchant_id": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "merchant_user_id": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "item_id": {
+        "validation": "",
+        "fillable": true,
+        "type": "string",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "quantity": {
+        "validation": "",
+        "fillable": true,
+        "type": "float",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "item_price": {
+        "validation": "",
+        "fillable": true,
+        "type": "float",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "order_otp": {
+        "validation": "",
+        "fillable": true,
+        "type": "float",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "merchant_user_commission_total": {
+        "validation": "",
+        "fillable": true,
+        "type": "float",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "merchant_user_commission_sup_total": {
+        "validation": "",
+        "fillable": true,
+        "type": "float",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "merchant_user_commission_vat": {
+        "validation": "",
+        "fillable": true,
+        "type": "float",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "sp_total": {
+        "validation": "",
+        "fillable": true,
+        "type": "float",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "sp_sup_total": {
+        "validation": "",
+        "fillable": true,
+        "type": "float",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "sp_vat": {
+        "validation": "",
+        "fillable": true,
+        "type": "float",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "sup_total": {
+        "validation": "",
+        "fillable": true,
+        "type": "float",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "vat": {
+        "validation": "",
+        "fillable": true,
+        "type": "float",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    },
+    "total": {
+        "validation": "",
+        "fillable": true,
+        "type": "float",
+        "setterAndGetter": true,
+        "nullable": true,
+        "hidden": false
+    }
+}
