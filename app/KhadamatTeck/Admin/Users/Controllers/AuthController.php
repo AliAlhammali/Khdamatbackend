@@ -11,8 +11,6 @@ use App\KhadamatTeck\Admin\Users\Requests\Auth\ResetPasswordRequest;
 use App\KhadamatTeck\Admin\Users\Requests\Auth\VerifyPhoneLogin;
 use App\KhadamatTeck\Admin\Users\Requests\Auth\VerifyRequest;
 use App\KhadamatTeck\Admin\Users\Services\AuthService;
-use App\KhadamatTeck\Base\Http\HttpStatus;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
 
 
@@ -45,10 +43,12 @@ class AuthController extends Controller
     {
         return $this->authService->loginUser($request);
     }
+
     public function loginWithOTP(LoginRequest $request)
     {
         return $this->authService->loginUserWithOTP($request);
     }
+
     public function verifyWithOTP(LoginRequest $request)
     {
         return $this->authService->verifyLoginUserWithOTP($request);

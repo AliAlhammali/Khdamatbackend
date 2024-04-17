@@ -2,11 +2,11 @@
 
 namespace App\KhadamatTeck\Merchant\MerchantUsers\Repositories;
 
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Database\Eloquent\Collection;
 use App\KhadamatTeck\Base\Repository;
 use App\KhadamatTeck\Merchant\MerchantUsers\Mappers\MerchantUserDTOMapper;
 use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class MerchantUsersRepository extends Repository
@@ -23,7 +23,7 @@ class MerchantUsersRepository extends Repository
 
     public function paginateMerchantUsers($requestQuery, $perPage = 20): LengthAwarePaginator
     {
-        return QueryBuilder::for(MerchantUser::where(['merchant_id'=>MerchantAuth()->id()]))
+        return QueryBuilder::for(MerchantUser::where(['merchant_id' => MerchantAuth()->id()]))
             ->allowedFilters(MerchantUser::getAllowedFilters())
             ->paginate($perPage)
             ->appends($requestQuery);
@@ -36,7 +36,7 @@ class MerchantUsersRepository extends Repository
 
     public function createMerchantUser(array $data)
     {
-        if(!isset($data['service_provider_id']))
+        if (!isset($data['service_provider_id']))
             $data['merchant_id'] = MerchantAuth()->user()->merchant->id;
         return MerchantUserDTOMapper::fromModel(MerchantUser::create($data));
     }

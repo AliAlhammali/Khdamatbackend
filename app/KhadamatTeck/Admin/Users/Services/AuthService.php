@@ -16,16 +16,15 @@ use App\KhadamatTeck\Admin\Users\Requests\CreateUserRequest;
 use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\Base\Response;
 use App\Mail\SendMail;
+use Ichtrojan\Otp\Models\Otp as ModelOtp;
 use Ichtrojan\Otp\Otp;
-use Illuminate\Http\Client\Request;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Validation\ValidationException;
-use Ichtrojan\Otp\Models\Otp as ModelOtp;
+
 class AuthService
 {
     /**
@@ -80,14 +79,14 @@ class AuthService
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('Laravel Password Grant Client')->accessToken;
-                $response = ['token' => $token,'user'=>UserDTOMapper::fromModel($user)];
+                $response = ['token' => $token, 'user' => UserDTOMapper::fromModel($user)];
                 return response($response, 200);
             } else {
                 $response = ["message" => "Password mismatch"];
                 return response($response, 422);
             }
         } else {
-            $response = ["message" =>'User does not exist'];
+            $response = ["message" => 'User does not exist'];
             return response($response, 422);
         }
     }
@@ -113,7 +112,7 @@ class AuthService
                 return response($response, 422);
             }
         } else {
-            $response = ["message" =>'User does not exist'];
+            $response = ["message" => 'User does not exist'];
             return response($response, 422);
         }
 
@@ -185,7 +184,7 @@ class AuthService
                 ]);
             } else {
                 $otp = new Otp;
-                $otp = $otp->generate($request->phone,'alpha_numeric',10);
+                $otp = $otp->generate($request->phone, 'alpha_numeric', 10);
             }
             $user = $this->usersRepository->findOneByPhone($request->phone);
             if ($user?->otp_notify_type == UserOtpNotifyTypes::SMS) {
@@ -248,7 +247,7 @@ class AuthService
     public function sendMail($email)
     {
         $otpClass = new Otp;
-        $otp = $otpClass->generate($email,'alpha_numeric',10);
+        $otp = $otpClass->generate($email, 'alpha_numeric', 10);
         Mail::to($email)->send(new SendMail($otp->token));
     }
 
@@ -285,7 +284,6 @@ class AuthService
             ])
             ->setStatusCode(HttpStatus::HTTP_OK)->json();
     }
-
 
 
     protected function response(): Response

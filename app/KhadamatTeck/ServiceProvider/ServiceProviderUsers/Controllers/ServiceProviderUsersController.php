@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Controllers;
 
 use App\Http\Controllers\Controller;
@@ -38,13 +39,13 @@ class ServiceProviderUsersController extends Controller
         return $this->serviceProviderUsersService->findServiceProviderUser($request, $id);
     }
 
-    public function update(UpdateServiceProviderUserRequest $request,string $id)
+    public function update(UpdateServiceProviderUserRequest $request, string $id)
     {
-        return $this->serviceProviderUsersService->updateServiceProviderUser($request,$id);
+        return $this->serviceProviderUsersService->updateServiceProviderUser($request, $id);
     }
 
-    public function delete(DeleteServiceProviderUserRequest $request,string $id)
+    public function delete(DeleteServiceProviderUserRequest $request, string $id)
     {
-        return $this->serviceProviderUsersService->deleteServiceProviderUser($request,$id);
+        return $this->serviceProviderUsersService->deleteServiceProviderUser($request, $id);
     }
 }

@@ -3,23 +3,20 @@
 namespace App\KhadamatTeck\Merchant\MerchantUsers\Services;
 
 use App\KhadamatTeck\Admin\Users\Enums\UserOtpNotifyTypes;
-
 use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\Base\Response;
-use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\ForgotRequest;
-use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\ResetPasswordRequest;
-use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\VerifyPhoneLogin;
-use App\Mail\SendMail;
-use Ichtrojan\Otp\Models\Otp as ModelOtp;
 use App\KhadamatTeck\Merchant\MerchantUsers\Mappers\MerchantUserDTOMapper;
 use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
 use App\KhadamatTeck\Merchant\MerchantUsers\Repositories\MerchantUsersRepository;
+use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\ForgotRequest;
 use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\LoginRequest;
 use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\PhoneLoginRequest;
+use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\ResetPasswordRequest;
+use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\VerifyPhoneLogin;
 use App\KhadamatTeck\Merchant\MerchantUsers\Requests\CreateMerchantUserRequest;
+use App\Mail\SendMail;
+use Ichtrojan\Otp\Models\Otp as ModelOtp;
 use Ichtrojan\Otp\Otp;
-use Illuminate\Http\Client\Request;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -51,7 +48,6 @@ class AuthService
     }
 
 
-
     public function createUser(CreateMerchantUserRequest $request)
     {
         return $this->response()
@@ -68,7 +64,7 @@ class AuthService
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('MerchantUser')->accessToken;
-                $response = ['token' => $token,'user'=>MerchantUserDTOMapper::fromModel($user)];
+                $response = ['token' => $token, 'user' => MerchantUserDTOMapper::fromModel($user)];
                 MerchantAuth()->setUser($user);
                 return response($response, 200);
             } else {
@@ -76,7 +72,7 @@ class AuthService
                 return response($response, 422);
             }
         } else {
-            $response = ["message" =>'User does not exist'];
+            $response = ["message" => 'User does not exist'];
             return response($response, 422);
         }
     }

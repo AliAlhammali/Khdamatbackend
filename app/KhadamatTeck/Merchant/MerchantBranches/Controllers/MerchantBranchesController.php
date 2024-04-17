@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\Merchant\MerchantBranches\Controllers;
 
 use App\Http\Controllers\Controller;
@@ -38,13 +39,13 @@ class MerchantBranchesController extends Controller
         return $this->merchantBranchesService->findMerchantBranch($request, $id);
     }
 
-    public function update(UpdateMerchantBranchRequest $request,string $id)
+    public function update(UpdateMerchantBranchRequest $request, string $id)
     {
-        return $this->merchantBranchesService->updateMerchantBranch($request,$id);
+        return $this->merchantBranchesService->updateMerchantBranch($request, $id);
     }
 
-    public function delete(DeleteMerchantBranchRequest $request,string $id)
+    public function delete(DeleteMerchantBranchRequest $request, string $id)
     {
-        return $this->merchantBranchesService->deleteMerchantBranch($request,$id);
+        return $this->merchantBranchesService->deleteMerchantBranch($request, $id);
     }
 }

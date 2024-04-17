@@ -15,8 +15,8 @@ class RegisterRequest extends KhadamatTeckRequest
     {
         return [
             'name' => 'required',
-            'email' =>  'required|email|unique:users',
-            'password' =>  'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required',
             'phone' => 'required|unique:users',
         ];
     }

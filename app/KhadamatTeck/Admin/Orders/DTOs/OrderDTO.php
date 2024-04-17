@@ -15,6 +15,8 @@ class OrderDTO implements \JsonSerializable
     private ?string $created_at = null;
     private ?string $pick_up_type = null;
     private ?string $merchant_branch_id = null;
+    private mixed $completed_at = null;
+    private mixed $started_at = null;
 
 
     /**
@@ -193,6 +195,26 @@ class OrderDTO implements \JsonSerializable
         $this->merchant_branch_id = $merchant_branch_id;
     }
 
+    public function getCompletedAt(): mixed
+    {
+        return $this->completed_at;
+    }
+
+    public function setCompletedAt(mixed $completed_at): void
+    {
+        $this->completed_at = $completed_at;
+    }
+
+    public function getStartedAt(): mixed
+    {
+        return $this->started_at;
+    }
+
+    public function setStartedAt(mixed $started_at): void
+    {
+        $this->started_at = $started_at;
+    }
+
     public function jsonSerialize()
     {
         return [
@@ -207,6 +229,8 @@ class OrderDTO implements \JsonSerializable
             'created_at' => $this->getCreatedAt(),
             'pick_up_type' => $this->getPickUpType(),
             'merchant_branch_id' => $this->getMerchantBranchId(),
+            'started_at' => $this->getStartedAt(),
+            'completed_at' => $this->getCompletedAt(),
 
         ];
     }

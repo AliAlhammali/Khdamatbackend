@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\Merchant\MerchantUsers\Controllers;
 
 use App\Http\Controllers\Controller;
@@ -38,13 +39,13 @@ class MerchantUsersController extends Controller
         return $this->merchantUsersService->findMerchantUser($request, $id);
     }
 
-    public function update(UpdateMerchantUserRequest $request,string $id)
+    public function update(UpdateMerchantUserRequest $request, string $id)
     {
-        return $this->merchantUsersService->updateMerchantUser($request,$id);
+        return $this->merchantUsersService->updateMerchantUser($request, $id);
     }
 
-    public function delete(DeleteMerchantUserRequest $request,string $id)
+    public function delete(DeleteMerchantUserRequest $request, string $id)
     {
-        return $this->merchantUsersService->deleteMerchantUser($request,$id);
+        return $this->merchantUsersService->deleteMerchantUser($request, $id);
     }
 }

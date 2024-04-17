@@ -4,18 +4,18 @@ namespace App\KhadamatTeck\ServiceProvider\ServiceProviders\DTOs;
 
 class ServiceProviderDTO implements \JsonSerializable
 {
-            private int $id;
-            private ?string $title;
-           private ?string $description;
-           private ?string $status;
-           private ?string $address;
-           private ?string $phone;
-           private ?string $logo;
-           private ?string $vat_file;
-           private ?string $cr_file;
-           private ?string $sales_agreement_file;
-           private ?string $cr_number;
-           private ?string $vat_number;
+    private int $id;
+    private ?string $title;
+    private ?string $description;
+    private ?string $status;
+    private ?string $address;
+    private ?string $phone;
+    private ?string $logo;
+    private ?string $vat_file;
+    private ?string $cr_file;
+    private ?string $sales_agreement_file;
+    private ?string $cr_number;
+    private ?string $vat_number;
     private ?string $email;
 
     public function getId(): int
@@ -152,19 +152,19 @@ class ServiceProviderDTO implements \JsonSerializable
     public function jsonSerialize()
     {
         return [
-                        'id'=>$this->getId(),
-            'title'=>$this->getTitle(),
-            'description'=>$this->getDescription(),
-            'status'=>$this->getStatus(),
-            'address'=>$this->getAddress(),
-            'phone'=>$this->getPhone(),
-            'logo'=>$this->getLogo(),
-            'vat_file'=>$this->getVatFile(),
-            'cr_file'=>$this->getCrFile(),
-            'sales_agreement_file'=>$this->getSalesAgreementFile(),
-            'cr_number'=>$this->getCrNumber(),
-            'vat_number'=>$this->getVatNumber(),
-            'email'=>$this->getEmail(),
+            'id' => $this->getId(),
+            'title' => $this->getTitle(),
+            'description' => $this->getDescription(),
+            'status' => $this->getStatus(),
+            'address' => $this->getAddress(),
+            'phone' => $this->getPhone(),
+            'logo' => $this->getLogo(),
+            'vat_file' => $this->getVatFile(),
+            'cr_file' => $this->getCrFile(),
+            'sales_agreement_file' => $this->getSalesAgreementFile(),
+            'cr_number' => $this->getCrNumber(),
+            'vat_number' => $this->getVatNumber(),
+            'email' => $this->getEmail(),
 
         ];
     }

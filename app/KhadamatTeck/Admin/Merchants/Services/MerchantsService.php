@@ -1,15 +1,16 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\Merchants\Services;
 
-use App\KhadamatTeck\Base\Http\HttpStatus;
-use App\KhadamatTeck\Base\Response;
-use App\KhadamatTeck\Base\Service;
 use App\KhadamatTeck\Admin\Merchants\Repositories\MerchantsRepository;
 use App\KhadamatTeck\Admin\Merchants\Requests\CreateMerchantRequest;
 use App\KhadamatTeck\Admin\Merchants\Requests\DeleteMerchantRequest;
 use App\KhadamatTeck\Admin\Merchants\Requests\ListMerchantRequest;
 use App\KhadamatTeck\Admin\Merchants\Requests\UpdateMerchantRequest;
 use App\KhadamatTeck\Admin\Merchants\Requests\ViewMerchantRequest;
+use App\KhadamatTeck\Base\Http\HttpStatus;
+use App\KhadamatTeck\Base\Response;
+use App\KhadamatTeck\Base\Service;
 use App\KhadamatTeck\Merchant\Merchants\Mappers\MerchantDTOMapper;
 
 class MerchantsService extends Service
@@ -22,7 +23,7 @@ class MerchantsService extends Service
 
     public function __construct(MerchantsRepository $merchantsRepository)
     {
-    parent::__construct($merchantsRepository);
+        parent::__construct($merchantsRepository);
         $this->merchantsRepository = $merchantsRepository;
     }
 
@@ -46,13 +47,13 @@ class MerchantsService extends Service
 
     public function createMerchant(CreateMerchantRequest $request): Response
     {
-        $data  =$this->merchantsRepository->createMerchant($request->all());
+        $data = $this->merchantsRepository->createMerchant($request->all());
         return $this->response()
             ->setData($data)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function updateMerchant(UpdateMerchantRequest $request,$id): Response
+    public function updateMerchant(UpdateMerchantRequest $request, $id): Response
     {
         $model = $this->merchantsRepository->findMerchant($id);
         $data = $this->merchantsRepository->updateMerchant(
@@ -65,7 +66,7 @@ class MerchantsService extends Service
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function deleteMerchant(DeleteMerchantRequest $request,$id): Response
+    public function deleteMerchant(DeleteMerchantRequest $request, $id): Response
     {
         $model = $this->merchantsRepository->findMerchant($id);
         return $this->response()

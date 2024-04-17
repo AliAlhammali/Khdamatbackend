@@ -1,12 +1,13 @@
 <?php
+
 namespace App\KhadamatTeck\ServiceProvider\Orders\Mappers;
 
 use App\KhadamatTeck\Base\BaseDTOMapper;
-use Illuminate\Support\Collection;
 use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
 use App\KhadamatTeck\ServiceProvider\Orders\DTOs\OrderDTO;
 use App\KhadamatTeck\ServiceProvider\Orders\DTOs\OrderListDTO;
 use App\KhadamatTeck\ServiceProvider\Orders\Models\Order;
+use Illuminate\Support\Collection;
 
 class OrderDTOMapper extends BaseDTOMapper
 {
@@ -40,19 +41,20 @@ class OrderDTOMapper extends BaseDTOMapper
     {
         return $data->map(fn($item) => self::fromModel($item, $listing))->toArray();
     }
+
     private static function prepareData(OrderDTO $dto, $data)
     {
-                    $dto->setId($data->id);
-            $dto->setMerchantId($data->merchant_id);
-            $dto->setMerchantUserId($data->merchant_user_id);
-            $dto->setMerchantClientId($data->merchant_client_id);
-            $dto->setMainCategoryId($data->main_category_id);
-            $dto->setCategoryId($data->category_id);
-            $dto->setStatus($data->status);
-            $dto->setOrderOtp($data->order_otp);
-            $dto->setCreatedAt($data->created_at);
-            $dto->setPickUpType($data->pick_up_type);
-            $dto->setMerchantBranchId($data->merchant_branch_id);
+        $dto->setId($data->id);
+        $dto->setMerchantId($data->merchant_id);
+        $dto->setMerchantUserId($data->merchant_user_id);
+        $dto->setMerchantClientId($data->merchant_client_id);
+        $dto->setMainCategoryId($data->main_category_id);
+        $dto->setCategoryId($data->category_id);
+        $dto->setStatus($data->status);
+        $dto->setOrderOtp($data->order_otp);
+        $dto->setCreatedAt($data->created_at);
+        $dto->setPickUpType($data->pick_up_type);
+        $dto->setMerchantBranchId($data->merchant_branch_id);
 
         return $dto;
     }

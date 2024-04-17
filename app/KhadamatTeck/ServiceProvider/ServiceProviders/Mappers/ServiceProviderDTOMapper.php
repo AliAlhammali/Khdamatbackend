@@ -1,12 +1,12 @@
 <?php
+
 namespace App\KhadamatTeck\ServiceProvider\ServiceProviders\Mappers;
 
 use App\KhadamatTeck\Base\BaseDTOMapper;
-use Illuminate\Support\Collection;
 use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\DTOs\ServiceProviderDTO;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\DTOs\ServiceProviderListDTO;
-use App\KhadamatTeck\ServiceProvider\ServiceProviders\Models\ServiceProvider;
+use Illuminate\Support\Collection;
 
 class ServiceProviderDTOMapper extends BaseDTOMapper
 {
@@ -40,20 +40,21 @@ class ServiceProviderDTOMapper extends BaseDTOMapper
     {
         return $data->map(fn($item) => self::fromModel($item, $listing))->toArray();
     }
+
     private static function prepareData(ServiceProviderDTO $dto, $data)
     {
-                    $dto->setId($data->id);
-            $dto->setTitle($data->title);
-            $dto->setDescription($data->description);
-            $dto->setStatus($data->status);
-            $dto->setAddress($data->address);
-            $dto->setPhone($data->phone);
-            $dto->setLogo($data->logo);
-            $dto->setVatFile($data->vat_file);
-            $dto->setCrFile($data->cr_file);
-            $dto->setSalesAgreementFile($data->sales_agreement_file);
-            $dto->setCrNumber($data->cr_number);
-            $dto->setVatNumber($data->vat_number);
+        $dto->setId($data->id);
+        $dto->setTitle($data->title);
+        $dto->setDescription($data->description);
+        $dto->setStatus($data->status);
+        $dto->setAddress($data->address);
+        $dto->setPhone($data->phone);
+        $dto->setLogo($data->logo);
+        $dto->setVatFile($data->vat_file);
+        $dto->setCrFile($data->cr_file);
+        $dto->setSalesAgreementFile($data->sales_agreement_file);
+        $dto->setCrNumber($data->cr_number);
+        $dto->setVatNumber($data->vat_number);
         $dto->setEmail($data->email);
 
         return $dto;

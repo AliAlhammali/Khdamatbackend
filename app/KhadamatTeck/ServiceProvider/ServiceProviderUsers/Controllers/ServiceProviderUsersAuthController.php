@@ -10,9 +10,7 @@ use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\Auth\Register
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\Auth\ResetPasswordRequest;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\Auth\VerifyPhoneLogin;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\Auth\VerifyRequest;
-use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Services\AuthService;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
 
 
@@ -45,10 +43,12 @@ class ServiceProviderUsersAuthController extends Controller
     {
         return $this->authService->loginUser($request);
     }
+
     public function loginWithOTP(LoginRequest $request)
     {
         return $this->authService->loginUserWithOTP($request);
     }
+
     public function verifyWithOTP(LoginRequest $request)
     {
         return $this->authService->verifyLoginUserWithOTP($request);

@@ -4,15 +4,15 @@ namespace App\KhadamatTeck\Admin\MerchantBranches\DTOs;
 
 class MerchantBranchDTO implements \JsonSerializable
 {
-            private ?int $id= null;
-            private ?array $location= null;
-            private ?string $name= null;
-            private ?int $merchant_id= null;
-            private ?string $address= null;
-            private ?bool $is_active= null;
+    private ?int $id = null;
+    private ?array $location = null;
+    private ?string $name = null;
+    private ?int $merchant_id = null;
+    private ?string $address = null;
+    private ?bool $is_active = null;
 
 
-/**
+    /**
      * @return int|null
      */
     public function getId(): ?int
@@ -20,13 +20,15 @@ class MerchantBranchDTO implements \JsonSerializable
         return $this->id;
     }
 
-/**
+    /**
      * @param int|null $id
      */
     public function setId(?int $id): void
     {
         $this->id = $id;
-    }/**
+    }
+
+    /**
      * @return array|null
      */
     public function getLocation(): ?array
@@ -34,13 +36,15 @@ class MerchantBranchDTO implements \JsonSerializable
         return $this->location;
     }
 
-/**
+    /**
      * @param array|null $location
      */
     public function setLocation(?array $location): void
     {
         $this->location = $location;
-    }/**
+    }
+
+    /**
      * @return string|null
      */
     public function getName(): ?string
@@ -48,13 +52,15 @@ class MerchantBranchDTO implements \JsonSerializable
         return $this->name;
     }
 
-/**
+    /**
      * @param string|null $name
      */
     public function setName(?string $name): void
     {
         $this->name = $name;
-    }/**
+    }
+
+    /**
      * @return int|null
      */
     public function getMerchantId(): ?int
@@ -62,13 +68,15 @@ class MerchantBranchDTO implements \JsonSerializable
         return $this->merchant_id;
     }
 
-/**
+    /**
      * @param int|null $merchant_id
      */
     public function setMerchantId(?int $merchant_id): void
     {
         $this->merchant_id = $merchant_id;
-    }/**
+    }
+
+    /**
      * @return string|null
      */
     public function getAddress(): ?string
@@ -76,13 +84,15 @@ class MerchantBranchDTO implements \JsonSerializable
         return $this->address;
     }
 
-/**
+    /**
      * @param string|null $address
      */
     public function setAddress(?string $address): void
     {
         $this->address = $address;
-    }/**
+    }
+
+    /**
      * @return bool|null
      */
     public function getIsActive(): ?bool
@@ -90,7 +100,7 @@ class MerchantBranchDTO implements \JsonSerializable
         return $this->is_active;
     }
 
-/**
+    /**
      * @param bool|null $is_active
      */
     public function setIsActive(?bool $is_active): void
@@ -101,12 +111,12 @@ class MerchantBranchDTO implements \JsonSerializable
     public function jsonSerialize()
     {
         return [
-                        'id'=>$this->getId(),
-            'location'=>$this->getLocation(),
-            'name'=>$this->getName(),
-            'merchant_id'=>$this->getMerchantId(),
-            'address'=>$this->getAddress(),
-            'is_active'=>$this->getIsActive(),
+            'id' => $this->getId(),
+            'location' => $this->getLocation(),
+            'name' => $this->getName(),
+            'merchant_id' => $this->getMerchantId(),
+            'address' => $this->getAddress(),
+            'is_active' => $this->getIsActive(),
 
         ];
     }

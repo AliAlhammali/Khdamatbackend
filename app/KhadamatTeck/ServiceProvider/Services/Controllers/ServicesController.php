@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\ServiceProvider\Services\Controllers;
 
 use App\Http\Controllers\Controller;
@@ -38,13 +39,13 @@ class ServicesController extends Controller
         return $this->servicesService->findService($request, $id);
     }
 
-    public function update(UpdateServiceRequest $request,string $id)
+    public function update(UpdateServiceRequest $request, string $id)
     {
-        return $this->servicesService->updateService($request,$id);
+        return $this->servicesService->updateService($request, $id);
     }
 
-    public function delete(DeleteServiceRequest $request,string $id)
+    public function delete(DeleteServiceRequest $request, string $id)
     {
-        return $this->servicesService->deleteService($request,$id);
+        return $this->servicesService->deleteService($request, $id);
     }
 }

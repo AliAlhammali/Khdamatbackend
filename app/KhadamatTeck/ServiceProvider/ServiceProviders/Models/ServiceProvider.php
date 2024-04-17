@@ -4,12 +4,12 @@ namespace App\KhadamatTeck\ServiceProvider\ServiceProviders\Models;
 
 use App\KhadamatTeck\Base\BaseModel;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models\ServiceProviderUser;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Smartisan\Settings\HasSettings;
 
 class ServiceProvider extends BaseModel
 {
     use HasSettings;
+
     // use SoftDeletes;
     /**
      * The database table used by the model.
@@ -23,7 +23,7 @@ class ServiceProvider extends BaseModel
      * @var array
      */
 
-    protected $fillable = ['id','title','description','status','address','phone','logo','vat_file','cr_file','sales_agreement_file','cr_number','vat_number'];
+    protected $fillable = ['id', 'title', 'description', 'status', 'address', 'phone', 'logo', 'vat_file', 'cr_file', 'sales_agreement_file', 'cr_number', 'vat_number'];
 
     public function users()
     {

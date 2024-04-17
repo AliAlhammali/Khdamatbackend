@@ -1,12 +1,12 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\OrderItems\Mappers;
 
-use App\KhadamatTeck\Base\BaseDTOMapper;
-use Illuminate\Support\Collection;
-use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
 use App\KhadamatTeck\Admin\OrderItems\DTOs\OrderItemDTO;
 use App\KhadamatTeck\Admin\OrderItems\DTOs\OrderItemListDTO;
-use App\KhadamatTeck\Admin\OrderItems\Models\OrderItem;
+use App\KhadamatTeck\Base\BaseDTOMapper;
+use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
+use Illuminate\Support\Collection;
 
 class OrderItemDTOMapper extends BaseDTOMapper
 {
@@ -40,17 +40,18 @@ class OrderItemDTOMapper extends BaseDTOMapper
     {
         return $data->map(fn($item) => self::fromModel($item, $listing))->toArray();
     }
+
     private static function prepareData(OrderItemDTO $dto, $data)
     {
-                    $dto->setId($data->id);
-            $dto->setOrderId($data->order_id);
-            $dto->setItemId($data->item_id);
-            $dto->setQuantity($data->quantity);
-            $dto->setItemPrice($data->item_price);
-            $dto->setSupTotal($data->sup_total);
-            $dto->setVat($data->vat);
-            $dto->setTotal($data->total);
-            $dto->setOrderOtp($data->order_otp);
+        $dto->setId($data->id);
+        $dto->setOrderId($data->order_id);
+        $dto->setItemId($data->item_id);
+        $dto->setQuantity($data->quantity);
+        $dto->setItemPrice($data->item_price);
+        $dto->setSupTotal($data->sup_total);
+        $dto->setVat($data->vat);
+        $dto->setTotal($data->total);
+        $dto->setOrderOtp($data->order_otp);
 
         return $dto;
     }

@@ -14,7 +14,7 @@ class PhoneLoginRequest extends KhadamatTeckRequest
     public function rules(): array
     {
         return [
-            'phone' =>  'required|exists:service_provider_users,phone',
+            'phone' => 'required|exists:service_provider_users,phone',
         ];
     }
 }

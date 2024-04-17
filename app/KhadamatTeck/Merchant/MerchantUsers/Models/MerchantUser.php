@@ -2,10 +2,8 @@
 
 namespace App\KhadamatTeck\Merchant\MerchantUsers\Models;
 
-use App\KhadamatTeck\Base\BaseModel;
 use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -14,6 +12,7 @@ use Spatie\QueryBuilder\AllowedFilter;
 class MerchantUser extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
     // use SoftDeletes;
     /**
      * The database table used by the model.
@@ -27,7 +26,7 @@ class MerchantUser extends Authenticatable
      * @var array
      */
 
-    protected $fillable = ['id','name','merchant_id','email','address','phone','role','password','status'];
+    protected $fillable = ['id', 'name', 'merchant_id', 'email', 'address', 'phone', 'role', 'password', 'status'];
 
     protected $hidden = [
         'password',
@@ -36,7 +35,7 @@ class MerchantUser extends Authenticatable
 
     function merchant()
     {
-       return $this->belongsTo(Merchant::class);
+        return $this->belongsTo(Merchant::class);
     }
 
     public static function getAllowedFilters(): array

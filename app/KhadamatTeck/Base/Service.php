@@ -4,10 +4,10 @@ namespace App\KhadamatTeck\Base;
 
 use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
+use App\KhadamatTeck\PmsProviders\Mappers\PmsProviderDTOMapper;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
-use App\KhadamatTeck\PmsProviders\Mappers\PmsProviderDTOMapper;
 use Spatie\QueryBuilder\QueryBuilder;
 
 abstract class Service implements ServiceInterface
@@ -96,7 +96,7 @@ abstract class Service implements ServiceInterface
     public function show(KhadamatTeckRequest $request, string $id): Response|JsonResponse
     {
         $queryBuilder = $this->repository->getModel()::where('id', $id);
-        $queryBuilder->select(getQueryFieldsList($this->repository->getModel(),false));
+        $queryBuilder->select(getQueryFieldsList($this->repository->getModel(), false));
         return $this->response()
             ->setData($this->mapper::fromModel($queryBuilder->first()))
             ->setStatusCode(HttpStatus::HTTP_OK);
@@ -138,6 +138,7 @@ abstract class Service implements ServiceInterface
     {
         return $this->response()->setErrors(['message' => $message])->setMessage($message)->setStatusCode($status)->json();
     }
+
     public function setSuccessResponse($message = "", $status = HttpStatus::HTTP_OK)
     {
         return $this->response()->setErrors(['message' => $message])->setMessage($message)->setStatusCode($status)->json();

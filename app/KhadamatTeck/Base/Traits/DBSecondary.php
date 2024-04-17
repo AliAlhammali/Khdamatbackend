@@ -23,11 +23,13 @@ trait DBSecondary
     {
         return $this->db()->table($tableName);
     }
-    public function query($tableName,$columns = "*"): Builder
+
+    public function query($tableName, $columns = "*"): Builder
     {
         return $this->table($tableName)->select($columns);
     }
-    public function findById($tableName,$id,$columns = "*"): ?object
+
+    public function findById($tableName, $id, $columns = "*"): ?object
     {
         return $this->table($tableName)->select($columns)->where("id", $id)->first();
     }

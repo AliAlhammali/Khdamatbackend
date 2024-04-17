@@ -1,14 +1,15 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\OrderAddress\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\KhadamatTeck\Base\Response;
 use App\KhadamatTeck\Admin\OrderAddress\Requests\CreateOrderAddressRequest;
 use App\KhadamatTeck\Admin\OrderAddress\Requests\DeleteOrderAddressRequest;
 use App\KhadamatTeck\Admin\OrderAddress\Requests\ListOrderAddressRequest;
 use App\KhadamatTeck\Admin\OrderAddress\Requests\UpdateOrderAddressRequest;
 use App\KhadamatTeck\Admin\OrderAddress\Requests\ViewOrderAddressRequest;
 use App\KhadamatTeck\Admin\OrderAddress\Services\OrderAddressService;
+use App\KhadamatTeck\Base\Response;
 
 class OrderAddressController extends Controller
 {
@@ -38,13 +39,13 @@ class OrderAddressController extends Controller
         return $this->orderAddressService->findOrderAddress($request, $id);
     }
 
-    public function update(UpdateOrderAddressRequest $request,string $id)
+    public function update(UpdateOrderAddressRequest $request, string $id)
     {
-        return $this->orderAddressService->updateOrderAddress($request,$id);
+        return $this->orderAddressService->updateOrderAddress($request, $id);
     }
 
-    public function delete(DeleteOrderAddressRequest $request,string $id)
+    public function delete(DeleteOrderAddressRequest $request, string $id)
     {
-        return $this->orderAddressService->deleteOrderAddress($request,$id);
+        return $this->orderAddressService->deleteOrderAddress($request, $id);
     }
 }

@@ -16,7 +16,7 @@ class VerifyPhoneLogin extends KhadamatTeckRequest
     public function rules(): array
     {
         return [
-            'z' =>  'required|exists:users,phone',
+            'z' => 'required|exists:users,phone',
             Rule::exists('otps', 'token')
                 ->where('phone', $this->phone),
         ];

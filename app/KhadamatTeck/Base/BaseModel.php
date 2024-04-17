@@ -6,8 +6,7 @@ use App\KhadamatTeck\Base\Traits\CanSaveQuietly;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
-use App\KhadamatTeck\Base\ModelInterface;
+
 /**
  * @method static \Illuminate\Database\Eloquent\Builder where($column, $operator = null, $value = null)
  * @method static \Illuminate\Database\Eloquent\Builder orWhere($column, $operator = null, $value = null)
@@ -132,8 +131,6 @@ abstract class BaseModel extends Model implements ModelInterface
     }
 
 
-
-
     public static function getAllowedFilters(): array
     {
         return [];
@@ -190,15 +187,16 @@ abstract class BaseModel extends Model implements ModelInterface
     /**
      * Scope a query to only get listing.
      *
-     * @param  Builder   $query
-     * @param  string[]  $data
+     * @param Builder $query
+     * @param string[] $data
      *
      * @return Builder
      */
     public function scopeListing(
         Builder $query,
-        array $listFields = ['id', 'title']
-    ): Builder {
+        array   $listFields = ['id', 'title']
+    ): Builder
+    {
         return $query->select($listFields);
     }
 
@@ -213,10 +211,9 @@ abstract class BaseModel extends Model implements ModelInterface
     ];
 
 
-
     public function localTimezone($value = null)
     {
-        return $value ? Carbon::parse($value)->setTimezone(env("APP_TIMEZONE","Asia/Riyadh"))->toDateTimeString() : null;
+        return $value ? Carbon::parse($value)->setTimezone(env("APP_TIMEZONE", "Asia/Riyadh"))->toDateTimeString() : null;
     }
 
     public function scopeCreatedFrom(Builder $query, $date)
@@ -224,7 +221,7 @@ abstract class BaseModel extends Model implements ModelInterface
         return $query->where(
             'created_at',
             '>=',
-            \Carbon\Carbon::parse($date.' 00:00:00')
+            \Carbon\Carbon::parse($date . ' 00:00:00')
         );
     }
 
@@ -233,7 +230,7 @@ abstract class BaseModel extends Model implements ModelInterface
         return $query->where(
             'created_at',
             '<=',
-            Carbon::parse($date.' 23:59:59')
+            Carbon::parse($date . ' 23:59:59')
         );
     }
 

@@ -5,10 +5,10 @@ namespace App\KhadamatTeck\Base\FCM;
 class FirebaseMessage implements \JsonSerializable
 {
     public function __construct(
-        private string $to,  // "REGISTRATION_TOKEN" or "/topics/TOPIC_NAME"
+        private string              $to,  // "REGISTRATION_TOKEN" or "/topics/TOPIC_NAME"
         private FirebaseMessageData $data,
-        private string $device_type = "ios",
-        private bool $isToToken = true)
+        private string              $device_type = "ios",
+        private bool                $isToToken = true)
     {
         $this->to = $this->isToToken ? $to : "/topics/$to";
     }

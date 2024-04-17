@@ -1,14 +1,15 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\OrderServiceProviders\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\KhadamatTeck\Base\Response;
 use App\KhadamatTeck\Admin\OrderServiceProviders\Requests\CreateOrderServiceProviderRequest;
 use App\KhadamatTeck\Admin\OrderServiceProviders\Requests\DeleteOrderServiceProviderRequest;
 use App\KhadamatTeck\Admin\OrderServiceProviders\Requests\ListOrderServiceProviderRequest;
 use App\KhadamatTeck\Admin\OrderServiceProviders\Requests\UpdateOrderServiceProviderRequest;
 use App\KhadamatTeck\Admin\OrderServiceProviders\Requests\ViewOrderServiceProviderRequest;
 use App\KhadamatTeck\Admin\OrderServiceProviders\Services\OrderServiceProvidersService;
+use App\KhadamatTeck\Base\Response;
 
 class OrderServiceProvidersController extends Controller
 {
@@ -38,13 +39,13 @@ class OrderServiceProvidersController extends Controller
         return $this->orderServiceProvidersService->findOrderServiceProvider($request, $id);
     }
 
-    public function update(UpdateOrderServiceProviderRequest $request,string $id)
+    public function update(UpdateOrderServiceProviderRequest $request, string $id)
     {
-        return $this->orderServiceProvidersService->updateOrderServiceProvider($request,$id);
+        return $this->orderServiceProvidersService->updateOrderServiceProvider($request, $id);
     }
 
-    public function delete(DeleteOrderServiceProviderRequest $request,string $id)
+    public function delete(DeleteOrderServiceProviderRequest $request, string $id)
     {
-        return $this->orderServiceProvidersService->deleteOrderServiceProvider($request,$id);
+        return $this->orderServiceProvidersService->deleteOrderServiceProvider($request, $id);
     }
 }

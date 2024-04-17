@@ -1,14 +1,15 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\ServiceProviderUsers\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\KhadamatTeck\Base\Response;
 use App\KhadamatTeck\Admin\ServiceProviderUsers\Requests\CreateServiceProviderUserRequest;
 use App\KhadamatTeck\Admin\ServiceProviderUsers\Requests\DeleteServiceProviderUserRequest;
 use App\KhadamatTeck\Admin\ServiceProviderUsers\Requests\ListServiceProviderUserRequest;
 use App\KhadamatTeck\Admin\ServiceProviderUsers\Requests\UpdateServiceProviderUserRequest;
 use App\KhadamatTeck\Admin\ServiceProviderUsers\Requests\ViewServiceProviderUserRequest;
 use App\KhadamatTeck\Admin\ServiceProviderUsers\Services\ServiceProviderUsersService;
+use App\KhadamatTeck\Base\Response;
 
 class ServiceProviderUsersController extends Controller
 {
@@ -38,13 +39,13 @@ class ServiceProviderUsersController extends Controller
         return $this->serviceProviderUsersService->findServiceProviderUser($request, $id);
     }
 
-    public function update(UpdateServiceProviderUserRequest $request,string $id)
+    public function update(UpdateServiceProviderUserRequest $request, string $id)
     {
-        return $this->serviceProviderUsersService->updateServiceProviderUser($request,$id);
+        return $this->serviceProviderUsersService->updateServiceProviderUser($request, $id);
     }
 
-    public function delete(DeleteServiceProviderUserRequest $request,string $id)
+    public function delete(DeleteServiceProviderUserRequest $request, string $id)
     {
-        return $this->serviceProviderUsersService->deleteServiceProviderUser($request,$id);
+        return $this->serviceProviderUsersService->deleteServiceProviderUser($request, $id);
     }
 }

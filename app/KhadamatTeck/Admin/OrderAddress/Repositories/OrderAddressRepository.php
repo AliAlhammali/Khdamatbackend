@@ -2,11 +2,11 @@
 
 namespace App\KhadamatTeck\Admin\OrderAddress\Repositories;
 
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Database\Eloquent\Collection;
-use App\KhadamatTeck\Base\Repository;
 use App\KhadamatTeck\Admin\OrderAddress\Mappers\OrderAddressDTOMapper;
 use App\KhadamatTeck\Admin\OrderAddress\Models\OrderAddress;
+use App\KhadamatTeck\Base\Repository;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class OrderAddressRepository extends Repository

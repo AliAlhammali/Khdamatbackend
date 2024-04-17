@@ -2,11 +2,11 @@
 
 namespace App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Repositories;
 
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Database\Eloquent\Collection;
 use App\KhadamatTeck\Base\Repository;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Mappers\ServiceProviderUserDTOMapper;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models\ServiceProviderUser;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class ServiceProviderUsersRepository extends Repository
@@ -36,7 +36,7 @@ class ServiceProviderUsersRepository extends Repository
 
     public function createServiceProviderUser(array $data)
     {
-        if(!isset($data['service_provider_id']))
+        if (!isset($data['service_provider_id']))
             $data['service_provider_id'] = SPAuth()->user()->serviceProvider->id;
         return ServiceProviderUserDTOMapper::fromModel(ServiceProviderUser::create($data));
     }

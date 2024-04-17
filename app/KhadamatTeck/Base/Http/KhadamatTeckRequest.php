@@ -2,8 +2,8 @@
 
 namespace App\KhadamatTeck\Base\Http;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\KhadamatTeck\Base\RequestValidator;
+use Illuminate\Foundation\Http\FormRequest;
 
 abstract class KhadamatTeckRequest extends FormRequest
 {

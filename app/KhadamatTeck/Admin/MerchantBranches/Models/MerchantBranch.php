@@ -11,6 +11,7 @@ class MerchantBranch extends BaseModel
 {
     use SoftDeletes;
     use HasSpatial;
+
     /**
      * The database table used by the model.
      *
@@ -23,7 +24,7 @@ class MerchantBranch extends BaseModel
      * @var array
      */
 
-    protected $fillable = ['id','location','name','merchant_id','address','is_active'];
+    protected $fillable = ['id', 'location', 'name', 'merchant_id', 'address', 'is_active'];
 
     protected $casts = [
         'location' => Point::class,

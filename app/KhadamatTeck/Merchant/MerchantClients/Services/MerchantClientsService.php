@@ -1,11 +1,11 @@
 <?php
+
 namespace App\KhadamatTeck\Merchant\MerchantClients\Services;
 
+use App\KhadamatTeck\Admin\MerchantClients\Mappers\MerchantClientDTOMapper;
 use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\Base\Response;
 use App\KhadamatTeck\Base\Service;
-use App\KhadamatTeck\Admin\MerchantClients\Mappers\MerchantClientDTOMapper;
-use App\KhadamatTeck\Admin\MerchantClients\Models\MerchantClient;
 use App\KhadamatTeck\Merchant\MerchantClients\Repositories\MerchantClientsRepository;
 use App\KhadamatTeck\Merchant\MerchantClients\Requests\CreateMerchantClientRequest;
 use App\KhadamatTeck\Merchant\MerchantClients\Requests\DeleteMerchantClientRequest;
@@ -23,7 +23,7 @@ class MerchantClientsService extends Service
 
     public function __construct(MerchantClientsRepository $merchantClientsRepository)
     {
-    parent::__construct($merchantClientsRepository);
+        parent::__construct($merchantClientsRepository);
         $this->merchantClientsRepository = $merchantClientsRepository;
     }
 
@@ -47,13 +47,13 @@ class MerchantClientsService extends Service
 
     public function createMerchantClient(CreateMerchantClientRequest $request): Response
     {
-        $data  =$this->merchantClientsRepository->createMerchantClient($request->all());
+        $data = $this->merchantClientsRepository->createMerchantClient($request->all());
         return $this->response()
             ->setData($data)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function updateMerchantClient(UpdateMerchantClientRequest $request,$id): Response
+    public function updateMerchantClient(UpdateMerchantClientRequest $request, $id): Response
     {
         $model = $this->merchantClientsRepository->findMerchantClient($id);
         $data = $this->merchantClientsRepository->updateMerchantClient(
@@ -66,7 +66,7 @@ class MerchantClientsService extends Service
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function deleteMerchantClient(DeleteMerchantClientRequest $request,$id): Response
+    public function deleteMerchantClient(DeleteMerchantClientRequest $request, $id): Response
     {
         $model = $this->merchantClientsRepository->findMerchantClient($id);
         return $this->response()

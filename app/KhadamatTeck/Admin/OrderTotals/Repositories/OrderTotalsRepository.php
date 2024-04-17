@@ -2,11 +2,11 @@
 
 namespace App\KhadamatTeck\Admin\OrderTotals\Repositories;
 
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Database\Eloquent\Collection;
-use App\KhadamatTeck\Base\Repository;
 use App\KhadamatTeck\Admin\OrderTotals\Mappers\OrderTotalDTOMapper;
 use App\KhadamatTeck\Admin\OrderTotals\Models\OrderTotal;
+use App\KhadamatTeck\Base\Repository;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class OrderTotalsRepository extends Repository

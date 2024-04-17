@@ -1,17 +1,17 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\Categories\Services;
 
-use App\KhadamatTeck\Base\Http\HttpStatus;
-use App\KhadamatTeck\Base\Response;
-use App\KhadamatTeck\Base\Service;
 use App\KhadamatTeck\Admin\Categories\Mappers\CategoryDTOMapper;
-use App\KhadamatTeck\Admin\Categories\Models\Category;
 use App\KhadamatTeck\Admin\Categories\Repositories\CategoriesRepository;
 use App\KhadamatTeck\Admin\Categories\Requests\CreateCategoryRequest;
 use App\KhadamatTeck\Admin\Categories\Requests\DeleteCategoryRequest;
 use App\KhadamatTeck\Admin\Categories\Requests\ListCategoryRequest;
 use App\KhadamatTeck\Admin\Categories\Requests\UpdateCategoryRequest;
 use App\KhadamatTeck\Admin\Categories\Requests\ViewCategoryRequest;
+use App\KhadamatTeck\Base\Http\HttpStatus;
+use App\KhadamatTeck\Base\Response;
+use App\KhadamatTeck\Base\Service;
 
 class CategoriesService extends Service
 {
@@ -23,7 +23,7 @@ class CategoriesService extends Service
 
     public function __construct(CategoriesRepository $categoriesRepository)
     {
-    parent::__construct($categoriesRepository);
+        parent::__construct($categoriesRepository);
         $this->categoriesRepository = $categoriesRepository;
     }
 
@@ -47,13 +47,13 @@ class CategoriesService extends Service
 
     public function createCategory(CreateCategoryRequest $request): Response
     {
-        $data  =$this->categoriesRepository->createCategory($request->all());
+        $data = $this->categoriesRepository->createCategory($request->all());
         return $this->response()
             ->setData($data)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function updateCategory(UpdateCategoryRequest $request,$id): Response
+    public function updateCategory(UpdateCategoryRequest $request, $id): Response
     {
         $model = $this->categoriesRepository->findCategory($id);
         $data = $this->categoriesRepository->updateCategory(
@@ -66,7 +66,7 @@ class CategoriesService extends Service
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function deleteCategory(DeleteCategoryRequest $request,$id): Response
+    public function deleteCategory(DeleteCategoryRequest $request, $id): Response
     {
         $model = $this->categoriesRepository->findCategory($id);
         return $this->response()

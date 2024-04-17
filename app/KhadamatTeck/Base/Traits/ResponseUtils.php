@@ -13,10 +13,13 @@ trait ResponseUtils
         return (new Response($statusCode));
     }
 
-    public function setErrorsResponse($errors){
+    public function setErrorsResponse($errors)
+    {
         return $this->response()->setErrors($errors)->setStatusCode(HttpStatus::HTTP_ERROR);
     }
-    public function setResponse($data){
+
+    public function setResponse($data)
+    {
         return $this->response()->setData($data)->setStatusCode(HttpStatus::HTTP_OK);
     }
 

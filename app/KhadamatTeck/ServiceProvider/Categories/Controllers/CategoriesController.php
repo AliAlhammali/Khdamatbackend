@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\ServiceProvider\Categories\Controllers;
 
 use App\Http\Controllers\Controller;
@@ -38,13 +39,13 @@ class CategoriesController extends Controller
         return $this->categoriesService->findCategory($request, $id);
     }
 
-    public function update(UpdateCategoryRequest $request,string $id)
+    public function update(UpdateCategoryRequest $request, string $id)
     {
-        return $this->categoriesService->updateCategory($request,$id);
+        return $this->categoriesService->updateCategory($request, $id);
     }
 
-    public function delete(DeleteCategoryRequest $request,string $id)
+    public function delete(DeleteCategoryRequest $request, string $id)
     {
-        return $this->categoriesService->deleteCategory($request,$id);
+        return $this->categoriesService->deleteCategory($request, $id);
     }
 }

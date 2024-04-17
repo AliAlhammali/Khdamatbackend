@@ -4,9 +4,9 @@ namespace App\KhadamatTeck\Merchant\Categories\Repositories;
 
 use App\KhadamatTeck\Admin\Categories\Mappers\CategoryDTOMapper;
 use App\KhadamatTeck\Admin\Categories\Models\Category;
+use App\KhadamatTeck\Base\Repository;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
-use App\KhadamatTeck\Base\Repository;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class CategoriesRepository extends Repository

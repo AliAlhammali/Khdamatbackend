@@ -2,11 +2,11 @@
 
 namespace App\KhadamatTeck\Admin\Merchants\Repositories;
 
+use App\KhadamatTeck\Base\Repository;
 use App\KhadamatTeck\Merchant\Merchants\Mappers\MerchantDTOMapper;
 use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
-use App\KhadamatTeck\Base\Repository;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class MerchantsRepository extends Repository
@@ -38,7 +38,7 @@ class MerchantsRepository extends Repository
     {
         /* @var Merchant $merchant */
         $merchant = Merchant::create($data);
-        if($data['owner']){
+        if ($data['owner']) {
             $data['owner']['password'] = bcrypt(123456);
             $merchant->users()->create($data['owner']);
         }

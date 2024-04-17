@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\Users\DTOs;
 
 class UserListDTO extends UserDTO

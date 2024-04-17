@@ -3,7 +3,6 @@
 namespace App\KhadamatTeck\Admin\OrderTotals\Models;
 
 use App\KhadamatTeck\Base\BaseModel;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class OrderTotal extends BaseModel
 {
@@ -20,5 +19,5 @@ class OrderTotal extends BaseModel
      * @var array
      */
 
-    protected $fillable = ['id','order_id','merchant_id','merchant_user_id','item_id','quantity','item_price','order_otp','merchant_user_commission_total','merchant_user_commission_sup_total','merchant_user_commission_vat','sp_total','sp_sup_total','sp_vat','sup_total','vat','total'];
+    protected $fillable = ['id', 'order_id', 'merchant_id', 'merchant_user_id', 'item_id', 'quantity', 'item_price', 'order_otp', 'merchant_user_commission_total', 'merchant_user_commission_sup_total', 'merchant_user_commission_vat', 'sp_total', 'sp_sup_total', 'sp_vat', 'sup_total', 'vat', 'total'];
 }

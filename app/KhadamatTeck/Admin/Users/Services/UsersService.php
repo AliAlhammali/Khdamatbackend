@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\Users\Services;
 
 use App\KhadamatTeck\Admin\Users\Mappers\UserDTOMapper;
@@ -22,7 +23,7 @@ class UsersService extends Service
 
     public function __construct(UsersRepository $usersRepository)
     {
-    parent::__construct($usersRepository);
+        parent::__construct($usersRepository);
         $this->usersRepository = $usersRepository;
     }
 
@@ -46,13 +47,13 @@ class UsersService extends Service
 
     public function createUser(CreateUserRequest $request): Response
     {
-        $data  =$this->usersRepository->createUser($request->all());
+        $data = $this->usersRepository->createUser($request->all());
         return $this->response()
             ->setData($data)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function updateUser(UpdateUserRequest $request,$id): Response
+    public function updateUser(UpdateUserRequest $request, $id): Response
     {
         $model = $this->usersRepository->findUser($id);
         $data = $this->usersRepository->updateUser(
@@ -65,7 +66,7 @@ class UsersService extends Service
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function deleteUser(DeleteUserRequest $request,$id): Response
+    public function deleteUser(DeleteUserRequest $request, $id): Response
     {
         $model = $this->usersRepository->findUser($id);
         return $this->response()

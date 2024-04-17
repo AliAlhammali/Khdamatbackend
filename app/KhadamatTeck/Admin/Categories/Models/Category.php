@@ -5,7 +5,6 @@ namespace App\KhadamatTeck\Admin\Categories\Models;
 use App\KhadamatTeck\Admin\Services\Models\ServiceModel;
 use App\KhadamatTeck\Base\BaseModel;
 use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Kalnoy\Nestedset\NodeTrait;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\Sluggable\HasTranslatableSlug;
@@ -65,7 +64,7 @@ class Category extends BaseModel
             AllowedFilter::exact('parent_id'),
             AllowedFilter::exact('merchant_id'),
             AllowedFilter::exact('status'),
-            AllowedFilter::scope('isParent','isParent'),
+            AllowedFilter::scope('isParent', 'isParent'),
         ];
     }
 
@@ -74,7 +73,7 @@ class Category extends BaseModel
         return $query->whereNull('parent_id');
     }
 
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::createWithLocales(['en', 'ar'])
             ->generateSlugsFrom('title')

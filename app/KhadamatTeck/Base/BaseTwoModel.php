@@ -4,8 +4,6 @@ namespace App\KhadamatTeck\Base;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
-use App\KhadamatTeck\Base\ModelInterface;
 
 abstract class BaseTwoModel extends Model implements ModelInterface
 {
@@ -71,15 +69,16 @@ abstract class BaseTwoModel extends Model implements ModelInterface
     /**
      * Scope a query to only get listing.
      *
-     * @param  Builder   $query
-     * @param  string[]  $data
+     * @param Builder $query
+     * @param string[] $data
      *
      * @return Builder
      */
     public function scopeListing(
         Builder $query,
-        array $listFields = ['id', 'title']
-    ): Builder {
+        array   $listFields = ['id', 'title']
+    ): Builder
+    {
         return $query->select($listFields);
     }
 }

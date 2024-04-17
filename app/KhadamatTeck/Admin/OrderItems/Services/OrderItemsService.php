@@ -1,17 +1,17 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\OrderItems\Services;
 
-use App\KhadamatTeck\Base\Http\HttpStatus;
-use App\KhadamatTeck\Base\Response;
-use App\KhadamatTeck\Base\Service;
 use App\KhadamatTeck\Admin\OrderItems\Mappers\OrderItemDTOMapper;
-use App\KhadamatTeck\Admin\OrderItems\Models\OrderItem;
 use App\KhadamatTeck\Admin\OrderItems\Repositories\OrderItemsRepository;
 use App\KhadamatTeck\Admin\OrderItems\Requests\CreateOrderItemRequest;
 use App\KhadamatTeck\Admin\OrderItems\Requests\DeleteOrderItemRequest;
 use App\KhadamatTeck\Admin\OrderItems\Requests\ListOrderItemRequest;
 use App\KhadamatTeck\Admin\OrderItems\Requests\UpdateOrderItemRequest;
 use App\KhadamatTeck\Admin\OrderItems\Requests\ViewOrderItemRequest;
+use App\KhadamatTeck\Base\Http\HttpStatus;
+use App\KhadamatTeck\Base\Response;
+use App\KhadamatTeck\Base\Service;
 
 class OrderItemsService extends Service
 {
@@ -23,7 +23,7 @@ class OrderItemsService extends Service
 
     public function __construct(OrderItemsRepository $orderItemsRepository)
     {
-    parent::__construct($orderItemsRepository);
+        parent::__construct($orderItemsRepository);
         $this->orderItemsRepository = $orderItemsRepository;
     }
 
@@ -47,13 +47,13 @@ class OrderItemsService extends Service
 
     public function createOrderItem(CreateOrderItemRequest $request): Response
     {
-        $data  =$this->orderItemsRepository->createOrderItem($request->all());
+        $data = $this->orderItemsRepository->createOrderItem($request->all());
         return $this->response()
             ->setData($data)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function updateOrderItem(UpdateOrderItemRequest $request,$id): Response
+    public function updateOrderItem(UpdateOrderItemRequest $request, $id): Response
     {
         $model = $this->orderItemsRepository->findOrderItem($id);
         $data = $this->orderItemsRepository->updateOrderItem(
@@ -66,7 +66,7 @@ class OrderItemsService extends Service
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function deleteOrderItem(DeleteOrderItemRequest $request,$id): Response
+    public function deleteOrderItem(DeleteOrderItemRequest $request, $id): Response
     {
         $model = $this->orderItemsRepository->findOrderItem($id);
         return $this->response()

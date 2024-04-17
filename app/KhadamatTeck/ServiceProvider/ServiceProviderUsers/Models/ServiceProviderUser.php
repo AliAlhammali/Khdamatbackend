@@ -2,11 +2,8 @@
 
 namespace App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models;
 
-use App\KhadamatTeck\Base\BaseModel;
-use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\Models\ServiceProvider;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -35,6 +32,7 @@ class ServiceProviderUser extends Authenticatable
     {
         return $this->belongsTo(ServiceProvider::class);
     }
+
     public static function getAllowedFilters(): array
     {
         return [

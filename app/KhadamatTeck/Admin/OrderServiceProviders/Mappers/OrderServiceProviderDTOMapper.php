@@ -1,12 +1,12 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\OrderServiceProviders\Mappers;
 
-use App\KhadamatTeck\Base\BaseDTOMapper;
-use Illuminate\Support\Collection;
-use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
 use App\KhadamatTeck\Admin\OrderServiceProviders\DTOs\OrderServiceProviderDTO;
 use App\KhadamatTeck\Admin\OrderServiceProviders\DTOs\OrderServiceProviderListDTO;
-use App\KhadamatTeck\Admin\OrderServiceProviders\Models\OrderServiceProvider;
+use App\KhadamatTeck\Base\BaseDTOMapper;
+use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
+use Illuminate\Support\Collection;
 
 class OrderServiceProviderDTOMapper extends BaseDTOMapper
 {
@@ -40,12 +40,13 @@ class OrderServiceProviderDTOMapper extends BaseDTOMapper
     {
         return $data->map(fn($item) => self::fromModel($item, $listing))->toArray();
     }
+
     private static function prepareData(OrderServiceProviderDTO $dto, $data)
     {
-                    $dto->setId($data->id);
-            $dto->setOrderId($data->order_id);
-            $dto->setServiceProviderId($data->service_provider_id);
-            $dto->setActive($data->active);
+        $dto->setId($data->id);
+        $dto->setOrderId($data->order_id);
+        $dto->setServiceProviderId($data->service_provider_id);
+        $dto->setActive($data->active);
 
         return $dto;
     }

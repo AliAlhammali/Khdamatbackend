@@ -1,14 +1,15 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\ServiceProviders\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\KhadamatTeck\Base\Response;
 use App\KhadamatTeck\Admin\ServiceProviders\Requests\CreateServiceProviderRequest;
 use App\KhadamatTeck\Admin\ServiceProviders\Requests\DeleteServiceProviderRequest;
 use App\KhadamatTeck\Admin\ServiceProviders\Requests\ListServiceProviderRequest;
 use App\KhadamatTeck\Admin\ServiceProviders\Requests\UpdateServiceProviderRequest;
 use App\KhadamatTeck\Admin\ServiceProviders\Requests\ViewServiceProviderRequest;
 use App\KhadamatTeck\Admin\ServiceProviders\Services\ServiceProvidersService;
+use App\KhadamatTeck\Base\Response;
 
 class ServiceProvidersController extends Controller
 {
@@ -38,13 +39,13 @@ class ServiceProvidersController extends Controller
         return $this->serviceProvidersService->findServiceProvider($request, $id);
     }
 
-    public function update(UpdateServiceProviderRequest $request,string $id)
+    public function update(UpdateServiceProviderRequest $request, string $id)
     {
-        return $this->serviceProvidersService->updateServiceProvider($request,$id);
+        return $this->serviceProvidersService->updateServiceProvider($request, $id);
     }
 
-    public function delete(DeleteServiceProviderRequest $request,string $id)
+    public function delete(DeleteServiceProviderRequest $request, string $id)
     {
-        return $this->serviceProvidersService->deleteServiceProvider($request,$id);
+        return $this->serviceProvidersService->deleteServiceProvider($request, $id);
     }
 }

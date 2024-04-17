@@ -11,7 +11,6 @@ class PMSService
     private ?\stdClass $errors = null;
 
 
-
     protected function response(): Response
     {
         return (new Response())
@@ -19,7 +18,8 @@ class PMSService
     }
 
 
-    public function setResponse($data){
+    public function setResponse($data)
+    {
         return $this->response()->setData($data)->setStatusCode(HttpStatus::HTTP_OK);
     }
 
@@ -28,6 +28,7 @@ class PMSService
         return $this->response()->setData(['message' => $message])
             ->setMessage($message)->setStatusCode($status)->json();
     }
+
     public function setMessageResponse($message, $status = HttpStatus::HTTP_ERROR)
     {
         return $this->response()->setData(['message' => $message])
@@ -53,7 +54,7 @@ class PMSService
     }
 
     /**
-     * @param  \stdClass|null  $errors
+     * @param \stdClass|null $errors
      */
     public function setErrors(?\stdClass $errors): void
     {
@@ -82,11 +83,11 @@ class PMSService
     {
         if ($data['status_code'] == HttpStatus::HTTP_OK) {
             return $this->setResponse($data['data'])->setMeta($data['meta'] ?? null);
-        } elseif(isset($data['errors']) && $data['status_code'] == HttpStatus::HTTP_VALIDATION_ERROR) {
+        } elseif (isset($data['errors']) && $data['status_code'] == HttpStatus::HTTP_VALIDATION_ERROR) {
             return $this->response()->setErrors($data['errors'])->setStatusCode($data['status_code'])->json();
-        }  elseif(isset($data['errors']) && $data['status_code'] == HttpStatus::HTTP_ERROR) {
+        } elseif (isset($data['errors']) && $data['status_code'] == HttpStatus::HTTP_ERROR) {
             return $this->response()->setErrors($data['errors'])->setStatusCode($data['status_code'])->json();
-        }  elseif(isset($data['errors']) && $data['status_code'] == HttpStatus::HTTP_NOT_FOUND) {
+        } elseif (isset($data['errors']) && $data['status_code'] == HttpStatus::HTTP_NOT_FOUND) {
             return $this->response()->setErrors($data['errors'])->setStatusCode($data['status_code'])->json();
         } else {
             return $this->response()->setData($data)->setStatusCode($data['status_code'])->json();

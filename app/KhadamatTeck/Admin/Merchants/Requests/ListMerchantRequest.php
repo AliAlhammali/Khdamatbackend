@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\Merchants\Requests;
 
 use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;

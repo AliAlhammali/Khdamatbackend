@@ -2,12 +2,10 @@
 
 namespace App\KhadamatTeck\Admin\Users\Models;
 
-use App\KhadamatTeck\Base\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
-use Spatie\QueryBuilder\AllowedFilter;
 
 class User extends Authenticatable
 {
@@ -23,13 +21,13 @@ class User extends Authenticatable
         'email',
         'password',
         'name',
-        'email' ,
+        'email',
         'password',
-        'email_verified_at' ,
-        'status' ,
-        'address' ,
-        'phone' ,
-        'image' ,
+        'email_verified_at',
+        'status',
+        'address',
+        'phone',
+        'image',
         'role',
     ];
 

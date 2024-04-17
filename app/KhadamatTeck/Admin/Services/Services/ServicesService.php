@@ -1,17 +1,17 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\Services\Services;
 
-use App\KhadamatTeck\Base\Http\HttpStatus;
-use App\KhadamatTeck\Base\Response;
-use App\KhadamatTeck\Base\Service;
 use App\KhadamatTeck\Admin\Services\Mappers\ServiceDTOMapper;
-use App\KhadamatTeck\Admin\Services\Models\ServiceModel;
 use App\KhadamatTeck\Admin\Services\Repositories\ServicesRepository;
 use App\KhadamatTeck\Admin\Services\Requests\CreateServiceRequest;
 use App\KhadamatTeck\Admin\Services\Requests\DeleteServiceRequest;
 use App\KhadamatTeck\Admin\Services\Requests\ListServiceRequest;
 use App\KhadamatTeck\Admin\Services\Requests\UpdateServiceRequest;
 use App\KhadamatTeck\Admin\Services\Requests\ViewServiceRequest;
+use App\KhadamatTeck\Base\Http\HttpStatus;
+use App\KhadamatTeck\Base\Response;
+use App\KhadamatTeck\Base\Service;
 
 class ServicesService extends Service
 {
@@ -23,7 +23,7 @@ class ServicesService extends Service
 
     public function __construct(ServicesRepository $servicesRepository)
     {
-    parent::__construct($servicesRepository);
+        parent::__construct($servicesRepository);
         $this->servicesRepository = $servicesRepository;
     }
 
@@ -47,13 +47,13 @@ class ServicesService extends Service
 
     public function createService(CreateServiceRequest $request): Response
     {
-        $data  =$this->servicesRepository->createService($request->all());
+        $data = $this->servicesRepository->createService($request->all());
         return $this->response()
             ->setData($data)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function updateService(UpdateServiceRequest $request,$id): Response
+    public function updateService(UpdateServiceRequest $request, $id): Response
     {
         $model = $this->servicesRepository->findService($id);
         $data = $this->servicesRepository->updateService(
@@ -66,7 +66,7 @@ class ServicesService extends Service
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function deleteService(DeleteServiceRequest $request,$id): Response
+    public function deleteService(DeleteServiceRequest $request, $id): Response
     {
         $model = $this->servicesRepository->findService($id);
         return $this->response()

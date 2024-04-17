@@ -2,11 +2,11 @@
 
 namespace App\KhadamatTeck\Admin\ServiceProviders\Repositories;
 
+use App\KhadamatTeck\Base\Repository;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\Mappers\ServiceProviderDTOMapper;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\Models\ServiceProvider;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
-use App\KhadamatTeck\Base\Repository;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class ServiceProvidersRepository extends Repository
@@ -38,7 +38,7 @@ class ServiceProvidersRepository extends Repository
     {
         $serviceProvider = ServiceProvider::create($data);
 
-        if($data['owner']){
+        if ($data['owner']) {
             $data['owner']['password'] = bcrypt(123456);
             $serviceProvider->users()->create($data['owner']);
         }

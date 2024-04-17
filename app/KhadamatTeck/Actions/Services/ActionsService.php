@@ -2,18 +2,18 @@
 
 namespace App\KhadamatTeck\Actions\Services;
 
+use App\KhadamatTeck\Base\Http\HttpStatus;
+use App\KhadamatTeck\Base\Response;
 use App\Munjz\Actions\Requests\UploadActionRequest;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use App\KhadamatTeck\Base\Http\HttpStatus;
-use App\KhadamatTeck\Base\Response;
-use App\KhadamatTeck\Base\Service;
 
 class ActionsService
 {
     private Filesystem $storage;
+
     public function __construct(string $disk = 'public')
     {
         $this->storage = Storage::disk($disk);
@@ -40,10 +40,11 @@ class ActionsService
 
     public function uploadFile(UploadedFile $file): string
     {
-        $fileName = 'files/'.uniqid().$file->getClientOriginalName();
+        $fileName = 'files/' . uniqid() . $file->getClientOriginalName();
         $path = $this->storage->put($fileName, $file->getContent());
         return $this->storage->url($fileName);
     }
+
     protected function response(): Response
     {
         return (new Response());

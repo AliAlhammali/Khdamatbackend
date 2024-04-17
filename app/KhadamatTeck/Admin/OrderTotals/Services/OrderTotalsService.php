@@ -1,17 +1,17 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\OrderTotals\Services;
 
-use App\KhadamatTeck\Base\Http\HttpStatus;
-use App\KhadamatTeck\Base\Response;
-use App\KhadamatTeck\Base\Service;
 use App\KhadamatTeck\Admin\OrderTotals\Mappers\OrderTotalDTOMapper;
-use App\KhadamatTeck\Admin\OrderTotals\Models\OrderTotal;
 use App\KhadamatTeck\Admin\OrderTotals\Repositories\OrderTotalsRepository;
 use App\KhadamatTeck\Admin\OrderTotals\Requests\CreateOrderTotalRequest;
 use App\KhadamatTeck\Admin\OrderTotals\Requests\DeleteOrderTotalRequest;
 use App\KhadamatTeck\Admin\OrderTotals\Requests\ListOrderTotalRequest;
 use App\KhadamatTeck\Admin\OrderTotals\Requests\UpdateOrderTotalRequest;
 use App\KhadamatTeck\Admin\OrderTotals\Requests\ViewOrderTotalRequest;
+use App\KhadamatTeck\Base\Http\HttpStatus;
+use App\KhadamatTeck\Base\Response;
+use App\KhadamatTeck\Base\Service;
 
 class OrderTotalsService extends Service
 {
@@ -23,7 +23,7 @@ class OrderTotalsService extends Service
 
     public function __construct(OrderTotalsRepository $orderTotalsRepository)
     {
-    parent::__construct($orderTotalsRepository);
+        parent::__construct($orderTotalsRepository);
         $this->orderTotalsRepository = $orderTotalsRepository;
     }
 
@@ -47,13 +47,13 @@ class OrderTotalsService extends Service
 
     public function createOrderTotal(CreateOrderTotalRequest $request): Response
     {
-        $data  =$this->orderTotalsRepository->createOrderTotal($request->all());
+        $data = $this->orderTotalsRepository->createOrderTotal($request->all());
         return $this->response()
             ->setData($data)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function updateOrderTotal(UpdateOrderTotalRequest $request,$id): Response
+    public function updateOrderTotal(UpdateOrderTotalRequest $request, $id): Response
     {
         $model = $this->orderTotalsRepository->findOrderTotal($id);
         $data = $this->orderTotalsRepository->updateOrderTotal(
@@ -66,7 +66,7 @@ class OrderTotalsService extends Service
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function deleteOrderTotal(DeleteOrderTotalRequest $request,$id): Response
+    public function deleteOrderTotal(DeleteOrderTotalRequest $request, $id): Response
     {
         $model = $this->orderTotalsRepository->findOrderTotal($id);
         return $this->response()

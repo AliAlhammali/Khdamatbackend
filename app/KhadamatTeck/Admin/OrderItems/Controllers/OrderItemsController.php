@@ -1,14 +1,15 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\OrderItems\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\KhadamatTeck\Base\Response;
 use App\KhadamatTeck\Admin\OrderItems\Requests\CreateOrderItemRequest;
 use App\KhadamatTeck\Admin\OrderItems\Requests\DeleteOrderItemRequest;
 use App\KhadamatTeck\Admin\OrderItems\Requests\ListOrderItemRequest;
 use App\KhadamatTeck\Admin\OrderItems\Requests\UpdateOrderItemRequest;
 use App\KhadamatTeck\Admin\OrderItems\Requests\ViewOrderItemRequest;
 use App\KhadamatTeck\Admin\OrderItems\Services\OrderItemsService;
+use App\KhadamatTeck\Base\Response;
 
 class OrderItemsController extends Controller
 {
@@ -38,13 +39,13 @@ class OrderItemsController extends Controller
         return $this->orderItemsService->findOrderItem($request, $id);
     }
 
-    public function update(UpdateOrderItemRequest $request,string $id)
+    public function update(UpdateOrderItemRequest $request, string $id)
     {
-        return $this->orderItemsService->updateOrderItem($request,$id);
+        return $this->orderItemsService->updateOrderItem($request, $id);
     }
 
-    public function delete(DeleteOrderItemRequest $request,string $id)
+    public function delete(DeleteOrderItemRequest $request, string $id)
     {
-        return $this->orderItemsService->deleteOrderItem($request,$id);
+        return $this->orderItemsService->deleteOrderItem($request, $id);
     }
 }

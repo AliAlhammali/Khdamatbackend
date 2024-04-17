@@ -3,7 +3,6 @@
 namespace App\KhadamatTeck\ServiceProvider\Services\Models;
 
 use App\KhadamatTeck\Base\BaseModel;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Service extends BaseModel
 {
@@ -20,5 +19,5 @@ class Service extends BaseModel
      * @var array
      */
 
-    protected $fillable = ['id','title','slug','description','status','merchant_id','category_id'];
+    protected $fillable = ['id', 'title', 'slug', 'description', 'status', 'merchant_id', 'category_id'];
 }

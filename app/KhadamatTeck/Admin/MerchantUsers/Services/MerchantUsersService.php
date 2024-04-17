@@ -1,15 +1,16 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\MerchantUsers\Services;
 
-use App\KhadamatTeck\Base\Http\HttpStatus;
-use App\KhadamatTeck\Base\Response;
-use App\KhadamatTeck\Base\Service;
 use App\KhadamatTeck\Admin\MerchantUsers\Repositories\MerchantUsersRepository;
 use App\KhadamatTeck\Admin\MerchantUsers\Requests\CreateMerchantUserRequest;
 use App\KhadamatTeck\Admin\MerchantUsers\Requests\DeleteMerchantUserRequest;
 use App\KhadamatTeck\Admin\MerchantUsers\Requests\ListMerchantUserRequest;
 use App\KhadamatTeck\Admin\MerchantUsers\Requests\UpdateMerchantUserRequest;
 use App\KhadamatTeck\Admin\MerchantUsers\Requests\ViewMerchantUserRequest;
+use App\KhadamatTeck\Base\Http\HttpStatus;
+use App\KhadamatTeck\Base\Response;
+use App\KhadamatTeck\Base\Service;
 use App\KhadamatTeck\Merchant\MerchantUsers\Mappers\MerchantUserDTOMapper;
 
 class MerchantUsersService extends Service
@@ -22,7 +23,7 @@ class MerchantUsersService extends Service
 
     public function __construct(MerchantUsersRepository $merchantUsersRepository)
     {
-    parent::__construct($merchantUsersRepository);
+        parent::__construct($merchantUsersRepository);
         $this->merchantUsersRepository = $merchantUsersRepository;
     }
 
@@ -46,13 +47,13 @@ class MerchantUsersService extends Service
 
     public function createMerchantUser(CreateMerchantUserRequest $request): Response
     {
-        $data  =$this->merchantUsersRepository->createMerchantUser($request->all());
+        $data = $this->merchantUsersRepository->createMerchantUser($request->all());
         return $this->response()
             ->setData($data)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function updateMerchantUser(UpdateMerchantUserRequest $request,$id): Response
+    public function updateMerchantUser(UpdateMerchantUserRequest $request, $id): Response
     {
         $model = $this->merchantUsersRepository->findMerchantUser($id);
         $data = $this->merchantUsersRepository->updateMerchantUser(
@@ -65,7 +66,7 @@ class MerchantUsersService extends Service
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function deleteMerchantUser(DeleteMerchantUserRequest $request,$id): Response
+    public function deleteMerchantUser(DeleteMerchantUserRequest $request, $id): Response
     {
         $model = $this->merchantUsersRepository->findMerchantUser($id);
         return $this->response()

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\Categories\DTOs;
 
 class CategoryListDTO extends CategoryDTO

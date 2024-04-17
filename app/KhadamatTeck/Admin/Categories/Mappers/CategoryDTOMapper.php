@@ -2,12 +2,11 @@
 
 namespace App\KhadamatTeck\Admin\Categories\Mappers;
 
-use App\KhadamatTeck\Base\BaseDTOMapper;
-use Illuminate\Support\Collection;
-use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
 use App\KhadamatTeck\Admin\Categories\DTOs\CategoryDTO;
 use App\KhadamatTeck\Admin\Categories\DTOs\CategoryListDTO;
-use App\KhadamatTeck\Admin\Categories\Models\Category;
+use App\KhadamatTeck\Base\BaseDTOMapper;
+use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
+use Illuminate\Support\Collection;
 
 class CategoryDTOMapper extends BaseDTOMapper
 {
@@ -49,11 +48,11 @@ class CategoryDTOMapper extends BaseDTOMapper
         $dto->setSlug($data->getTranslations('slug'));
         $dto->setStatus($data->status);
         $dto->setMerchantId($data->merchant_id);
-        if (request('includeCategoryMerchant',true))
+        if (request('includeCategoryMerchant', true))
             $dto->setMerchant($data->merchant);
-        if (request('includeCategoryParent',true))
+        if (request('includeCategoryParent', true))
             $dto->setParent($data->parent);
-        if (request('includeCategoryChildren',true))
+        if (request('includeCategoryChildren', true))
             $dto->setChildren($data->children);
 
 

@@ -64,13 +64,12 @@ class GuzzleClient
                 result: json_decode((string)$response->getBody())
             );
         } catch (ClientException $exception) {
-            if($withError) {
+            if ($withError) {
                 return new GuzzleClientResponse(
                     status: $exception->getCode(),
                     result: (object)["error" => $exception->getMessage()]
                 );
-            }
-            else throw $exception;
+            } else throw $exception;
         }
     }
 
@@ -94,6 +93,7 @@ class GuzzleClient
             throw $exception;
         }
     }
+
     public function put($url, $body, $isFormData = false): GuzzleClientResponse
     {
         try {

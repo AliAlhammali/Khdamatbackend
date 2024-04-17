@@ -1,14 +1,15 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\OrderTotals\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\KhadamatTeck\Base\Response;
 use App\KhadamatTeck\Admin\OrderTotals\Requests\CreateOrderTotalRequest;
 use App\KhadamatTeck\Admin\OrderTotals\Requests\DeleteOrderTotalRequest;
 use App\KhadamatTeck\Admin\OrderTotals\Requests\ListOrderTotalRequest;
 use App\KhadamatTeck\Admin\OrderTotals\Requests\UpdateOrderTotalRequest;
 use App\KhadamatTeck\Admin\OrderTotals\Requests\ViewOrderTotalRequest;
 use App\KhadamatTeck\Admin\OrderTotals\Services\OrderTotalsService;
+use App\KhadamatTeck\Base\Response;
 
 class OrderTotalsController extends Controller
 {
@@ -38,13 +39,13 @@ class OrderTotalsController extends Controller
         return $this->orderTotalsService->findOrderTotal($request, $id);
     }
 
-    public function update(UpdateOrderTotalRequest $request,string $id)
+    public function update(UpdateOrderTotalRequest $request, string $id)
     {
-        return $this->orderTotalsService->updateOrderTotal($request,$id);
+        return $this->orderTotalsService->updateOrderTotal($request, $id);
     }
 
-    public function delete(DeleteOrderTotalRequest $request,string $id)
+    public function delete(DeleteOrderTotalRequest $request, string $id)
     {
-        return $this->orderTotalsService->deleteOrderTotal($request,$id);
+        return $this->orderTotalsService->deleteOrderTotal($request, $id);
     }
 }

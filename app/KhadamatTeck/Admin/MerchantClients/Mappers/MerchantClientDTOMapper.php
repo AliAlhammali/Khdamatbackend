@@ -2,12 +2,11 @@
 
 namespace App\KhadamatTeck\Admin\MerchantClients\Mappers;
 
-use App\KhadamatTeck\Base\BaseDTOMapper;
-use Illuminate\Support\Collection;
-use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
 use App\KhadamatTeck\Admin\MerchantClients\DTOs\MerchantClientDTO;
 use App\KhadamatTeck\Admin\MerchantClients\DTOs\MerchantClientListDTO;
-use App\KhadamatTeck\Admin\MerchantClients\Models\MerchantClient;
+use App\KhadamatTeck\Base\BaseDTOMapper;
+use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
+use Illuminate\Support\Collection;
 
 class MerchantClientDTOMapper extends BaseDTOMapper
 {

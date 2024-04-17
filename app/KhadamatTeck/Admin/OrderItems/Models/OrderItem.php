@@ -3,7 +3,6 @@
 namespace App\KhadamatTeck\Admin\OrderItems\Models;
 
 use App\KhadamatTeck\Base\BaseModel;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class OrderItem extends BaseModel
 {
@@ -20,5 +19,5 @@ class OrderItem extends BaseModel
      * @var array
      */
 
-    protected $fillable = ['id','order_id','item_id','quantity','item_price','sup_total','vat','total','order_otp'];
+    protected $fillable = ['id', 'order_id', 'item_id', 'quantity', 'item_price', 'sup_total', 'vat', 'total', 'order_otp'];
 }

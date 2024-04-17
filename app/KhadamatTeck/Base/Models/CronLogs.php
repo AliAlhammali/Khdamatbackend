@@ -15,6 +15,6 @@ class CronLogs extends BaseModel
         ];
     protected $casts
         = [
-            'meta'      => 'array',
+            'meta' => 'array',
         ];
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\MerchantClients\DTOs;
 
 class MerchantClientListDTO extends MerchantClientDTO

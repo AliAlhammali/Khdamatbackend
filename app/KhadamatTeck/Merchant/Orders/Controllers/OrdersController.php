@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\Merchant\Orders\Controllers;
 
 use App\Http\Controllers\Controller;
@@ -38,13 +39,13 @@ class OrdersController extends Controller
         return $this->ordersService->findOrder($request, $id);
     }
 
-    public function update(UpdateOrderRequest $request,string $id)
+    public function update(UpdateOrderRequest $request, string $id)
     {
-        return $this->ordersService->updateOrder($request,$id);
+        return $this->ordersService->updateOrder($request, $id);
     }
 
-    public function delete(DeleteOrderRequest $request,string $id)
+    public function delete(DeleteOrderRequest $request, string $id)
     {
-        return $this->ordersService->deleteOrder($request,$id);
+        return $this->ordersService->deleteOrder($request, $id);
     }
 }

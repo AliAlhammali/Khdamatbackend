@@ -73,11 +73,11 @@ class Response implements \JsonSerializable
     {
         return response()->json([
             'status_code' => $this->getStatusCode(),
-            'errors'      => $this->getErrors()?? (new \stdClass()),
-            'data'        => $this->getData() ?? (new \stdClass()),
-            'extra_data'        => $this->getExtraData() ?? (new \stdClass()),
-            'message'     => $this->getMessage(),
-            'source'      => $this->getSource(),
+            'errors' => $this->getErrors() ?? (new \stdClass()),
+            'data' => $this->getData() ?? (new \stdClass()),
+            'extra_data' => $this->getExtraData() ?? (new \stdClass()),
+            'message' => $this->getMessage(),
+            'source' => $this->getSource(),
         ],
             $this->getStatusCode(),
             $this->getHeaders()
@@ -91,21 +91,21 @@ class Response implements \JsonSerializable
     {
         $return_data = [
             'status_code' => $this->getStatusCode(),
-            'errors'      => $this->getErrors()?? (new \stdClass()),
-            'data'        => $this->getData() ?? (new \stdClass()),
-            'extra_data'        => $this->getExtraData() ?? (new \stdClass()),
-            'meta'        => $this->getMeta() ?? (new \stdClass()),
-            'message'     => $this->getMessage(),
-            'source'      => $this->getSource(),
+            'errors' => $this->getErrors() ?? (new \stdClass()),
+            'data' => $this->getData() ?? (new \stdClass()),
+            'extra_data' => $this->getExtraData() ?? (new \stdClass()),
+            'meta' => $this->getMeta() ?? (new \stdClass()),
+            'message' => $this->getMessage(),
+            'source' => $this->getSource(),
         ];
-        if(env('APP_DEBUG',false)){
-            $return_data += ['debug'=> $this->getDebug()];
+        if (env('APP_DEBUG', false)) {
+            $return_data += ['debug' => $this->getDebug()];
         }
         return $return_data;
     }
 
     /**
-     * @param  string  $message
+     * @param string $message
      *
      * @return Response
      */
@@ -124,7 +124,7 @@ class Response implements \JsonSerializable
     }
 
     /**
-     * @param  string  $source
+     * @param string $source
      *
      * @return Response
      */
@@ -151,7 +151,7 @@ class Response implements \JsonSerializable
     }
 
     /**
-     * @param  int  $statusCode
+     * @param int $statusCode
      *
      * @return Response
      */
@@ -163,10 +163,10 @@ class Response implements \JsonSerializable
 
     public function getErrors(): mixed
     {
-        if(is_array($this->errors) && empty($this->errors)){
+        if (is_array($this->errors) && empty($this->errors)) {
             $this->errors = new \stdClass();
         }
-        return is_string($this->errors)?(object)['error'=>$this->errors]:$this->errors;
+        return is_string($this->errors) ? (object)['error' => $this->errors] : $this->errors;
     }
 
     public function setErrors(mixed $errors): Response
@@ -174,9 +174,6 @@ class Response implements \JsonSerializable
         $this->errors = $errors;
         return $this;
     }
-
-
-
 
 
     /**
@@ -188,7 +185,7 @@ class Response implements \JsonSerializable
     }
 
     /**
-     * @param  mixed  $data
+     * @param mixed $data
      *
      * @return Response
      */
@@ -207,7 +204,7 @@ class Response implements \JsonSerializable
     }
 
     /**
-     * @param  mixed  $data
+     * @param mixed $data
      *
      * @return Response
      */
@@ -226,7 +223,7 @@ class Response implements \JsonSerializable
     }
 
     /**
-     * @param  array  $headers
+     * @param array $headers
      *
      * @return Response
      */
@@ -243,10 +240,10 @@ class Response implements \JsonSerializable
     {
         $collect = collect(\Illuminate\Support\Facades\DB::getQueryLog());
         return [
-            'count'=>$collect->count(),
-            'total_time'=>$collect->sum('time'),
-            'bigest_time'=>$collect->max('time'),
-            'queries'=>$collect->toArray()
+            'count' => $collect->count(),
+            'total_time' => $collect->sum('time'),
+            'bigest_time' => $collect->max('time'),
+            'queries' => $collect->toArray()
         ];
     }
 

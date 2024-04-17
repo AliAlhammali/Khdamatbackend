@@ -3,8 +3,6 @@
 namespace App\KhadamatTeck\Merchant\MerchantUsers\Controllers;
 
 use App\Http\Controllers\Controller;
-
-
 use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\ForgotRequest;
 use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\LoginRequest;
 use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\PhoneLoginRequest;
@@ -45,10 +43,12 @@ class MerchantAuthController extends Controller
     {
         return $this->authService->loginUser($request);
     }
+
     public function loginWithOTP(LoginRequest $request)
     {
         return $this->authService->loginUserWithOTP($request);
     }
+
     public function verifyWithOTP(LoginRequest $request)
     {
         return $this->authService->verifyLoginUserWithOTP($request);

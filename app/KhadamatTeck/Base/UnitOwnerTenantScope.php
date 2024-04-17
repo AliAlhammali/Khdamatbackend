@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Support\Facades\Schema;
+
 class UnitOwnerTenantScope implements Scope
 {
     const UNIT_TENANT_OWNER_COLUMN = 'customer_id';
@@ -13,8 +14,8 @@ class UnitOwnerTenantScope implements Scope
     /**
      * Apply the scope to a given Eloquent query builder.
      *
-     * @param  Builder  $builder
-     * @param  Model    $model
+     * @param Builder $builder
+     * @param Model $model
      *
      * @return void
      */

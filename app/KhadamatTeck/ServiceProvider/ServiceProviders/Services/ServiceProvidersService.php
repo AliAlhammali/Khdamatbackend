@@ -1,11 +1,11 @@
 <?php
+
 namespace App\KhadamatTeck\ServiceProvider\ServiceProviders\Services;
 
 use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\Base\Response;
 use App\KhadamatTeck\Base\Service;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\Mappers\ServiceProviderDTOMapper;
-use App\KhadamatTeck\ServiceProvider\ServiceProviders\Models\ServiceProvider;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\Repositories\ServiceProvidersRepository;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\Requests\CreateServiceProviderRequest;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\Requests\DeleteServiceProviderRequest;
@@ -23,7 +23,7 @@ class ServiceProvidersService extends Service
 
     public function __construct(ServiceProvidersRepository $serviceProvidersRepository)
     {
-    parent::__construct($serviceProvidersRepository);
+        parent::__construct($serviceProvidersRepository);
         $this->serviceProvidersRepository = $serviceProvidersRepository;
     }
 
@@ -47,13 +47,13 @@ class ServiceProvidersService extends Service
 
     public function createServiceProvider(CreateServiceProviderRequest $request): Response
     {
-        $data  =$this->serviceProvidersRepository->createServiceProvider($request->all());
+        $data = $this->serviceProvidersRepository->createServiceProvider($request->all());
         return $this->response()
             ->setData($data)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function updateServiceProvider(UpdateServiceProviderRequest $request,$id): Response
+    public function updateServiceProvider(UpdateServiceProviderRequest $request, $id): Response
     {
         $model = $this->serviceProvidersRepository->findServiceProvider($id);
         $data = $this->serviceProvidersRepository->updateServiceProvider(
@@ -66,7 +66,7 @@ class ServiceProvidersService extends Service
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function deleteServiceProvider(DeleteServiceProviderRequest $request,$id): Response
+    public function deleteServiceProvider(DeleteServiceProviderRequest $request, $id): Response
     {
         $model = $this->serviceProvidersRepository->findServiceProvider($id);
         return $this->response()

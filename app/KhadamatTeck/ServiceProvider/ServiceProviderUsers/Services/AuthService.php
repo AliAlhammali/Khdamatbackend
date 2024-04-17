@@ -4,8 +4,11 @@ namespace App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Services;
 
 use App\KhadamatTeck\Admin\Users\Enums\UserOtpNotifyTypes;
 use App\KhadamatTeck\Admin\Users\Mappers\UserDTOMapper;
-use App\KhadamatTeck\Admin\Users\Models\User;
-use App\KhadamatTeck\Admin\Users\Repositories\UsersRepository;
+use App\KhadamatTeck\Base\Http\HttpStatus;
+use App\KhadamatTeck\Base\Response;
+use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Mappers\ServiceProviderUserDTOMapper;
+use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models\ServiceProviderUser;
+use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Repositories\ServiceProviderUsersRepository;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\Auth\ForgotRequest;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\Auth\LoginRequest;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\Auth\PhoneLoginRequest;
@@ -13,20 +16,16 @@ use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\Auth\Register
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\Auth\ResetPasswordRequest;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\Auth\VerifyPhoneLogin;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\CreateServiceProviderUserRequest as CreateUserRequest;
-use App\KhadamatTeck\Base\Http\HttpStatus;
-use App\KhadamatTeck\Base\Response;
-use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Mappers\ServiceProviderUserDTOMapper;
-use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models\ServiceProviderUser;
-use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Repositories\ServiceProviderUsersRepository;;
-use Illuminate\Http\Client\Request;
-use Illuminate\Http\JsonResponse;
+use Ichtrojan\Otp\Models\Otp as ModelOtp;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Validation\ValidationException;
-use Ichtrojan\Otp\Models\Otp as ModelOtp;
+
+;
+
 class AuthService
 {
     /**
@@ -81,14 +80,14 @@ class AuthService
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('SPToken')->accessToken;
-                $response = ['token' => $token,'user'=>ServiceProviderUserDTOMapper::fromModel($user)];
+                $response = ['token' => $token, 'user' => ServiceProviderUserDTOMapper::fromModel($user)];
                 return response($response, 200);
             } else {
                 $response = ["message" => "Password mismatch"];
                 return response($response, 422);
             }
         } else {
-            $response = ["message" =>'User does not exist'];
+            $response = ["message" => 'User does not exist'];
             return response($response, 422);
         }
     }
@@ -277,6 +276,7 @@ class AuthService
             ])
             ->setStatusCode(HttpStatus::HTTP_OK)->json();
     }
+
     protected function response(): Response
     {
         return (new Response());

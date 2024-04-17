@@ -5,8 +5,6 @@ namespace App\KhadamatTeck\Base;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use App\KhadamatTeck\Base\BaseDTO;
-use App\KhadamatTeck\Base\BaseModel;
 
 class BaseEvent
 {
@@ -33,7 +31,7 @@ class BaseEvent
     }
 
     /**
-     * @param  BaseDTO  $dto
+     * @param BaseDTO $dto
      *
      * @return BaseEvent
      */
@@ -52,7 +50,7 @@ class BaseEvent
     }
 
     /**
-     * @param  BaseModel  $model
+     * @param BaseModel $model
      *
      * @return BaseEvent
      */

@@ -3,8 +3,6 @@
 namespace App\KhadamatTeck\Base;
 
 use App\KhadamatTeck\Base\Http\HttpStatus;
-use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 
@@ -13,14 +11,14 @@ abstract class BasicService implements ServiceInterface
     private array $errors = [];
 
 
-
     protected function response($statusCode = HttpStatus::HTTP_OK): Response|JsonResponse
     {
         return (new Response($statusCode))
             ->setErrors($this->getErrors());
     }
 
-    public function setResponse($data){
+    public function setResponse($data)
+    {
         return $this->response()->setData($data)->setStatusCode(HttpStatus::HTTP_OK);
     }
 
@@ -59,7 +57,7 @@ abstract class BasicService implements ServiceInterface
     }
 
     /**
-     * @param  array  $errors
+     * @param array $errors
      */
     public function setErrors(array $errors): void
     {
@@ -67,7 +65,7 @@ abstract class BasicService implements ServiceInterface
     }
 
     /**
-     * @param  string  $error
+     * @param string $error
      */
     public function setError(string $error): void
     {

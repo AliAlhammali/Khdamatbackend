@@ -5,10 +5,8 @@ namespace App\KhadamatTeck\Merchant\Merchants\Models;
 use App\KhadamatTeck\Admin\Categories\Models\Category;
 use App\KhadamatTeck\Admin\Services\Models\ServiceModel;
 use App\KhadamatTeck\Base\BaseModel;
-use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
 use App\KhadamatTeck\Base\Filters\KeywordSearchFilter;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
 use Smartisan\Settings\HasSettings;
 use Spatie\QueryBuilder\AllowedFilter;
 

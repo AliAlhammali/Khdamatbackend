@@ -6,7 +6,7 @@ use BenSampo\Enum\Enum;
 
 class UserOtpNotifyTypes extends Enum
 {
-    const ALL ='all';
-    const SMS ='sms';
-    const EMAIL ='email';
+    const ALL = 'all';
+    const SMS = 'sms';
+    const EMAIL = 'email';
 }

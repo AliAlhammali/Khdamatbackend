@@ -3,11 +3,10 @@
 namespace App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Mappers;
 
 use App\KhadamatTeck\Base\BaseDTOMapper;
-use Illuminate\Support\Collection;
 use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\DTOs\ServiceProviderUserDTO;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\DTOs\ServiceProviderUserListDTO;
-use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models\ServiceProviderUser;
+use Illuminate\Support\Collection;
 
 class ServiceProviderUserDTOMapper extends BaseDTOMapper
 {

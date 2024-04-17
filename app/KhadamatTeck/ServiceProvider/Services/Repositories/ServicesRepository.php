@@ -3,11 +3,10 @@
 namespace App\KhadamatTeck\ServiceProvider\Services\Repositories;
 
 use App\KhadamatTeck\Admin\Services\Models\ServiceModel;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Database\Eloquent\Collection;
 use App\KhadamatTeck\Base\Repository;
 use App\KhadamatTeck\ServiceProvider\Services\Mappers\ServiceDTOMapper;
-use App\KhadamatTeck\ServiceProvider\Services\Models\Service;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class ServicesRepository extends Repository

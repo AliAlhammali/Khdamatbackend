@@ -15,6 +15,7 @@ class UserDTO implements \JsonSerializable
     private ?string $logo;
     private ?string $image;
     private ?string $role;
+
     public function getId(): ?int
     {
         return $this->id;

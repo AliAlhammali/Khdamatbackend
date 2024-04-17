@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\Base\Http;
 
 class DefaultRequest extends KhadamatTeckRequest

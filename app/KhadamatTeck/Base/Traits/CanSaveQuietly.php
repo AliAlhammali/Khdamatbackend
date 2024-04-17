@@ -3,8 +3,6 @@
 namespace App\KhadamatTeck\Base\Traits;
 
 
-
-
 trait CanSaveQuietly
 {
 

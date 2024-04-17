@@ -1,11 +1,11 @@
 <?php
+
 namespace App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Services;
 
 use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\Base\Response;
 use App\KhadamatTeck\Base\Service;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Mappers\ServiceProviderUserDTOMapper;
-use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models\ServiceProviderUser;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Repositories\ServiceProviderUsersRepository;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\CreateServiceProviderUserRequest;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Requests\DeleteServiceProviderUserRequest;
@@ -23,7 +23,7 @@ class ServiceProviderUsersService extends Service
 
     public function __construct(ServiceProviderUsersRepository $serviceProviderUsersRepository)
     {
-    parent::__construct($serviceProviderUsersRepository);
+        parent::__construct($serviceProviderUsersRepository);
         $this->serviceProviderUsersRepository = $serviceProviderUsersRepository;
     }
 
@@ -47,13 +47,13 @@ class ServiceProviderUsersService extends Service
 
     public function createServiceProviderUser(CreateServiceProviderUserRequest $request): Response
     {
-        $data  =$this->serviceProviderUsersRepository->createServiceProviderUser($request->all());
+        $data = $this->serviceProviderUsersRepository->createServiceProviderUser($request->all());
         return $this->response()
             ->setData($data)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function updateServiceProviderUser(UpdateServiceProviderUserRequest $request,$id): Response
+    public function updateServiceProviderUser(UpdateServiceProviderUserRequest $request, $id): Response
     {
         $model = $this->serviceProviderUsersRepository->findServiceProviderUser($id);
         $data = $this->serviceProviderUsersRepository->updateServiceProviderUser(
@@ -66,7 +66,7 @@ class ServiceProviderUsersService extends Service
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function deleteServiceProviderUser(DeleteServiceProviderUserRequest $request,$id): Response
+    public function deleteServiceProviderUser(DeleteServiceProviderUserRequest $request, $id): Response
     {
         $model = $this->serviceProviderUsersRepository->findServiceProviderUser($id);
         return $this->response()

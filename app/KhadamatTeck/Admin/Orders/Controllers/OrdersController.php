@@ -1,14 +1,15 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\Orders\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\KhadamatTeck\Base\Response;
 use App\KhadamatTeck\Admin\Orders\Requests\CreateOrderRequest;
 use App\KhadamatTeck\Admin\Orders\Requests\DeleteOrderRequest;
 use App\KhadamatTeck\Admin\Orders\Requests\ListOrderRequest;
 use App\KhadamatTeck\Admin\Orders\Requests\UpdateOrderRequest;
 use App\KhadamatTeck\Admin\Orders\Requests\ViewOrderRequest;
 use App\KhadamatTeck\Admin\Orders\Services\OrdersService;
+use App\KhadamatTeck\Base\Response;
 
 class OrdersController extends Controller
 {
@@ -38,13 +39,13 @@ class OrdersController extends Controller
         return $this->ordersService->findOrder($request, $id);
     }
 
-    public function update(UpdateOrderRequest $request,string $id)
+    public function update(UpdateOrderRequest $request, string $id)
     {
-        return $this->ordersService->updateOrder($request,$id);
+        return $this->ordersService->updateOrder($request, $id);
     }
 
-    public function delete(DeleteOrderRequest $request,string $id)
+    public function delete(DeleteOrderRequest $request, string $id)
     {
-        return $this->ordersService->deleteOrder($request,$id);
+        return $this->ordersService->deleteOrder($request, $id);
     }
 }

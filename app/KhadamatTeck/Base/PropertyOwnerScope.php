@@ -2,12 +2,11 @@
 
 namespace App\KhadamatTeck\Base;
 
-use App\KhadamatTeck\Base\RulesEnums;
+use App\KhadamatTeck\Units\Models\Unit;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Support\Facades\Schema;
-use App\KhadamatTeck\Units\Models\Unit;
 
 class PropertyOwnerScope implements Scope
 {
@@ -25,8 +24,8 @@ class PropertyOwnerScope implements Scope
     public function apply(Builder $builder, Model $model)
     {
         if (pmsAuth()) {
-            $userId =  pmsAuth()->getUser()->id;
-            $userRole =  pmsAuth()->getUser()->role;
+            $userId = pmsAuth()->getUser()->id;
+            $userRole = pmsAuth()->getUser()->role;
             //$userType =  auth()->user()->user_type;
 
             if ($userRole == RulesEnums::Role_Area_Manager) {

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\Orders\DTOs;
 
 class OrderListDTO extends OrderDTO

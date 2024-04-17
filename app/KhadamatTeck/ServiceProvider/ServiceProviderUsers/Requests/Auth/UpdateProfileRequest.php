@@ -16,8 +16,8 @@ class UpdateProfileRequest extends KhadamatTeckRequest
     {
         return [
             'name' => 'sometimes',
-            'email' => 'sometimes|email|unique:users,email,'.$this->id,
-            'phone' => 'sometimes|unique:users,phone,'.$this->id,
+            'email' => 'sometimes|email|unique:users,email,' . $this->id,
+            'phone' => 'sometimes|unique:users,phone,' . $this->id,
         ];
     }
 }

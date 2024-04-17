@@ -6,6 +6,6 @@ use BenSampo\Enum\Enum;
 
 class UserLanguageEnums extends Enum
 {
-    const English ='en';
-    const Arabic ='ar';
+    const English = 'en';
+    const Arabic = 'ar';
 }

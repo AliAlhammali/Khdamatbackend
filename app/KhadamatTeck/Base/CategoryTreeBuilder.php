@@ -2,8 +2,8 @@
 
 namespace App\KhadamatTeck\Base;
 
-use Illuminate\Support\Collection;
 use App\KhadamatTeck\Categories\Models\Category;
+use Illuminate\Support\Collection;
 
 class CategoryTreeBuilder
 {

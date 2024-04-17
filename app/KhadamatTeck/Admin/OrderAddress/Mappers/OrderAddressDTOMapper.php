@@ -1,12 +1,12 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\OrderAddress\Mappers;
 
-use App\KhadamatTeck\Base\BaseDTOMapper;
-use Illuminate\Support\Collection;
-use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
 use App\KhadamatTeck\Admin\OrderAddress\DTOs\OrderAddressDTO;
 use App\KhadamatTeck\Admin\OrderAddress\DTOs\OrderAddressListDTO;
-use App\KhadamatTeck\Admin\OrderAddress\Models\OrderAddress;
+use App\KhadamatTeck\Base\BaseDTOMapper;
+use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
+use Illuminate\Support\Collection;
 
 class OrderAddressDTOMapper extends BaseDTOMapper
 {
@@ -40,18 +40,19 @@ class OrderAddressDTOMapper extends BaseDTOMapper
     {
         return $data->map(fn($item) => self::fromModel($item, $listing))->toArray();
     }
+
     private static function prepareData(OrderAddressDTO $dto, $data)
     {
-                    $dto->setId($data->id);
-            $dto->setOrderId($data->order_id);
-            $dto->setName($data->name);
-            $dto->setEmail($data->email);
-            $dto->setPhone($data->phone);
-            $dto->setAddress($data->address);
-            $dto->setVat($data->vat);
-            $dto->setLocation($data->location);
-            $dto->setPickUpLocation($data->pick_up_location);
-            $dto->setIsDefaultAddress($data->is_default_address);
+        $dto->setId($data->id);
+        $dto->setOrderId($data->order_id);
+        $dto->setName($data->name);
+        $dto->setEmail($data->email);
+        $dto->setPhone($data->phone);
+        $dto->setAddress($data->address);
+        $dto->setVat($data->vat);
+        $dto->setLocation($data->location);
+        $dto->setPickUpLocation($data->pick_up_location);
+        $dto->setIsDefaultAddress($data->is_default_address);
 
         return $dto;
     }

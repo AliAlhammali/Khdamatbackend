@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\Services\DTOs;
 
 class ServiceListDTO extends ServiceDTO

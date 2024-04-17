@@ -1,17 +1,17 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\MerchantBranches\Services;
 
-use App\KhadamatTeck\Base\Http\HttpStatus;
-use App\KhadamatTeck\Base\Response;
-use App\KhadamatTeck\Base\Service;
 use App\KhadamatTeck\Admin\MerchantBranches\Mappers\MerchantBranchDTOMapper;
-use App\KhadamatTeck\Admin\MerchantBranches\Models\MerchantBranch;
 use App\KhadamatTeck\Admin\MerchantBranches\Repositories\MerchantBranchesRepository;
 use App\KhadamatTeck\Admin\MerchantBranches\Requests\CreateMerchantBranchRequest;
 use App\KhadamatTeck\Admin\MerchantBranches\Requests\DeleteMerchantBranchRequest;
 use App\KhadamatTeck\Admin\MerchantBranches\Requests\ListMerchantBranchRequest;
 use App\KhadamatTeck\Admin\MerchantBranches\Requests\UpdateMerchantBranchRequest;
 use App\KhadamatTeck\Admin\MerchantBranches\Requests\ViewMerchantBranchRequest;
+use App\KhadamatTeck\Base\Http\HttpStatus;
+use App\KhadamatTeck\Base\Response;
+use App\KhadamatTeck\Base\Service;
 
 class MerchantBranchesService extends Service
 {
@@ -23,7 +23,7 @@ class MerchantBranchesService extends Service
 
     public function __construct(MerchantBranchesRepository $merchantBranchesRepository)
     {
-    parent::__construct($merchantBranchesRepository);
+        parent::__construct($merchantBranchesRepository);
         $this->merchantBranchesRepository = $merchantBranchesRepository;
     }
 
@@ -47,13 +47,13 @@ class MerchantBranchesService extends Service
 
     public function createMerchantBranch(CreateMerchantBranchRequest $request): Response
     {
-        $data  =$this->merchantBranchesRepository->createMerchantBranch($request->all());
+        $data = $this->merchantBranchesRepository->createMerchantBranch($request->all());
         return $this->response()
             ->setData($data)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function updateMerchantBranch(UpdateMerchantBranchRequest $request,$id): Response
+    public function updateMerchantBranch(UpdateMerchantBranchRequest $request, $id): Response
     {
         $model = $this->merchantBranchesRepository->findMerchantBranch($id);
         $data = $this->merchantBranchesRepository->updateMerchantBranch(
@@ -66,7 +66,7 @@ class MerchantBranchesService extends Service
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function deleteMerchantBranch(DeleteMerchantBranchRequest $request,$id): Response
+    public function deleteMerchantBranch(DeleteMerchantBranchRequest $request, $id): Response
     {
         $model = $this->merchantBranchesRepository->findMerchantBranch($id);
         return $this->response()

@@ -3,11 +3,10 @@
 namespace App\KhadamatTeck\Merchant\MerchantUsers\Mappers;
 
 use App\KhadamatTeck\Base\BaseDTOMapper;
-use Illuminate\Support\Collection;
 use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
 use App\KhadamatTeck\Merchant\MerchantUsers\DTOs\MerchantUserDTO;
 use App\KhadamatTeck\Merchant\MerchantUsers\DTOs\MerchantUserListDTO;
-use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
+use Illuminate\Support\Collection;
 
 class MerchantUserDTOMapper extends BaseDTOMapper
 {

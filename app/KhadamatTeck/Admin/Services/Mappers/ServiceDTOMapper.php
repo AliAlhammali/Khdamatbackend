@@ -2,12 +2,11 @@
 
 namespace App\KhadamatTeck\Admin\Services\Mappers;
 
-use App\KhadamatTeck\Base\BaseDTOMapper;
-use Illuminate\Support\Collection;
-use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
 use App\KhadamatTeck\Admin\Services\DTOs\ServiceDTO;
 use App\KhadamatTeck\Admin\Services\DTOs\ServiceListDTO;
-use App\KhadamatTeck\Admin\Services\Models\ServiceModel;
+use App\KhadamatTeck\Base\BaseDTOMapper;
+use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
+use Illuminate\Support\Collection;
 
 class ServiceDTOMapper extends BaseDTOMapper
 {
@@ -54,11 +53,11 @@ class ServiceDTOMapper extends BaseDTOMapper
         $dto->setCategoryId($data->category_id);
         $dto->setMainCategoryId($data->main_category_id);
         $dto->setPrice($data->price);
-        if (request('includeServiceMerchant',true))
+        if (request('includeServiceMerchant', true))
             $dto->setMerchant($data->merchant);
-        if (request('includeServiceCategory',true))
+        if (request('includeServiceCategory', true))
             $dto->setCategory($data->category);
-        if (request('includeServiceMainCategory',true))
+        if (request('includeServiceMainCategory', true))
             $dto->setMainCategory($data->mainCategory);
         $dto->setCostPrice($data->cost_price);
         $dto->setSpPrice($data->sp_price);

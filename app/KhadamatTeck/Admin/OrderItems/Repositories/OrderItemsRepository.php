@@ -2,11 +2,11 @@
 
 namespace App\KhadamatTeck\Admin\OrderItems\Repositories;
 
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Database\Eloquent\Collection;
-use App\KhadamatTeck\Base\Repository;
 use App\KhadamatTeck\Admin\OrderItems\Mappers\OrderItemDTOMapper;
 use App\KhadamatTeck\Admin\OrderItems\Models\OrderItem;
+use App\KhadamatTeck\Base\Repository;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class OrderItemsRepository extends Repository

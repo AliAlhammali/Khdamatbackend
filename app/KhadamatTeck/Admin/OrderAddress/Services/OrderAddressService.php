@@ -1,17 +1,17 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\OrderAddress\Services;
 
-use App\KhadamatTeck\Base\Http\HttpStatus;
-use App\KhadamatTeck\Base\Response;
-use App\KhadamatTeck\Base\Service;
 use App\KhadamatTeck\Admin\OrderAddress\Mappers\OrderAddressDTOMapper;
-use App\KhadamatTeck\Admin\OrderAddress\Models\OrderAddress;
 use App\KhadamatTeck\Admin\OrderAddress\Repositories\OrderAddressRepository;
 use App\KhadamatTeck\Admin\OrderAddress\Requests\CreateOrderAddressRequest;
 use App\KhadamatTeck\Admin\OrderAddress\Requests\DeleteOrderAddressRequest;
 use App\KhadamatTeck\Admin\OrderAddress\Requests\ListOrderAddressRequest;
 use App\KhadamatTeck\Admin\OrderAddress\Requests\UpdateOrderAddressRequest;
 use App\KhadamatTeck\Admin\OrderAddress\Requests\ViewOrderAddressRequest;
+use App\KhadamatTeck\Base\Http\HttpStatus;
+use App\KhadamatTeck\Base\Response;
+use App\KhadamatTeck\Base\Service;
 
 class OrderAddressService extends Service
 {
@@ -23,7 +23,7 @@ class OrderAddressService extends Service
 
     public function __construct(OrderAddressRepository $orderAddressRepository)
     {
-    parent::__construct($orderAddressRepository);
+        parent::__construct($orderAddressRepository);
         $this->orderAddressRepository = $orderAddressRepository;
     }
 
@@ -47,13 +47,13 @@ class OrderAddressService extends Service
 
     public function createOrderAddress(CreateOrderAddressRequest $request): Response
     {
-        $data  =$this->orderAddressRepository->createOrderAddress($request->all());
+        $data = $this->orderAddressRepository->createOrderAddress($request->all());
         return $this->response()
             ->setData($data)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function updateOrderAddress(UpdateOrderAddressRequest $request,$id): Response
+    public function updateOrderAddress(UpdateOrderAddressRequest $request, $id): Response
     {
         $model = $this->orderAddressRepository->findOrderAddress($id);
         $data = $this->orderAddressRepository->updateOrderAddress(
@@ -66,7 +66,7 @@ class OrderAddressService extends Service
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function deleteOrderAddress(DeleteOrderAddressRequest $request,$id): Response
+    public function deleteOrderAddress(DeleteOrderAddressRequest $request, $id): Response
     {
         $model = $this->orderAddressRepository->findOrderAddress($id);
         return $this->response()

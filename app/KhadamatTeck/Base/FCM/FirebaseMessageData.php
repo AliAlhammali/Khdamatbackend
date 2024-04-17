@@ -80,7 +80,6 @@ class FirebaseMessageData implements \JsonSerializable
     }
 
 
-
     /**
      * @return array|null
      */

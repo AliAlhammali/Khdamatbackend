@@ -1,11 +1,11 @@
 <?php
+
 namespace App\KhadamatTeck\Merchant\Merchants\Services;
 
 use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\Base\Response;
 use App\KhadamatTeck\Base\Service;
 use App\KhadamatTeck\Merchant\Merchants\Mappers\MerchantDTOMapper;
-use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use App\KhadamatTeck\Merchant\Merchants\Repositories\MerchantsRepository;
 use App\KhadamatTeck\Merchant\Merchants\Requests\CreateMerchantRequest;
 use App\KhadamatTeck\Merchant\Merchants\Requests\DeleteMerchantRequest;
@@ -23,7 +23,7 @@ class MerchantsService extends Service
 
     public function __construct(MerchantsRepository $merchantsRepository)
     {
-    parent::__construct($merchantsRepository);
+        parent::__construct($merchantsRepository);
         $this->merchantsRepository = $merchantsRepository;
     }
 
@@ -47,13 +47,13 @@ class MerchantsService extends Service
 
     public function createMerchant(CreateMerchantRequest $request): Response
     {
-        $data  =$this->merchantsRepository->createMerchant($request->all());
+        $data = $this->merchantsRepository->createMerchant($request->all());
         return $this->response()
             ->setData($data)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function updateMerchant(UpdateMerchantRequest $request,$id): Response
+    public function updateMerchant(UpdateMerchantRequest $request, $id): Response
     {
         $model = $this->merchantsRepository->findMerchant($id);
         $data = $this->merchantsRepository->updateMerchant(
@@ -66,7 +66,7 @@ class MerchantsService extends Service
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function deleteMerchant(DeleteMerchantRequest $request,$id): Response
+    public function deleteMerchant(DeleteMerchantRequest $request, $id): Response
     {
         $model = $this->merchantsRepository->findMerchant($id);
         return $this->response()

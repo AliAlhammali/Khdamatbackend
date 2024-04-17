@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\Merchant\Services\Services;
 
 use App\KhadamatTeck\Admin\Services\Mappers\ServiceDTOMapper;
@@ -22,7 +23,7 @@ class ServicesService extends Service
 
     public function __construct(ServicesRepository $servicesRepository)
     {
-    parent::__construct($servicesRepository);
+        parent::__construct($servicesRepository);
         $this->servicesRepository = $servicesRepository;
     }
 
@@ -46,13 +47,13 @@ class ServicesService extends Service
 
     public function createService(CreateServiceRequest $request): Response
     {
-        $data  =$this->servicesRepository->createService($request->all());
+        $data = $this->servicesRepository->createService($request->all());
         return $this->response()
             ->setData($data)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function updateService(UpdateServiceRequest $request,$id): Response
+    public function updateService(UpdateServiceRequest $request, $id): Response
     {
         $model = $this->servicesRepository->findService($id);
         $data = $this->servicesRepository->updateService(
@@ -65,7 +66,7 @@ class ServicesService extends Service
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function deleteService(DeleteServiceRequest $request,$id): Response
+    public function deleteService(DeleteServiceRequest $request, $id): Response
     {
         $model = $this->servicesRepository->findService($id);
         return $this->response()

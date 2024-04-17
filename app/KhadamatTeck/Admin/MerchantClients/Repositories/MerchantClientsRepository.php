@@ -2,11 +2,11 @@
 
 namespace App\KhadamatTeck\Admin\MerchantClients\Repositories;
 
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Database\Eloquent\Collection;
-use App\KhadamatTeck\Base\Repository;
 use App\KhadamatTeck\Admin\MerchantClients\Mappers\MerchantClientDTOMapper;
 use App\KhadamatTeck\Admin\MerchantClients\Models\MerchantClient;
+use App\KhadamatTeck\Base\Repository;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class MerchantClientsRepository extends Repository

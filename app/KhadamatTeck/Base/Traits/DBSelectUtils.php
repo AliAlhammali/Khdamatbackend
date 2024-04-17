@@ -3,8 +3,8 @@
 namespace App\KhadamatTeck\Base\Traits;
 
 use App\KhadamatTeck\Base\BaseDBSelect;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 class DBSelectUtils
 {

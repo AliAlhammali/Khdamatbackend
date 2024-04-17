@@ -1,17 +1,17 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\Orders\Services;
 
-use App\KhadamatTeck\Base\Http\HttpStatus;
-use App\KhadamatTeck\Base\Response;
-use App\KhadamatTeck\Base\Service;
 use App\KhadamatTeck\Admin\Orders\Mappers\OrderDTOMapper;
-use App\KhadamatTeck\Admin\Orders\Models\Order;
 use App\KhadamatTeck\Admin\Orders\Repositories\OrdersRepository;
 use App\KhadamatTeck\Admin\Orders\Requests\CreateOrderRequest;
 use App\KhadamatTeck\Admin\Orders\Requests\DeleteOrderRequest;
 use App\KhadamatTeck\Admin\Orders\Requests\ListOrderRequest;
 use App\KhadamatTeck\Admin\Orders\Requests\UpdateOrderRequest;
 use App\KhadamatTeck\Admin\Orders\Requests\ViewOrderRequest;
+use App\KhadamatTeck\Base\Http\HttpStatus;
+use App\KhadamatTeck\Base\Response;
+use App\KhadamatTeck\Base\Service;
 
 class OrdersService extends Service
 {
@@ -23,7 +23,7 @@ class OrdersService extends Service
 
     public function __construct(OrdersRepository $ordersRepository)
     {
-    parent::__construct($ordersRepository);
+        parent::__construct($ordersRepository);
         $this->ordersRepository = $ordersRepository;
     }
 
@@ -47,13 +47,13 @@ class OrdersService extends Service
 
     public function createOrder(CreateOrderRequest $request): Response
     {
-        $data  =$this->ordersRepository->createOrder($request->all());
+        $data = $this->ordersRepository->createOrder($request->all());
         return $this->response()
             ->setData($data)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function updateOrder(UpdateOrderRequest $request,$id): Response
+    public function updateOrder(UpdateOrderRequest $request, $id): Response
     {
         $model = $this->ordersRepository->findOrder($id);
         $data = $this->ordersRepository->updateOrder(
@@ -66,7 +66,7 @@ class OrdersService extends Service
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function deleteOrder(DeleteOrderRequest $request,$id): Response
+    public function deleteOrder(DeleteOrderRequest $request, $id): Response
     {
         $model = $this->ordersRepository->findOrder($id);
         return $this->response()

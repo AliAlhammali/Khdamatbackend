@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\Users\Controllers;
 
 use App\Http\Controllers\Controller;
@@ -38,13 +39,13 @@ class UsersController extends Controller
         return $this->usersService->findUser($request, $id);
     }
 
-    public function update(UpdateUserRequest $request,string $id)
+    public function update(UpdateUserRequest $request, string $id)
     {
-        return $this->usersService->updateUser($request,$id);
+        return $this->usersService->updateUser($request, $id);
     }
 
-    public function delete(DeleteUserRequest $request,string $id)
+    public function delete(DeleteUserRequest $request, string $id)
     {
-        return $this->usersService->deleteUser($request,$id);
+        return $this->usersService->deleteUser($request, $id);
     }
 }

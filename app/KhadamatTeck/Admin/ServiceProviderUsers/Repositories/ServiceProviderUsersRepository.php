@@ -2,11 +2,11 @@
 
 namespace App\KhadamatTeck\Admin\ServiceProviderUsers\Repositories;
 
+use App\KhadamatTeck\Base\Repository;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Mappers\ServiceProviderUserDTOMapper;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models\ServiceProviderUser;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
-use App\KhadamatTeck\Base\Repository;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class ServiceProviderUsersRepository extends Repository

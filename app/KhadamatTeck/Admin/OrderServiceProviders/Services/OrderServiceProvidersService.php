@@ -1,17 +1,17 @@
 <?php
+
 namespace App\KhadamatTeck\Admin\OrderServiceProviders\Services;
 
-use App\KhadamatTeck\Base\Http\HttpStatus;
-use App\KhadamatTeck\Base\Response;
-use App\KhadamatTeck\Base\Service;
 use App\KhadamatTeck\Admin\OrderServiceProviders\Mappers\OrderServiceProviderDTOMapper;
-use App\KhadamatTeck\Admin\OrderServiceProviders\Models\OrderServiceProvider;
 use App\KhadamatTeck\Admin\OrderServiceProviders\Repositories\OrderServiceProvidersRepository;
 use App\KhadamatTeck\Admin\OrderServiceProviders\Requests\CreateOrderServiceProviderRequest;
 use App\KhadamatTeck\Admin\OrderServiceProviders\Requests\DeleteOrderServiceProviderRequest;
 use App\KhadamatTeck\Admin\OrderServiceProviders\Requests\ListOrderServiceProviderRequest;
 use App\KhadamatTeck\Admin\OrderServiceProviders\Requests\UpdateOrderServiceProviderRequest;
 use App\KhadamatTeck\Admin\OrderServiceProviders\Requests\ViewOrderServiceProviderRequest;
+use App\KhadamatTeck\Base\Http\HttpStatus;
+use App\KhadamatTeck\Base\Response;
+use App\KhadamatTeck\Base\Service;
 
 class OrderServiceProvidersService extends Service
 {
@@ -23,7 +23,7 @@ class OrderServiceProvidersService extends Service
 
     public function __construct(OrderServiceProvidersRepository $orderServiceProvidersRepository)
     {
-    parent::__construct($orderServiceProvidersRepository);
+        parent::__construct($orderServiceProvidersRepository);
         $this->orderServiceProvidersRepository = $orderServiceProvidersRepository;
     }
 
@@ -47,13 +47,13 @@ class OrderServiceProvidersService extends Service
 
     public function createOrderServiceProvider(CreateOrderServiceProviderRequest $request): Response
     {
-        $data  =$this->orderServiceProvidersRepository->createOrderServiceProvider($request->all());
+        $data = $this->orderServiceProvidersRepository->createOrderServiceProvider($request->all());
         return $this->response()
             ->setData($data)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function updateOrderServiceProvider(UpdateOrderServiceProviderRequest $request,$id): Response
+    public function updateOrderServiceProvider(UpdateOrderServiceProviderRequest $request, $id): Response
     {
         $model = $this->orderServiceProvidersRepository->findOrderServiceProvider($id);
         $data = $this->orderServiceProvidersRepository->updateOrderServiceProvider(
@@ -66,7 +66,7 @@ class OrderServiceProvidersService extends Service
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function deleteOrderServiceProvider(DeleteOrderServiceProviderRequest $request,$id): Response
+    public function deleteOrderServiceProvider(DeleteOrderServiceProviderRequest $request, $id): Response
     {
         $model = $this->orderServiceProvidersRepository->findOrderServiceProvider($id);
         return $this->response()

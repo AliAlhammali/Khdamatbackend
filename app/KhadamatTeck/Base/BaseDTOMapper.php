@@ -28,7 +28,7 @@ class BaseDTOMapper implements DTOMapperInterface
     }
 
     /**
-     * @param  DTOInterface  $DTO
+     * @param DTOInterface $DTO
      */
     public function setDTO(DTOInterface $DTO): void
     {
@@ -44,7 +44,7 @@ class BaseDTOMapper implements DTOMapperInterface
     }
 
     /**
-     * @param  ModelInterface  $model
+     * @param ModelInterface $model
      */
     public function setModel(ModelInterface $model): void
     {
@@ -60,7 +60,7 @@ class BaseDTOMapper implements DTOMapperInterface
     }
 
     /**
-     * @param  DTOMapperInterface  $mapper
+     * @param DTOMapperInterface $mapper
      */
     public function setMapper(DTOMapperInterface $mapper): void
     {
@@ -69,17 +69,18 @@ class BaseDTOMapper implements DTOMapperInterface
 
     public static function fromPaginator(
         LengthAwarePaginator $paginator
-    ): array {
+    ): array
+    {
         $mapper = get_called_class();
         $mapper = new $mapper;
         return [
             'items' => $mapper::fromArray($paginator->items()),
-            'meta'  => [
+            'meta' => [
                 'currentPage' => $paginator->currentPage(),
-                'lastPage'    => $paginator->lastPage(),
-                'path'        => $paginator->path(),
-                'perPage'     => $paginator->perPage(),
-                'total'       => $paginator->total(),
+                'lastPage' => $paginator->lastPage(),
+                'path' => $paginator->path(),
+                'perPage' => $paginator->perPage(),
+                'total' => $paginator->total(),
             ],
         ];
     }

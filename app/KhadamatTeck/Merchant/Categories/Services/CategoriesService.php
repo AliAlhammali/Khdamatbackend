@@ -1,4 +1,5 @@
 <?php
+
 namespace App\KhadamatTeck\Merchant\Categories\Services;
 
 use App\KhadamatTeck\Admin\Categories\Mappers\CategoryDTOMapper;
@@ -22,7 +23,7 @@ class CategoriesService extends Service
 
     public function __construct(CategoriesRepository $categoriesRepository)
     {
-    parent::__construct($categoriesRepository);
+        parent::__construct($categoriesRepository);
         $this->categoriesRepository = $categoriesRepository;
     }
 
@@ -46,13 +47,13 @@ class CategoriesService extends Service
 
     public function createCategory(CreateCategoryRequest $request): Response
     {
-        $data  =$this->categoriesRepository->createCategory($request->all());
+        $data = $this->categoriesRepository->createCategory($request->all());
         return $this->response()
             ->setData($data)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function updateCategory(UpdateCategoryRequest $request,$id): Response
+    public function updateCategory(UpdateCategoryRequest $request, $id): Response
     {
         $model = $this->categoriesRepository->findCategory($id);
         $data = $this->categoriesRepository->updateCategory(
@@ -65,7 +66,7 @@ class CategoriesService extends Service
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function deleteCategory(DeleteCategoryRequest $request,$id): Response
+    public function deleteCategory(DeleteCategoryRequest $request, $id): Response
     {
         $model = $this->categoriesRepository->findCategory($id);
         return $this->response()

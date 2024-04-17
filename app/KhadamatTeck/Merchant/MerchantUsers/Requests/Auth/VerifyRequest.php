@@ -15,8 +15,8 @@ class VerifyRequest extends KhadamatTeckRequest
     public function rules(): array
     {
         return [
-            'username' =>  'required',
-            'code' =>  'required'
+            'username' => 'required',
+            'code' => 'required'
         ];
     }
 }

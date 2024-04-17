@@ -24,8 +24,8 @@ class UploadActionRequest extends KhadamatTeckRequest
     public function rules(): array
     {
         return [
-            'file'  =>  'required',
-            'file.*'  =>  'required|file'
+            'file' => 'required',
+            'file.*' => 'required|file'
         ];
     }
 }
