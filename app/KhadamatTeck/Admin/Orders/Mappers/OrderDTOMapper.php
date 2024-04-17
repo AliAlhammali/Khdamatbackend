@@ -58,6 +58,11 @@ class OrderDTOMapper extends BaseDTOMapper
         $dto->setStartedAt($data->started_at);
         $dto->setCompletedAt($data->completed_at);
 
+        $dto->setAddress($data->address);
+        $dto->setTotals($data->total);
+        $dto->setItems($data->items);
+
+
         return $dto;
     }
 }

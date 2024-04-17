@@ -5,14 +5,16 @@ namespace App\KhadamatTeck\Merchant\Orders\Services;
 use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\Base\Response;
 use App\KhadamatTeck\Base\Service;
-use App\KhadamatTeck\Merchant\Orders\Mappers\OrderDTOMapper;
-use App\KhadamatTeck\Merchant\Orders\Models\Order;
+use App\KhadamatTeck\Admin\Orders\Mappers\OrderDTOMapper;
+use App\KhadamatTeck\Admin\Orders\Models\Order;
 use App\KhadamatTeck\Merchant\Orders\Repositories\OrdersRepository;
 use App\KhadamatTeck\Merchant\Orders\Requests\CreateOrderRequest;
 use App\KhadamatTeck\Merchant\Orders\Requests\DeleteOrderRequest;
 use App\KhadamatTeck\Merchant\Orders\Requests\ListOrderRequest;
 use App\KhadamatTeck\Merchant\Orders\Requests\UpdateOrderRequest;
 use App\KhadamatTeck\Merchant\Orders\Requests\ViewOrderRequest;
+use Exception;
+use Illuminate\Support\Facades\DB;
 
 class OrdersService extends Service
 {
@@ -48,9 +50,25 @@ class OrdersService extends Service
 
     public function createOrder(CreateOrderRequest $request): Response
     {
-        $data = $this->ordersRepository->createOrder($request->all());
+        $data = $request->all();
+//
+//        dd($data['address']);
+
+        DB::beginTransaction();
+        try {
+            $order = Order::create($request->all());
+            $order->address()->create($data['address']);
+            $order->items()->createMany($data['items']);
+            $order->total()->create($data['totals']);
+
+            DB::commit();
+            // all good
+        } catch (Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
         return $this->response()
-            ->setData($data)
+            ->setData(OrderDTOMapper::fromModel($order))
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 

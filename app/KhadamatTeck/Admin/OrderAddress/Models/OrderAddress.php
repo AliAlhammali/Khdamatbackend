@@ -3,6 +3,7 @@
 namespace App\KhadamatTeck\Admin\OrderAddress\Models;
 
 use App\KhadamatTeck\Base\BaseModel;
+use MatanYadaev\EloquentSpatial\Objects\Point;
 
 class OrderAddress extends BaseModel
 {
@@ -12,7 +13,7 @@ class OrderAddress extends BaseModel
      *
      * @var string
      */
-    protected $table = 'order_addresses';
+    protected $table = 'order_address';
     /**
      * Attributes that should be mass-assignable.
      *
@@ -20,4 +21,9 @@ class OrderAddress extends BaseModel
      */
 
     protected $fillable = ['id', 'order_id', 'name', 'email', 'phone', 'address', 'vat', 'location', 'pick_up_location', 'is_default_address'];
+
+    protected $casts = [
+        'location' => Point::class,
+        'pick_up_location' => Point::class,
+    ];
 }

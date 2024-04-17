@@ -18,6 +18,10 @@ class OrderDTO implements \JsonSerializable
     private mixed $completed_at = null;
     private mixed $started_at = null;
 
+    private mixed $address = null;
+    private mixed $totals = null;
+    private mixed $items = null;
+
 
     /**
      * @return int|null
@@ -215,6 +219,36 @@ class OrderDTO implements \JsonSerializable
         $this->started_at = $started_at;
     }
 
+    public function getAddress(): mixed
+    {
+        return $this->address;
+    }
+
+    public function setAddress(mixed $address): void
+    {
+        $this->address = $address;
+    }
+
+    public function getTotals(): mixed
+    {
+        return $this->totals;
+    }
+
+    public function setTotals(mixed $totals): void
+    {
+        $this->totals = $totals;
+    }
+
+    public function getItems(): mixed
+    {
+        return $this->items;
+    }
+
+    public function setItems(mixed $items): void
+    {
+        $this->items = $items;
+    }
+
     public function jsonSerialize()
     {
         return [
@@ -231,6 +265,9 @@ class OrderDTO implements \JsonSerializable
             'merchant_branch_id' => $this->getMerchantBranchId(),
             'started_at' => $this->getStartedAt(),
             'completed_at' => $this->getCompletedAt(),
+            'address' => $this->getAddress(),
+            'totals' => $this->getTotals(),
+            'items' => $this->getItems(),
 
         ];
     }
