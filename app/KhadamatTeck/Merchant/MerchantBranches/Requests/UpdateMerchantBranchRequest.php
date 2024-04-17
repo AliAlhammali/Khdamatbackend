@@ -3,6 +3,8 @@
 namespace App\KhadamatTeck\Merchant\MerchantBranches\Requests;
 
 use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
+use MatanYadaev\EloquentSpatial\Enums\Srid;
+use MatanYadaev\EloquentSpatial\Objects\Point;
 
 class UpdateMerchantBranchRequest extends KhadamatTeckRequest
 {
