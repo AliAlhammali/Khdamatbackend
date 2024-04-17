@@ -68,7 +68,7 @@ class OrdersService extends Service
             throw $e;
         }
         return $this->response()
-            ->setData(OrderDTOMapper::fromModel($order))
+            ->setData(OrderDTOMapper::fromModel($order->fresh()))
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 

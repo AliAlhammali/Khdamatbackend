@@ -48,7 +48,6 @@ class OrderDTOMapper extends BaseDTOMapper
         $dto->setMerchantUserId($data->merchant_user_id);
         $dto->setMerchantClientId($data->merchant_client_id);
         $dto->setMainCategoryId($data->main_category_id);
-        $dto->setCategoryId($data->category_id);
         $dto->setStatus($data->status);
         $dto->setOrderOtp($data->order_otp);
         $dto->setCreatedAt($data->created_at);

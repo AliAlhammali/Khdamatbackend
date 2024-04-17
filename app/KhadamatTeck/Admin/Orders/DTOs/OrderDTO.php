@@ -2,19 +2,20 @@
 
 namespace App\KhadamatTeck\Admin\Orders\DTOs;
 
+use Carbon\Carbon;
+
 class OrderDTO implements \JsonSerializable
 {
     private ?int $id = null;
-    private ?string $merchant_id = null;
-    private ?string $merchant_user_id = null;
-    private ?string $merchant_client_id = null;
-    private ?string $main_category_id = null;
-    private ?string $category_id = null;
+    private ?int $merchant_id = null;
+    private ?int $merchant_user_id = null;
+    private ?int $merchant_client_id = null;
+    private ?int $main_category_id = null;
     private ?string $status = null;
     private ?string $order_otp = null;
     private ?string $created_at = null;
     private ?string $pick_up_type = null;
-    private ?string $merchant_branch_id = null;
+    private ?int $merchant_branch_id = null;
     private mixed $completed_at = null;
     private mixed $started_at = null;
 
@@ -40,83 +41,67 @@ class OrderDTO implements \JsonSerializable
     }
 
     /**
-     * @return string|null
+     * @return int|null
      */
-    public function getMerchantId(): ?string
+    public function getMerchantId(): ?int
     {
         return $this->merchant_id;
     }
 
     /**
-     * @param string|null $merchant_id
+     * @param int|null $merchant_id
      */
-    public function setMerchantId(?string $merchant_id): void
+    public function setMerchantId(?int $merchant_id): void
     {
         $this->merchant_id = $merchant_id;
     }
 
     /**
-     * @return string|null
+     * @return int|null
      */
-    public function getMerchantUserId(): ?string
+    public function getMerchantUserId(): ?int
     {
         return $this->merchant_user_id;
     }
 
     /**
-     * @param string|null $merchant_user_id
+     * @param int|null $merchant_user_id
      */
-    public function setMerchantUserId(?string $merchant_user_id): void
+    public function setMerchantUserId(?int $merchant_user_id): void
     {
         $this->merchant_user_id = $merchant_user_id;
     }
 
     /**
-     * @return string|null
+     * @return int|null
      */
-    public function getMerchantClientId(): ?string
+    public function getMerchantClientId(): ?int
     {
         return $this->merchant_client_id;
     }
 
     /**
-     * @param string|null $merchant_client_id
+     * @param int|null $merchant_client_id
      */
-    public function setMerchantClientId(?string $merchant_client_id): void
+    public function setMerchantClientId(?int $merchant_client_id): void
     {
         $this->merchant_client_id = $merchant_client_id;
     }
 
     /**
-     * @return string|null
+     * @return int|null
      */
-    public function getMainCategoryId(): ?string
+    public function getMainCategoryId(): ?int
     {
         return $this->main_category_id;
     }
 
     /**
-     * @param string|null $main_category_id
+     * @param int|null $main_category_id
      */
-    public function setMainCategoryId(?string $main_category_id): void
+    public function setMainCategoryId(?int $main_category_id): void
     {
         $this->main_category_id = $main_category_id;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getCategoryId(): ?string
-    {
-        return $this->category_id;
-    }
-
-    /**
-     * @param string|null $category_id
-     */
-    public function setCategoryId(?string $category_id): void
-    {
-        $this->category_id = $category_id;
     }
 
     /**
@@ -156,7 +141,7 @@ class OrderDTO implements \JsonSerializable
      */
     public function getCreatedAt(): ?string
     {
-        return $this->created_at;
+        return Carbon::parse($this->created_at);
     }
 
     /**
@@ -257,7 +242,6 @@ class OrderDTO implements \JsonSerializable
             'merchant_user_id' => $this->getMerchantUserId(),
             'merchant_client_id' => $this->getMerchantClientId(),
             'main_category_id' => $this->getMainCategoryId(),
-            'category_id' => $this->getCategoryId(),
             'status' => $this->getStatus(),
             'order_otp' => $this->getOrderOtp(),
             'created_at' => $this->getCreatedAt(),
