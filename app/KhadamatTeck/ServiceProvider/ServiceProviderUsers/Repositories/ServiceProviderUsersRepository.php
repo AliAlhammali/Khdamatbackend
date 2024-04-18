@@ -23,7 +23,8 @@ class ServiceProviderUsersRepository extends Repository
 
     public function paginateServiceProviderUsers($requestQuery, $perPage = 20): LengthAwarePaginator
     {
-        return QueryBuilder::for(ServiceProviderUser::class)
+        $spID = SPAuth()->user()->service_provider_id;
+        return QueryBuilder::for(ServiceProviderUser::where(['service_provider_id'=>$spID]))
             ->allowedFilters(ServiceProviderUser::getAllowedFilters())
             ->paginate($perPage)
             ->appends($requestQuery);
