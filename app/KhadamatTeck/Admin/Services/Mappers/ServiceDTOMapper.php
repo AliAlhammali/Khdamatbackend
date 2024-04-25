@@ -4,6 +4,7 @@ namespace App\KhadamatTeck\Admin\Services\Mappers;
 
 use App\KhadamatTeck\Admin\Services\DTOs\ServiceDTO;
 use App\KhadamatTeck\Admin\Services\DTOs\ServiceListDTO;
+use App\KhadamatTeck\Admin\Services\DTOs\ServiceToCreateOrderDTO;
 use App\KhadamatTeck\Base\BaseDTOMapper;
 use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
 use Illuminate\Support\Collection;
@@ -28,11 +29,29 @@ class ServiceDTOMapper extends BaseDTOMapper
 
     public static function fromModel($data, $listing = false): ServiceDTO
     {
-        if ($listing) {
-            $dto = new ServiceListDTO();
+        if (request('forCreatingOrder', false)) {
+            $dto = self::fromModelToCreateOrder($data);
         } else {
-            $dto = self::prepareData(new ServiceDTO(), $data);
+            if ($listing) {
+                $dto = new ServiceListDTO();
+            } else {
+                $dto = self::prepareData(new ServiceDTO(), $data);
+            }
         }
+
+        return $dto;
+    }
+
+    public static function fromModelToCreateOrder($data): ServiceDTO
+    {
+        $dto = new ServiceToCreateOrderDTO();
+        $dto->setId($data->id);
+        $dto->setTitle($data->getTranslations('title'));
+        $dto->setSlug($data->getTranslations('slug'));
+        $dto->setDescription($data->description);
+        $dto->setPrice($data->price);
+
+
         return $dto;
     }
 
