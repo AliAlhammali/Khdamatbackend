@@ -8,5 +8,5 @@ Route::prefix('orders')->group(function () {
     Route::post('/create', [OrdersController::class, 'create']);
     Route::patch('/{id}', [OrdersController::class, 'update']);
     Route::get('/{id}', [OrdersController::class, 'show']);
-    Route::delete('/{id}', [OrdersController::class, 'delete']);
+//    Route::delete('/{id}', [OrdersController::class, 'delete']);
 });
