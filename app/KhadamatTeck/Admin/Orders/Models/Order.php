@@ -2,10 +2,12 @@
 
 namespace App\KhadamatTeck\Admin\Orders\Models;
 
+use App\KhadamatTeck\Admin\MerchantClients\Models\MerchantClient;
 use App\KhadamatTeck\Admin\OrderAddress\Models\OrderAddress;
 use App\KhadamatTeck\Admin\OrderItems\Models\OrderItem;
 use App\KhadamatTeck\Admin\OrderTotals\Models\OrderTotal;
 use App\KhadamatTeck\Base\BaseModel;
+use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\Models\ServiceProvider;
 
 class Order extends BaseModel
@@ -49,6 +51,16 @@ class Order extends BaseModel
     function activeServiceProvider()
     {
         return $this->belongsTo(ServiceProvider::class)->where('active', 1);
+    }
+
+    function merchantUser()
+    {
+        return $this->belongsTo(MerchantUser::class,'merchant_user_id');
+    }
+
+    function merchantClient()
+    {
+        return $this->belongsTo(MerchantClient::class,'merchant_client_id');
     }
 
 }

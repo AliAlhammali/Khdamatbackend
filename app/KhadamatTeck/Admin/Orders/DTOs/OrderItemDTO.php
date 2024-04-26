@@ -4,7 +4,7 @@ namespace App\KhadamatTeck\Admin\Orders\DTOs;
 
 use Carbon\Carbon;
 
-class OrderDTO implements \JsonSerializable
+class OrderItemDTO implements \JsonSerializable
 {
     private ?int $id = null;
     private ?int $merchant_id = null;
@@ -22,8 +22,6 @@ class OrderDTO implements \JsonSerializable
     private mixed $address = null;
     private mixed $totals = null;
     private mixed $items = null;
-    private mixed $merchant_user = null;
-    private mixed $merchant_client = null;
 
 
     /**
@@ -236,26 +234,6 @@ class OrderDTO implements \JsonSerializable
         $this->items = $items;
     }
 
-    public function getMerchantUser(): mixed
-    {
-        return $this->merchant_user;
-    }
-
-    public function setMerchantUser(mixed $merchant_user): void
-    {
-        $this->merchant_user = $merchant_user;
-    }
-
-    public function getMerchantClient(): mixed
-    {
-        return $this->merchant_client;
-    }
-
-    public function setMerchantClient(mixed $merchant_client): void
-    {
-        $this->merchant_client = $merchant_client;
-    }
-
     public function jsonSerialize()
     {
         return [
@@ -274,8 +252,6 @@ class OrderDTO implements \JsonSerializable
             'address' => $this->getAddress(),
             'totals' => $this->getTotals(),
             'items' => $this->getItems(),
-            'merchant_user'=> $this->getMerchantUser(),
-            'merchant_client'=> $this->getMerchantClient(),
 
         ];
     }

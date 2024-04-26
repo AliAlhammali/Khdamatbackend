@@ -50,7 +50,7 @@ class ServiceProviderUserDTOMapper extends BaseDTOMapper
         $dto->setAddress($data->address);
         $dto->setPhone($data->phone);
         $dto->setRole($data->role);
-        $dto->setPassword($data->password);
+//        $dto->setPassword($data->password);
         $dto->setStatus($data->status);
         $dto->setServiceProvider($data->serviceProvider);
         return $dto;

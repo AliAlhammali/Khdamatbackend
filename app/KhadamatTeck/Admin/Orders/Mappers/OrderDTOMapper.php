@@ -2,10 +2,12 @@
 
 namespace App\KhadamatTeck\Admin\Orders\Mappers;
 
+use App\KhadamatTeck\Admin\MerchantClients\Mappers\MerchantClientDTOMapper;
 use App\KhadamatTeck\Admin\Orders\DTOs\OrderDTO;
 use App\KhadamatTeck\Admin\Orders\DTOs\OrderListDTO;
 use App\KhadamatTeck\Base\BaseDTOMapper;
 use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
+use App\KhadamatTeck\Merchant\MerchantUsers\Mappers\MerchantUserDTOMapper;
 use Illuminate\Support\Collection;
 
 class OrderDTOMapper extends BaseDTOMapper
@@ -60,6 +62,11 @@ class OrderDTOMapper extends BaseDTOMapper
         $dto->setAddress($data->address);
         $dto->setTotals($data->total);
         $dto->setItems($data->items);
+
+        if (request('includeOrderMerchantUser', false))
+            $dto->setMerchantUser(MerchantUserDTOMapper::fromModel($data->merchantUser));
+        if (request('includeOrderMerchantClient', false))
+            $dto->setMerchantClient(MerchantClientDTOMapper::fromModel($data->merchantClient));
 
 
         return $dto;

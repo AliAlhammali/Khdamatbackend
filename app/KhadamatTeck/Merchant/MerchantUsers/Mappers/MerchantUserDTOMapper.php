@@ -50,9 +50,10 @@ class MerchantUserDTOMapper extends BaseDTOMapper
         $dto->setAddress($data->address);
         $dto->setPhone($data->phone);
         $dto->setRole($data->role);
-        $dto->setPassword($data->password);
+//        $dto->setPassword($data->password);
         $dto->setStatus($data->status);
-        $dto->setMerchant($data->merchant);
+        if (request('includeMerchant'))
+            $dto->setMerchant($data->merchant);
 
         return $dto;
     }
