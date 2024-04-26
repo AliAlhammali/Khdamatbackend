@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class OrderItem extends BaseModel
 {
     protected $with = [
-        'item','item.category'
+        'item'
     ];
     // use SoftDeletes;
     /**
@@ -31,7 +31,7 @@ class OrderItem extends BaseModel
         $belongs = $this->belongsTo(ServiceModel::class,'item_id');
         if(request('includeOrderItemService')){
             $belongs->with([
-                'item','item.category'
+                'item.category'
             ]) ;
         }
         return $belongs;
