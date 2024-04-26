@@ -4,6 +4,7 @@ namespace App\KhadamatTeck\Admin\OrderItems\Models;
 
 use App\KhadamatTeck\Admin\Services\Models\ServiceModel;
 use App\KhadamatTeck\Base\BaseModel;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class OrderItem extends BaseModel
 {
@@ -25,8 +26,14 @@ class OrderItem extends BaseModel
 
     protected $fillable = ['id', 'order_id', 'item_id', 'quantity', 'item_price', 'sup_total', 'vat', 'total', 'order_otp'];
 
-    function item()
+    function item(): BelongsTo
     {
-        return $this->belongsTo(ServiceModel::class,'item_id');
+        $belongs = $this->belongsTo(ServiceModel::class,'item_id');
+        if(request('includeOrderItemService')){
+            $belongs->with([
+                'item','item.category'
+            ]) ;
+        }
+        return $belongs;
     }
 }
