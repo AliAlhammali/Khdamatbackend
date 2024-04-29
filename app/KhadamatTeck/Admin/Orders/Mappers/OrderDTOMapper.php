@@ -2,6 +2,7 @@
 
 namespace App\KhadamatTeck\Admin\Orders\Mappers;
 
+use App\KhadamatTeck\Admin\Categories\Mappers\CategoryDTOMapper;
 use App\KhadamatTeck\Admin\MerchantClients\Mappers\MerchantClientDTOMapper;
 use App\KhadamatTeck\Admin\Orders\DTOs\OrderDTO;
 use App\KhadamatTeck\Admin\Orders\DTOs\OrderListDTO;
@@ -67,8 +68,8 @@ class OrderDTOMapper extends BaseDTOMapper
             $dto->setMerchantUser(MerchantUserDTOMapper::fromModel($data->merchantUser));
         if (request('includeOrderMerchantClient', false))
             $dto->setMerchantClient(MerchantClientDTOMapper::fromModel($data->merchantClient));
-
-
+        if (request('includeOrderMainCategory', false))
+            $dto->setMerchantClient(CategoryDTOMapper::fromModel($data->mainCategory));
         return $dto;
     }
 }

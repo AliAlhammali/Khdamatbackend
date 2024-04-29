@@ -2,6 +2,7 @@
 
 namespace App\KhadamatTeck\Admin\Orders\Models;
 
+use App\KhadamatTeck\Admin\Categories\Models\Category;
 use App\KhadamatTeck\Admin\MerchantClients\Models\MerchantClient;
 use App\KhadamatTeck\Admin\OrderAddress\Models\OrderAddress;
 use App\KhadamatTeck\Admin\OrderItems\Models\OrderItem;
@@ -78,6 +79,11 @@ class Order extends BaseModel
     function merchantClient()
     {
         return $this->belongsTo(MerchantClient::class,'merchant_client_id');
+    }
+
+    function mainCategory()
+    {
+        return $this->belongsTo(Category::class,'main_category_id');
     }
 
 }
