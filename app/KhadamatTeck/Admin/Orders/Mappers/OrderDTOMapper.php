@@ -67,11 +67,14 @@ class OrderDTOMapper extends BaseDTOMapper
         $dto->setItems($data->items);
         if (request('includeOrderMerchantUser', false) && $data->merchantUser)
             $dto->setMerchantUser(MerchantUserDTOMapper::fromModel($data->merchantUser));
+
         if (request('includeOrderMerchantClient', false) &&$data->merchantClient)
             $dto->setMerchantClient(MerchantClientDTOMapper::fromModel($data->merchantClient));
+
         if (request('includeOrderMainCategory', false) &&$data->mainCategory)
             $dto->setMainCategory(CategoryDTOMapper::fromModel($data->mainCategory));
-        if (request('includeOrderMerchant', false) &&$data->merchant)
+
+        if (request('includeOrderMerchant', false) && $data->merchant)
             $dto->setMerchant(MerchantDTOMapper::fromModel($data->merchant));
 
         return $dto;
