@@ -27,6 +27,23 @@ class Order extends BaseModel
 
     protected $fillable = ['id', 'merchant_id', 'merchant_user_id', 'merchant_client_id', 'main_category_id', 'category_id', 'status', 'order_otp', 'created_at', 'pick_up_type', 'merchant_branch_id', 'started_at', 'profit_sup_total', 'profit_vat', 'profit_total',];
 
+    public static function getDefaultSort()
+    {
+        if (request('sortAsc', false)) {
+            return 'started_at';
+        } else {
+            return '-started_at';
+        }
+    }
+
+    public static function getAllowedSorts()
+    {
+        if (request('sortAsc', false)) {
+            return 'started_at';
+        } else {
+            return '-started_at';
+        }
+    }
 
     function address()
     {

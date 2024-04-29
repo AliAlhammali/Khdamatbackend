@@ -39,7 +39,8 @@ class MerchantsRepository extends Repository
         /* @var Merchant $merchant */
         $merchant = Merchant::create($data);
         if ($data['owner']) {
-            $data['owner']['password'] = bcrypt(123456);
+            $data['owner']['password'] = bcrypt($data['owner']['password']??123456);
+            $data['owner']['status'] = 'active';
             $merchant->users()->create($data['owner']);
         }
 

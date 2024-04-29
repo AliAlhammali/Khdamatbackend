@@ -39,7 +39,8 @@ class ServiceProvidersRepository extends Repository
         $serviceProvider = ServiceProvider::create($data);
 
         if ($data['owner']) {
-            $data['owner']['password'] = bcrypt(123456);
+            $data['owner']['password'] = bcrypt($data['owner']['password']??123456);
+            $data['owner']['status'] = 'active';
             $serviceProvider->users()->create($data['owner']);
         }
         return ServiceProviderDTOMapper::fromModel($serviceProvider);
