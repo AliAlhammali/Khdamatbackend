@@ -25,7 +25,9 @@ class OrderDTO implements \JsonSerializable
     private mixed $merchant_user = null;
     private mixed $merchant_client = null;
     private mixed $main_category = null;
-
+    private mixed $merchant = null;
+    private mixed $creator = null;
+    private mixed $client = null;
 
     /**
      * @return int|null
@@ -267,6 +269,36 @@ class OrderDTO implements \JsonSerializable
         $this->main_category = $main_category;
     }
 
+    public function getMerchant(): mixed
+    {
+        return $this->merchant;
+    }
+
+    public function setMerchant(mixed $merchant): void
+    {
+        $this->merchant = $merchant;
+    }
+
+    public function getCreator(): mixed
+    {
+        return $this->creator;
+    }
+
+    public function setCreator(mixed $creator): void
+    {
+        $this->creator = $creator;
+    }
+
+    public function getClient(): mixed
+    {
+        return $this->client;
+    }
+
+    public function setClient(mixed $client): void
+    {
+        $this->client = $client;
+    }
+
     public function jsonSerialize()
     {
         return [
@@ -288,6 +320,9 @@ class OrderDTO implements \JsonSerializable
             'merchant_user'=> $this->getMerchantUser(),
             'merchant_client'=> $this->getMerchantClient(),
             'main_category'=> $this->getMainCategory(),
+            'merchant'=> $this->getMerchant(),
+            'creator'=> $this->getCreator(),
+            'client'=> $this->getClient(),
 
         ];
     }

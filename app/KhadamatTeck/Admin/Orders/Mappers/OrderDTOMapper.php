@@ -8,6 +8,8 @@ use App\KhadamatTeck\Admin\Orders\DTOs\OrderDTO;
 use App\KhadamatTeck\Admin\Orders\DTOs\OrderListDTO;
 use App\KhadamatTeck\Base\BaseDTOMapper;
 use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
+use App\KhadamatTeck\Merchant\Merchants\Mappers\MerchantDTOMapper;
+use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use App\KhadamatTeck\Merchant\MerchantUsers\Mappers\MerchantUserDTOMapper;
 use Illuminate\Support\Collection;
 
@@ -69,6 +71,9 @@ class OrderDTOMapper extends BaseDTOMapper
             $dto->setMerchantClient(MerchantClientDTOMapper::fromModel($data->merchantClient));
         if (request('includeOrderMainCategory', false) &&$data->mainCategory)
             $dto->setMainCategory(CategoryDTOMapper::fromModel($data->mainCategory));
+        if (request('includeOrderMerchant', false) &&$data->merchant)
+            $dto->setMerchant(MerchantDTOMapper::fromModel($data->merchant));
+
         return $dto;
     }
 }

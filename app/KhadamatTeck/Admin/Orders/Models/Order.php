@@ -8,6 +8,7 @@ use App\KhadamatTeck\Admin\OrderAddress\Models\OrderAddress;
 use App\KhadamatTeck\Admin\OrderItems\Models\OrderItem;
 use App\KhadamatTeck\Admin\OrderTotals\Models\OrderTotal;
 use App\KhadamatTeck\Base\BaseModel;
+use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\Models\ServiceProvider;
 
@@ -79,6 +80,11 @@ class Order extends BaseModel
     function merchantClient()
     {
         return $this->belongsTo(MerchantClient::class,'merchant_client_id');
+    }
+
+    function merchant()
+    {
+        return $this->belongsTo(Merchant::class);
     }
 
     function mainCategory()
