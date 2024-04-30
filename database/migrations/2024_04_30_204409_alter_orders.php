@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::table('orders', function (Blueprint $table) {
             $table->string('merchant_reference')->nullable();
             $table->foreignIdFor(\App\KhadamatTeck\ServiceProvider\ServiceProviders\Models\ServiceProvider::class)->nullable();
-            $table->dateTime('completed_at')->nullable();
         });
     }
 
