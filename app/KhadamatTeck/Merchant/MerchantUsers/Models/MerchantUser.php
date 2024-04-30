@@ -2,6 +2,7 @@
 
 namespace App\KhadamatTeck\Merchant\MerchantUsers\Models;
 
+use App\KhadamatTeck\Base\Filters\KeywordSearchFilter;
 use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -42,6 +43,7 @@ class MerchantUser extends Authenticatable
     {
         return [
             AllowedFilter::exact('merchant_id'),
+            AllowedFilter::custom('keyword', new KeywordSearchFilter(['title', 'phone'])),
         ];
     }
 }
