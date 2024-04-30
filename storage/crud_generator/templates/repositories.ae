@@ -26,6 +26,7 @@ class ClassNamePluralRepository extends Repository
         return QueryBuilder::for(ModelName::class)
             ->allowedFilters(ModelName::getAllowedFilters())
             ->allowedSorts(ModelName::getAllowedSorts())
+            ->defaultSort(ModelName::getDefaultSort())
             ->paginate($perPage)
             ->appends($requestQuery);
     }

@@ -24,6 +24,7 @@ class OrdersRepository extends Repository
     public function paginateOrders($requestQuery, $perPage = 20): LengthAwarePaginator
     {
         return QueryBuilder::for(Order::class)
+            ->defaultSort(Order::getDefaultSort())
             ->allowedFilters(Order::getAllowedFilters())
             ->allowedSorts(Order::getAllowedSorts())
             ->paginate($perPage)
