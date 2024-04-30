@@ -41,6 +41,7 @@ class MerchantsRepository extends Repository
         if ($data['owner']) {
             $data['owner']['password'] = bcrypt($data['owner']['password']??123456);
             $data['owner']['status'] = 'active';
+            $data['owner']['role'] = 'Admin';
             $merchant->users()->create($data['owner']);
         }
 
