@@ -40,11 +40,12 @@ class Order extends BaseModel
 
     public static function getAllowedSorts()
     {
-        if (request('sortAsc', false)) {
-            return 'started_at';
-        } else {
-            return '-started_at';
-        }
+        return '-started_at';
+//        if (request('sortAsc', false)) {
+//            return 'started_at';
+//        } else {
+//            return '-started_at';
+//        }
     }
 
     function address()
