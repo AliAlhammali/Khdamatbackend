@@ -25,6 +25,7 @@ class CategoriesRepository extends Repository
     {
         return QueryBuilder::for(Category::class)
             ->allowedFilters(Category::getAllowedFilters())
+            ->allowedSorts(Category::getAllowedSorts())
             ->paginate($perPage)
             ->appends($requestQuery);
     }

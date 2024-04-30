@@ -25,6 +25,7 @@ class MerchantBranchesRepository extends Repository
     {
         return QueryBuilder::for(MerchantBranch::class)
             ->allowedFilters(MerchantBranch::getAllowedFilters())
+            ->allowedSorts(MerchantBranch::getAllowedSorts())
             ->paginate($perPage)
             ->appends($requestQuery);
     }
