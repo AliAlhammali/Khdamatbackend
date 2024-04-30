@@ -26,6 +26,7 @@ class OrdersRepository extends Repository
         return QueryBuilder::for(Order::class)
             ->allowedFilters(Order::getAllowedFilters())
             ->allowedSorts(Order::getAllowedSorts())
+            ->defaultSort(Order::getDefaultSort())
             ->paginate($perPage)
             ->appends($requestQuery);
     }
