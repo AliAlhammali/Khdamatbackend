@@ -3,9 +3,11 @@
 namespace App\KhadamatTeck\Admin\MerchantBranches\Models;
 
 use App\KhadamatTeck\Base\BaseModel;
+use App\KhadamatTeck\Base\Filters\KeywordSearchFilter;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use MatanYadaev\EloquentSpatial\Objects\Point;
 use MatanYadaev\EloquentSpatial\Traits\HasSpatial;
+use Spatie\QueryBuilder\AllowedFilter;
 
 class MerchantBranch extends BaseModel
 {
@@ -30,4 +32,13 @@ class MerchantBranch extends BaseModel
         'location' => Point::class,
         'is_active' => 'boolean',
     ];
+
+    public static function getAllowedFilters(): array
+    {
+        return [
+            AllowedFilter::exact('merchant_id'),
+            AllowedFilter::exact('is_active'),
+            AllowedFilter::custom('keyword', new KeywordSearchFilter(['name', 'phone'])),
+        ];
+    }
 }
