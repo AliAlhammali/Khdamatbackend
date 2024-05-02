@@ -3,8 +3,10 @@
 namespace App\KhadamatTeck\ServiceProvider\ServiceProviders\Models;
 
 use App\KhadamatTeck\Base\BaseModel;
+use App\KhadamatTeck\Base\Filters\KeywordSearchFilter;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models\ServiceProviderUser;
 use Smartisan\Settings\HasSettings;
+use Spatie\QueryBuilder\AllowedFilter;
 
 class ServiceProvider extends BaseModel
 {
@@ -28,5 +30,16 @@ class ServiceProvider extends BaseModel
     public function users()
     {
         return $this->hasMany(ServiceProviderUser::class);
+    }
+
+    public static function getAllowedFilters(): array
+    {
+        return [
+            AllowedFilter::exact('service_provider_id'),
+            AllowedFilter::exact('status'),
+            AllowedFilter::exact('role'),
+            AllowedFilter::exact('id'),
+            AllowedFilter::custom('keyword', new KeywordSearchFilter(['title', 'phone'])),
+        ];
     }
 }
