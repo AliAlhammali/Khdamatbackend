@@ -43,4 +43,22 @@ class ServiceProviderUser extends Authenticatable
         ];
     }
 
+    public static function getDefaultSort()
+    {
+        if (request('sortAsc', false)) {
+            return 'created_at';
+        } else {
+            return '-created_at';
+        }
+    }
+
+    public static function getAllowedSorts()
+    {
+        if (request('sortAsc', false)) {
+            return 'created_at';
+        } else {
+            return '-created_at';
+        }
+    }
+
 }

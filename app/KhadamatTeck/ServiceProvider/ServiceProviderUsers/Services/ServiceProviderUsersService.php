@@ -31,7 +31,7 @@ class ServiceProviderUsersService extends Service
     {
         $response = $this->response();
         if ($request->has('listing')) {
-            $data = $this->serviceProviderUsersRepository->minimalListWithFilter();
+            $data = $this->serviceProviderUsersRepository->minimalListWithFilter(listFields:['id','name']);
             $response->setData($data);
         } else {
             $data = $this->serviceProviderUsersRepository->paginateServiceProviderUsers(
