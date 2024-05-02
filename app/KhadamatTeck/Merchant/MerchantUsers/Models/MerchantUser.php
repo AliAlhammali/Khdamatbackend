@@ -43,6 +43,7 @@ class MerchantUser extends Authenticatable
     {
         return [
             AllowedFilter::exact('merchant_id'),
+            AllowedFilter::exact('role'),
             AllowedFilter::custom('keyword', new KeywordSearchFilter(['name', 'phone'])),
         ];
     }

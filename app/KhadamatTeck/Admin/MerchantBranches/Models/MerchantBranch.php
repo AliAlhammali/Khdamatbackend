@@ -4,6 +4,7 @@ namespace App\KhadamatTeck\Admin\MerchantBranches\Models;
 
 use App\KhadamatTeck\Base\BaseModel;
 use App\KhadamatTeck\Base\Filters\KeywordSearchFilter;
+use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use MatanYadaev\EloquentSpatial\Objects\Point;
 use MatanYadaev\EloquentSpatial\Traits\HasSpatial;
@@ -38,7 +39,12 @@ class MerchantBranch extends BaseModel
         return [
             AllowedFilter::exact('merchant_id'),
             AllowedFilter::exact('is_active'),
-            AllowedFilter::custom('keyword', new KeywordSearchFilter(['name', 'phone'])),
+            AllowedFilter::custom('keyword', new KeywordSearchFilter(['name', 'address'])),
         ];
+    }
+
+    function merchant()
+    {
+        return $this->belongsTo(Merchant::class);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models;
 
+use App\KhadamatTeck\Base\Filters\KeywordSearchFilter;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\Models\ServiceProvider;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -37,6 +38,9 @@ class ServiceProviderUser extends Authenticatable
     {
         return [
             AllowedFilter::exact('service_provider_id'),
+            AllowedFilter::exact('role'),
+            AllowedFilter::custom('keyword', new KeywordSearchFilter(['name', 'phone'])),
         ];
     }
+
 }
