@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\KhadamatTeck\Admin\MerchantUsers\Models\MerchantUser;
 use App\KhadamatTeck\Admin\Users\Models\User;
 use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
-use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\Models\ServiceProvider;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models\ServiceProviderUser;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class AddUsersToSystem extends Seeder

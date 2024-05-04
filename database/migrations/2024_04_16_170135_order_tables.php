@@ -1,10 +1,10 @@
 <?php
 
 use App\KhadamatTeck\Admin\MerchantClients\Models\MerchantClient;
+use App\KhadamatTeck\Admin\MerchantUsers\Models\MerchantUser;
 use App\KhadamatTeck\Admin\Orders\Models\Order;
 use App\KhadamatTeck\Admin\Services\Models\ServiceModel;
 use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
-use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\Models\ServiceProvider;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;

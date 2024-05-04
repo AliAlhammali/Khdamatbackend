@@ -3,10 +3,10 @@
 namespace App\KhadamatTeck\Merchant\Merchants\Models;
 
 use App\KhadamatTeck\Admin\Categories\Models\Category;
+use App\KhadamatTeck\Admin\MerchantUsers\Models\MerchantUser;
 use App\KhadamatTeck\Admin\Services\Models\ServiceModel;
 use App\KhadamatTeck\Base\BaseModel;
 use App\KhadamatTeck\Base\Filters\KeywordSearchFilter;
-use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
 use Smartisan\Settings\HasSettings;
 use Spatie\QueryBuilder\AllowedFilter;
 

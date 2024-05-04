@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models\Scopes;
+namespace App\KhadamatTeck\Admin\MerchantClients\Scopes;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
 
-class OwnBranches implements Scope
+class OwnClients implements Scope
 {
     /**
      * Apply the scope to a given Eloquent query builder.

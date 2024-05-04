@@ -2,11 +2,11 @@
 
 namespace App\KhadamatTeck\Merchant\MerchantUsers\Services;
 
+use App\KhadamatTeck\Admin\MerchantUsers\Models\MerchantUser;
 use App\KhadamatTeck\Admin\Users\Enums\UserOtpNotifyTypes;
 use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\Base\Response;
 use App\KhadamatTeck\Merchant\MerchantUsers\Mappers\MerchantUserDTOMapper;
-use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
 use App\KhadamatTeck\Merchant\MerchantUsers\Repositories\MerchantUsersRepository;
 use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\ForgotRequest;
 use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\LoginRequest;

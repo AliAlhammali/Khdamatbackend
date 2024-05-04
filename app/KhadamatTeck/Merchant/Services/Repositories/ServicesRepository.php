@@ -2,10 +2,9 @@
 
 namespace App\KhadamatTeck\Merchant\Services\Repositories;
 
-use App\KhadamatTeck\Admin\Services\Models\ServiceModel;
+use App\KhadamatTeck\Merchant\Services\Models\ServiceModel;
 use App\KhadamatTeck\Base\Repository;
-use App\KhadamatTeck\Merchant\Services\Mappers\ServiceDTOMapper;
-use App\KhadamatTeck\Merchant\Services\Models\Service;
+use App\KhadamatTeck\Admin\Services\Mappers\ServiceDTOMapper;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -14,7 +13,7 @@ class ServicesRepository extends Repository
 {
     public function __construct()
     {
-        $this->setModel(new Service());
+        $this->setModel(new ServiceModel());
     }
 
     public function findAll(): array|Collection

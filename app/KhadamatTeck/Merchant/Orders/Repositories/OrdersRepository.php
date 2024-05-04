@@ -4,7 +4,7 @@ namespace App\KhadamatTeck\Merchant\Orders\Repositories;
 
 use App\KhadamatTeck\Base\Repository;
 use App\KhadamatTeck\Admin\Orders\Mappers\OrderDTOMapper;
-use App\KhadamatTeck\Admin\Orders\Models\Order;
+use App\KhadamatTeck\Merchant\Orders\Models\Order;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Spatie\QueryBuilder\QueryBuilder;

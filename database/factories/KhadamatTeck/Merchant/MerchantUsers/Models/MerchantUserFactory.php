@@ -2,7 +2,7 @@
 
 namespace Database\Factories\KhadamatTeck\Merchant\MerchantUsers\Models;
 
-use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
+use App\KhadamatTeck\Admin\MerchantUsers\Models\MerchantUser;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 

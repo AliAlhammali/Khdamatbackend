@@ -84,7 +84,7 @@ return [
         ],
         'merchants' => [
             'driver' => 'eloquent',
-            'model' => \App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser::class,
+            'model' => \App\KhadamatTeck\Admin\MerchantUsers\Models\MerchantUser::class,
         ],
         'service-providers' => [
             'driver' => 'eloquent',

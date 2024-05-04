@@ -2,9 +2,9 @@
 
 namespace App\KhadamatTeck\Merchant\MerchantUsers\Repositories;
 
+use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
 use App\KhadamatTeck\Base\Repository;
 use App\KhadamatTeck\Merchant\MerchantUsers\Mappers\MerchantUserDTOMapper;
-use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Spatie\QueryBuilder\QueryBuilder;

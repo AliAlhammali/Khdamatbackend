@@ -3,7 +3,7 @@
 namespace App\KhadamatTeck\Merchant\MerchantClients\Repositories;
 
 use App\KhadamatTeck\Admin\MerchantClients\Mappers\MerchantClientDTOMapper;
-use App\KhadamatTeck\Admin\MerchantClients\Models\MerchantClient;
+use App\KhadamatTeck\Merchant\MerchantClients\Models\MerchantClient;
 use App\KhadamatTeck\Base\Repository;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
