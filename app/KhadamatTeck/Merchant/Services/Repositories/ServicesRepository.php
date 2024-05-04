@@ -23,7 +23,7 @@ class ServicesRepository extends Repository
 
     public function paginateServices($requestQuery, $perPage = 20): LengthAwarePaginator
     {
-        return QueryBuilder::for(ServiceModel::MerchantCategories(MerchantAuth()->id()))
+        return QueryBuilder::for(ServiceModel::class)
             ->allowedFilters(ServiceModel::getAllowedFilters())
             ->paginate($perPage)
             ->appends($requestQuery);

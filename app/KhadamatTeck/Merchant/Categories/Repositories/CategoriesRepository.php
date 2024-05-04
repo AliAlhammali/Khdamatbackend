@@ -23,7 +23,7 @@ class CategoriesRepository extends Repository
 
     public function paginateCategories($requestQuery, $perPage = 20): LengthAwarePaginator
     {
-        return QueryBuilder::for(Category::MerchantCategories(MerchantAuth()->id()))
+        return QueryBuilder::for(Category::class)
             ->allowedFilters(Category::getAllowedFilters())
             ->paginate($perPage)
             ->appends($requestQuery);
