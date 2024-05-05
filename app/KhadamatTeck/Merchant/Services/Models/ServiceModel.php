@@ -12,7 +12,7 @@ use Spatie\Sluggable\HasTranslatableSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
 #[ScopedBy([OwnMerchantData::class])]
-class ServiceModel extends BaseModel
+class ServiceModel extends \App\KhadamatTeck\Admin\Services\Models\ServiceModel
 {
 
 }
