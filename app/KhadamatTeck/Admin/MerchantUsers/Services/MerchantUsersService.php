@@ -47,6 +47,8 @@ class MerchantUsersService extends Service
 
     public function createMerchantUser(CreateMerchantUserRequest $request): Response
     {
+        if ($request->has('password'))
+            $request->merge(['password' => bcrypt($request->password)]);
         $data = $this->merchantUsersRepository->createMerchantUser($request->all());
         return $this->response()
             ->setData($data)
@@ -55,6 +57,8 @@ class MerchantUsersService extends Service
 
     public function updateMerchantUser(UpdateMerchantUserRequest $request, $id): Response
     {
+        if ($request->has('password'))
+            $request->merge(['password' => bcrypt($request->password)]);
         $model = $this->merchantUsersRepository->findMerchantUser($id);
         $data = $this->merchantUsersRepository->updateMerchantUser(
             $model,

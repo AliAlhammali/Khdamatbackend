@@ -16,4 +16,5 @@ class CreateMerchantUserRequest extends KhadamatTeckRequest
         return [
         ];
     }
+
 }

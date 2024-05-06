@@ -47,6 +47,8 @@ class ServiceProviderUsersService extends Service
 
     public function createServiceProviderUser(CreateServiceProviderUserRequest $request): Response
     {
+        if ($request->has('password'))
+            $request->merge(['password' => bcrypt($request->password)]);
         $data = $this->serviceProviderUsersRepository->createServiceProviderUser($request->all());
         return $this->response()
             ->setData($data)
@@ -55,6 +57,8 @@ class ServiceProviderUsersService extends Service
 
     public function updateServiceProviderUser(UpdateServiceProviderUserRequest $request, $id): Response
     {
+        if ($request->has('password'))
+            $request->merge(['password' => bcrypt($request->password)]);
         $model = $this->serviceProviderUsersRepository->findServiceProviderUser($id);
         $data = $this->serviceProviderUsersRepository->updateServiceProviderUser(
             $model,
