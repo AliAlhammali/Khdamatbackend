@@ -14,7 +14,7 @@ class OwnMerchantData implements Scope
     public function apply(Builder $builder, Model $model): void
     {
         if (MerchantAuth()) {
-            $builder->where('merchant_id', MerchantAuth()->user()->id);
+            $builder->where('merchant_id', MerchantAuth()->user()->merchant_id);
         }
     }
 }

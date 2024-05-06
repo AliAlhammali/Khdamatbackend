@@ -14,7 +14,7 @@ class OwnSPData implements Scope
     public function apply(Builder $builder, Model $model): void
     {
         if (SPAuth()) {
-            $builder->where('service_provider_id', SPAuth()->user()->id);
+            $builder->where('service_provider_id', SPAuth()->user()->service_provider_id);
         }
     }
 }
