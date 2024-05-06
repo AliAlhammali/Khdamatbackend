@@ -13,7 +13,8 @@ class OwnSPData implements Scope
      */
     public function apply(Builder $builder, Model $model): void
     {
-        if (SPAuth()) {
+
+        if (SPAuth()->user()) {
             $role = SPAuth()->user()->role;
 
             if ($role == 'Admin')
