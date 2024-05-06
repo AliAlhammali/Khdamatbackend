@@ -13,8 +13,13 @@ class OwnMerchantData implements Scope
      */
     public function apply(Builder $builder, Model $model): void
     {
+
         if (MerchantAuth()) {
-            $builder->where('merchant_id', MerchantAuth()->user()->merchant_id);
+            $role = MerchantAuth()->user()->role;
+            if($role == 'Admin')
+                $builder->where('merchant_id', MerchantAuth()->user()->merchant_id);
+            else
+                $builder->where('merchant_id', MerchantAuth()->user()->merchant_id)->where('merchant_user_id',MerchantAuth()->user()->id);
         }
     }
 }
