@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\QueryBuilder\AllowedFilter;
-#[ScopedBy([OwnSPData::class])]
+//#[ScopedBy([OwnSPData::class])]
 class ServiceProviderUser extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
