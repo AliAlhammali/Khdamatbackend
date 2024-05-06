@@ -14,13 +14,12 @@ class OwnSPData implements Scope
     public function apply(Builder $builder, Model $model): void
     {
 
-        if (SPAuth()->user()) {
-            $role = SPAuth()->user()->role;
-
-            if ($role == 'Admin')
+//        if (SPAuth()->check()) {
+//            $role = SPAuth()->user()->role;
+//            if ($role == 'Admin')
                 $builder->where('service_provider_id', SPAuth()->user()->service_provider_id);
-            else
-                $builder->where('service_provider_id', SPAuth()->user()->service_provider_id)->where('service_provider_user_id', SPAuth()->user()->id);
-        }
+//            else
+//                $builder->where('service_provider_id', SPAuth()->user()->service_provider_id)->where('service_provider_user_id', SPAuth()->user()->id);
+//        }
     }
 }
