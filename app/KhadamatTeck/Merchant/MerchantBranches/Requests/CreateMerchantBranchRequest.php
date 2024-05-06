@@ -29,6 +29,6 @@ class CreateMerchantBranchRequest extends KhadamatTeckRequest
             $locationPoint = new Point($location['lat'], $location['long'], Srid::WGS84->value);
             $this->merge(['location' => $locationPoint]);
         }
-        $this->merge(['merchant_id' => MerchantAuth()->id()]);
+        $this->merge(['merchant_id' => MerchantAuth()->user()->merchant_id]);
     }
 }

@@ -37,7 +37,8 @@ class MerchantUsersRepository extends Repository
     public function createMerchantUser(array $data)
     {
         if (!isset($data['service_provider_id']))
-            $data['merchant_id'] = MerchantAuth()->user()->merchant->id;
+            $data['merchant_id'] = MerchantAuth()->user()->merchant_id;
+
         return MerchantUserDTOMapper::fromModel(MerchantUser::create($data));
     }
 
