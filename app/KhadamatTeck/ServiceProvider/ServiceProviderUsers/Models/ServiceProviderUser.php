@@ -3,13 +3,15 @@
 namespace App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models;
 
 use App\KhadamatTeck\Base\Filters\KeywordSearchFilter;
+use App\KhadamatTeck\Base\Scopes\OwnSPData;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\Models\ServiceProvider;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\QueryBuilder\AllowedFilter;
-
+#[ScopedBy([OwnSPData::class])]
 class ServiceProviderUser extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
