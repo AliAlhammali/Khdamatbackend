@@ -23,7 +23,7 @@ class ServicesRepository extends Repository
 
     public function paginateServices($requestQuery, $perPage = 20): LengthAwarePaginator
     {
-        return QueryBuilder::for(ServiceModel::where('merchant_id', MerchantAuth()->user()->merchant_id))
+        return QueryBuilder::for(ServiceModel::class)
             ->allowedFilters(ServiceModel::getAllowedFilters())
             ->paginate($perPage)
             ->appends($requestQuery);
@@ -31,7 +31,7 @@ class ServicesRepository extends Repository
 
     public function findService(string $id)
     {
-        return ServiceModel::MerchantCategories(MerchantAuth()->id())->findOrFail($id);
+        return ServiceModel::findOrFail($id);
     }
 
     public function createService(array $data)
@@ -53,6 +53,6 @@ class ServicesRepository extends Repository
 
     public function getMinimalList()
     {
-        return ServiceModel::MerchantCategories(MerchantAuth()->id())->listing()->get();
+        return ServiceModel::listing()->get();
     }
 }

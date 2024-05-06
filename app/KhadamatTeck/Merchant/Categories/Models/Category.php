@@ -12,7 +12,7 @@ use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\Sluggable\HasTranslatableSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
-
+#[ScopedBy([OwnMerchantData::class])]
 class Category extends \App\KhadamatTeck\Admin\Categories\Models\Category
 {
 

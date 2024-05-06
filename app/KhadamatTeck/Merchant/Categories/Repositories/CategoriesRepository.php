@@ -23,7 +23,7 @@ class CategoriesRepository extends Repository
 
     public function paginateCategories($requestQuery, $perPage = 20): LengthAwarePaginator
     {
-        return QueryBuilder::for(Category::where(['merchant_id'=> MerchantAuth()->user()->merchant_id]))
+        return QueryBuilder::for(Category::class)
             ->allowedFilters(Category::getAllowedFilters())
             ->paginate($perPage)
             ->appends($requestQuery);
@@ -31,7 +31,7 @@ class CategoriesRepository extends Repository
 
     public function findCategory(string $id)
     {
-        return Category::MerchantCategories(MerchantAuth()->user()->merchant_id)->findOrFail($id);
+        return Category::findOrFail($id);
     }
 
     public function createCategory(array $data)
@@ -53,6 +53,6 @@ class CategoriesRepository extends Repository
 
     public function getMinimalList()
     {
-        return Category::MerchantCategories(MerchantAuth()->id())->listing()->get();
+        return Category::listing()->get();
     }
 }
