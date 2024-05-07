@@ -24,7 +24,7 @@ class OrderItem extends BaseModel
      * @var array
      */
 
-    protected $fillable = ['id', 'order_id', 'item_id', 'quantity', 'item_price', 'sup_total', 'vat', 'total', 'order_otp'];
+    protected $fillable = ['id', 'order_id', 'item_id', 'quantity', 'item_price', 'sup_total', 'vat', 'total','sp_item_price', 'sp_sup_total', 'sp_vat', 'sp_total', 'order_otp'];
 
     function item(): BelongsTo
     {

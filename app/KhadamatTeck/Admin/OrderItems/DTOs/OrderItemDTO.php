@@ -7,12 +7,16 @@ class OrderItemDTO implements \JsonSerializable
     private ?int $id = null;
     private ?string $order_id = null;
     private ?string $item_id = null;
-    private ?float $quantity = null;
-    private ?float $item_price = null;
-    private ?float $sup_total = null;
-    private ?float $vat = null;
-    private ?float $total = null;
+    private ?float $quantity = 0;
+    private ?float $item_price = 0;
+    private ?float $sup_total = 0;
+    private ?float $vat = 0;
+    private ?float $total = 0;
     private ?float $order_otp = null;
+    private ?float $sp_item_price = 0;
+    private ?float $sp_sup_total = 0;
+    private ?float $sp_vat = 0;
+    private ?float $sp_total = 0;
 
 
     /**
@@ -159,6 +163,46 @@ class OrderItemDTO implements \JsonSerializable
         $this->order_otp = $order_otp;
     }
 
+    public function getSpItemPrice(): ?float
+    {
+        return $this->sp_item_price;
+    }
+
+    public function setSpItemPrice(?float $sp_item_price): void
+    {
+        $this->sp_item_price = $sp_item_price;
+    }
+
+    public function getSpSupTotal(): ?float
+    {
+        return $this->sp_sup_total;
+    }
+
+    public function setSpSupTotal(?float $sp_sup_total): void
+    {
+        $this->sp_sup_total = $sp_sup_total;
+    }
+
+    public function getSpVat(): ?float
+    {
+        return $this->sp_vat;
+    }
+
+    public function setSpVat(?float $sp_vat): void
+    {
+        $this->sp_vat = $sp_vat;
+    }
+
+    public function getSpTotal(): ?float
+    {
+        return $this->sp_total;
+    }
+
+    public function setSpTotal(?float $sp_total): void
+    {
+        $this->sp_total = $sp_total;
+    }
+
     public function jsonSerialize()
     {
         return [
@@ -170,6 +214,10 @@ class OrderItemDTO implements \JsonSerializable
             'sup_total' => $this->getSupTotal(),
             'vat' => $this->getVat(),
             'total' => $this->getTotal(),
+            'sp_item_price' => $this->getSpItemPrice(),
+            'sp_sup_total' => $this->getSpSupTotal(),
+            'sp_vat' => $this->getSpVat(),
+            'sp_total' => $this->getSpTotal(),
             'order_otp' => $this->getOrderOtp(),
 
         ];

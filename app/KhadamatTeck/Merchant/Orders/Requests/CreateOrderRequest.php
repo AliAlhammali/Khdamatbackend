@@ -36,7 +36,6 @@ class CreateOrderRequest extends KhadamatTeckRequest
         $order_commission_percentage = (float)$loggedInSeller->order_commission_percentage;
         $items = $this->get('items', []);
         $itemsCollection = collect($this->get('items', []));
-        $itemsCollectionIds = $itemsCollection->pluck('item_id')->toArray();
         $services = ServiceModel::whereIn('id', $itemsCollection->pluck('item_id')->toArray())->get();
         $services = $services->keyBy('id');
         $orderTotal = 0;
@@ -64,7 +63,11 @@ class CreateOrderRequest extends KhadamatTeckRequest
                 "item_price" => (float)$service->price,
                 "sup_total" => (float)$price['price_before_vat'],
                 "vat" => (float)$price['vat'],
-                "total" => (float)$price['price_with_vat']
+                "total" => (float)$price['price_with_vat'],
+                "sp_item_price" => (float)$service->sp_price,
+                "sp_sup_total" => (float)$sp_totals['price_before_vat'],
+                "sp_vat" => (float)$sp_totals['vat'],
+                "sp_total" => (float)$sp_totals['price_with_vat']
             ];
 
         }

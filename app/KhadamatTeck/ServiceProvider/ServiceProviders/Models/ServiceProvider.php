@@ -25,7 +25,7 @@ class ServiceProvider extends BaseModel
      * @var array
      */
 
-    protected $fillable = ['id', 'title','email', 'description', 'status', 'address', 'phone', 'logo', 'vat_file', 'cr_file', 'sales_agreement_file', 'cr_number', 'vat_number'];
+    protected $fillable = ['id', 'title','email', 'description', 'status', 'address', 'phone', 'logo', 'vat_file', 'cr_file', 'sales_agreement_file', 'cr_number', 'vat_number','can_collect_vat'];
 
     public function users()
     {

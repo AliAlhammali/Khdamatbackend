@@ -18,6 +18,8 @@ class ServiceProviderDTO implements \JsonSerializable
     private ?string $vat_number;
     private ?string $email;
 
+    private bool $can_collect_vat = true;
+
     public function getId(): int
     {
         return $this->id;
@@ -148,6 +150,16 @@ class ServiceProviderDTO implements \JsonSerializable
         $this->email = $email;
     }
 
+    public function getCanCollectVat(): bool
+    {
+        return $this->can_collect_vat;
+    }
+
+    public function setCanCollectVat(bool $can_collect_vat): void
+    {
+        $this->can_collect_vat = $can_collect_vat;
+    }
+
 
     public function jsonSerialize()
     {
@@ -165,6 +177,7 @@ class ServiceProviderDTO implements \JsonSerializable
             'cr_number' => $this->getCrNumber(),
             'vat_number' => $this->getVatNumber(),
             'email' => $this->getEmail(),
+            'can_collect_vat' => $this->getCanCollectVat()
 
         ];
     }

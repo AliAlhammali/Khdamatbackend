@@ -56,7 +56,7 @@ class ServiceProviderDTOMapper extends BaseDTOMapper
         $dto->setCrNumber($data->cr_number);
         $dto->setVatNumber($data->vat_number);
         $dto->setEmail($data->email);
-
+        $dto->setCanCollectVat($data->can_collect_vat);
         return $dto;
     }
 }

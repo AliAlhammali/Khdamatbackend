@@ -52,6 +52,10 @@ class OrderItemDTOMapper extends BaseDTOMapper
         $dto->setVat($data->vat);
         $dto->setTotal($data->total);
         $dto->setOrderOtp($data->order_otp);
+        $dto->setSpItemPrice($data->sp_item_price);
+        $dto->setSpSupTotal($data->sp_sup_total);
+        $dto->setSpVat($data->sp_vat);
+        $dto->setSpTotal($data->sp_total);
 
         return $dto;
     }
