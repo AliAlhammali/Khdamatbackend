@@ -7,14 +7,18 @@ use App\KhadamatTeck\Admin\MerchantClients\Models\MerchantClient;
 use App\KhadamatTeck\Admin\MerchantUsers\Models\MerchantUser;
 use App\KhadamatTeck\Admin\OrderAddress\Models\OrderAddress;
 use App\KhadamatTeck\Admin\OrderItems\Models\OrderItem;
+use App\KhadamatTeck\Admin\Orders\Events\OrderSpAssigned;
+use App\KhadamatTeck\Admin\Orders\Events\OrderSpUserAssigned;
 use App\KhadamatTeck\Admin\OrderTotals\Models\OrderTotal;
 use App\KhadamatTeck\Base\BaseModel;
 use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\Models\ServiceProvider;
+use Kleemans\AttributeEvents;
 
 class Order extends BaseModel
 {
     // use SoftDeletes;
+    use AttributeEvents;
     /**
      * The database table used by the model.
      *
@@ -29,6 +33,10 @@ class Order extends BaseModel
 
     protected $fillable = ['id', 'merchant_id', 'merchant_user_id', 'merchant_client_id', 'main_category_id', 'category_id', 'status', 'order_otp', 'created_at', 'pick_up_type', 'merchant_branch_id', 'started_at', 'profit_sup_total', 'profit_vat', 'profit_total','service_provider_id','service_provider_user_id', 'order_otp'];
 
+        protected $dispatchesEvents = [
+            'service_provider_id.*' => OrderSpAssigned::class,
+            'service_provider_user_id.*' => OrderSpUserAssigned::class,
+        ];
     public static function getDefaultSort()
     {
         if (request('sortAsc', false)) {
@@ -65,12 +73,11 @@ class Order extends BaseModel
 
     function serviceProvider()
     {
-        return $this->hasMany(ServiceProvider::class);
+        return $this->belongsTo(ServiceProvider::class);
     }
-
-    function activeServiceProvider()
+    function serviceProviderUser()
     {
-        return $this->belongsTo(ServiceProvider::class)->where('active', 1);
+        return $this->belongsTo(ServiceProvider::class);
     }
 
     function merchantUser()

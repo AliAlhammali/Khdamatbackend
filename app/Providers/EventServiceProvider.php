@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\KhadamatTeck\Admin\Orders\Events\OrderSpAssigned;
+use App\KhadamatTeck\Admin\Orders\Listeners\AddSPToOrderSPListLog;
+use App\KhadamatTeck\Admin\Orders\Listeners\ReCalculateOrderWhenSpAssigned;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -17,6 +20,10 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+        OrderSpAssigned::class => [
+            ReCalculateOrderWhenSpAssigned::class,
+            AddSPToOrderSPListLog::class,
         ],
     ];
 
