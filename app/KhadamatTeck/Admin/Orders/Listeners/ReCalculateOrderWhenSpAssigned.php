@@ -20,6 +20,7 @@ class ReCalculateOrderWhenSpAssigned
      */
     public function handle(OrderSpAssigned $event): void
     {
+
         $serviceProvider = $event->getOrder()->serviceProvider;
         $order = $event->getOrder();
         $items = $order->items;
@@ -30,7 +31,6 @@ class ReCalculateOrderWhenSpAssigned
         foreach ($items as $item) {
             $services = ServiceModel::where('id',$item->item_id )->first();
             $sp_totals = calculate_vat($services->sp_price * $item->quantity, !$serviceProvider->can_collect_vat);
-            $sp_sup_total+= $item->sp_item_price = (float)$services->sp_price;
             $sp_sup_total+= $item->sp_sup_total = (float)$sp_totals['price_before_vat'];
             $sp_vat+=$item->sp_vat = (float)$sp_totals['vat'];
             $sp_total+=$item->sp_total = (float)$sp_totals['price_with_vat'];

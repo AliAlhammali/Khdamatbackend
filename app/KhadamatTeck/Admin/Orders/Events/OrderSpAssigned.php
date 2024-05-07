@@ -16,7 +16,7 @@ class OrderSpAssigned
      */
     private Order $order;
 
-    public function __construct($order, $serviceProvider)
+    public function __construct(Order $order)
     {
         $this->setOrder($order);
     }

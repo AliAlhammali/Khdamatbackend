@@ -20,7 +20,7 @@ class AddSPToOrderSPListLog
      */
     public function handle(OrderSpAssigned $event): void
     {
-        OrderServiceProvider::where('service_provider_id', $event->getOrder()->service_provider_id)->update(['active' => 0]);
+        OrderServiceProvider::where('order_id', $event->getOrder()->id)->update(['active' => 0]);
         OrderServiceProvider::create([
             'order_id' => $event->getOrder()->id ?? null,
             'service_provider_id' => $event->getOrder()->service_provider_id ?? null,

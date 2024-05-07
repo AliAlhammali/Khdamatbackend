@@ -34,8 +34,8 @@ class Order extends BaseModel
     protected $fillable = ['id', 'merchant_id', 'merchant_user_id', 'merchant_client_id', 'main_category_id', 'category_id', 'status', 'order_otp', 'created_at', 'pick_up_type', 'merchant_branch_id', 'started_at', 'profit_sup_total', 'profit_vat', 'profit_total','service_provider_id','service_provider_user_id', 'order_otp'];
 
         protected $dispatchesEvents = [
-            'service_provider_id.*' => OrderSpAssigned::class,
-            'service_provider_user_id.*' => OrderSpUserAssigned::class,
+            'service_provider_id:*' => OrderSpAssigned::class,
+            'service_provider_user_id:*' => OrderSpAssigned::class,
         ];
     public static function getDefaultSort()
     {
