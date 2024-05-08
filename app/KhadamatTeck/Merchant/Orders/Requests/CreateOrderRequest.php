@@ -98,6 +98,8 @@ class CreateOrderRequest extends KhadamatTeckRequest
 
         ];
         $_address = $this->get('address');
+        if($this->pick_up_type != 'from_branch')
+            $_address['pick_up_location'] = $_address['location'];
         if ($this->get('merchant_client_id', false)) {
 
             $client = MerchantClient::where(['id' => $this->get('merchant_client_id', false)])->first();
@@ -108,7 +110,7 @@ class CreateOrderRequest extends KhadamatTeckRequest
                 "phone" => $client->phone,
                 "address" => $client->address,
                 "location" => new Point($_address['location']['lat'], $_address['location']['long']),
-                "pick_up_location" => new Point($_address['location']['lat'], $_address['location']['long']),
+                "pick_up_location" => new Point($_address['pick_up_location']['lat'], $_address['pick_up_location']['long']),
                 "is_default_address" => 1
             ];
         } else {
@@ -121,7 +123,7 @@ class CreateOrderRequest extends KhadamatTeckRequest
                 "phone" => $client->phone,
                 "address" => $client->address,
                 "location" => new Point($_address['location']['lat'], $_address['location']['long']),
-                "pick_up_location" => new Point($_address['location']['lat'], $_address['location']['long']),
+                "pick_up_location" => new Point($_address['pick_up_location']['lat'], $_address['pick_up_location']['long']),
                 "is_default_address" => 1
             ];
             $this->merge([

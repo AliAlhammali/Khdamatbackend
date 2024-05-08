@@ -4,6 +4,7 @@ namespace App\KhadamatTeck\Admin\Orders\Mappers;
 
 use App\KhadamatTeck\Admin\Categories\Mappers\CategoryDTOMapper;
 use App\KhadamatTeck\Admin\MerchantClients\Mappers\MerchantClientDTOMapper;
+use App\KhadamatTeck\Admin\OrderAddress\Mappers\OrderAddressDTOMapper;
 use App\KhadamatTeck\Admin\Orders\DTOs\OrderDTO;
 use App\KhadamatTeck\Admin\Orders\DTOs\OrderListDTO;
 use App\KhadamatTeck\Base\BaseDTOMapper;
@@ -62,7 +63,7 @@ class OrderDTOMapper extends BaseDTOMapper
         $dto->setStartedAt($data->started_at);
         $dto->setCompletedAt($data->completed_at);
 
-        $dto->setAddress($data->address);
+        $dto->setAddress(OrderAddressDTOMapper::fromCollection($data->address));
         $dto->setTotals($data->total);
         $dto->setItems($data->items);
         if (request('includeOrderMerchantUser', false) && $data->merchantUser)
