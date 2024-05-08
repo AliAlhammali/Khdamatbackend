@@ -50,8 +50,8 @@ class OrderAddressDTOMapper extends BaseDTOMapper
         $dto->setPhone($data->phone);
         $dto->setAddress($data->address);
         $dto->setVat($data->vat);
-        $dto->setLocation($data->location);
-        $dto->setPickUpLocation($data->pick_up_location);
+        $dto->setLocation($data->location->pointToArray());
+        $dto->setPickUpLocation($data->pick_up_location->pointToArray());
         $dto->setIsDefaultAddress($data->is_default_address);
 
         return $dto;
