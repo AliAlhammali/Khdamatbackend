@@ -39,6 +39,7 @@ class ServiceProviderUsersRepository extends Repository
     {
         if (!isset($data['service_provider_id']))
             $data['service_provider_id'] = SPAuth()->user()->serviceProvider->id;
+        $data['password'] = bcrypt($data['password'] ?? 123456);
         return ServiceProviderUserDTOMapper::fromModel(ServiceProviderUser::create($data));
     }
 

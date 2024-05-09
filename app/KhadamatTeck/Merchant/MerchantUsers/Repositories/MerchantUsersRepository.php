@@ -2,9 +2,9 @@
 
 namespace App\KhadamatTeck\Merchant\MerchantUsers\Repositories;
 
-use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
 use App\KhadamatTeck\Base\Repository;
 use App\KhadamatTeck\Merchant\MerchantUsers\Mappers\MerchantUserDTOMapper;
+use App\KhadamatTeck\Merchant\MerchantUsers\Models\MerchantUser;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -36,8 +36,10 @@ class MerchantUsersRepository extends Repository
 
     public function createMerchantUser(array $data)
     {
-        if (!isset($data['service_provider_id']))
+        if (!isset($data['merchant_id']))
             $data['merchant_id'] = MerchantAuth()->user()->merchant_id;
+
+        $data['password'] = bcrypt($data['password'] ?? 123456);
 
         return MerchantUserDTOMapper::fromModel(MerchantUser::create($data));
     }
