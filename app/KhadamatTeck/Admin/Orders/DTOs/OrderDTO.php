@@ -30,6 +30,8 @@ class OrderDTO implements \JsonSerializable
     private mixed $client = null;
     private mixed $service_provider = null;
     private mixed $service_provider_user = null;
+    private ?int $service_provider_id = null;
+    private ?int $service_provider_user_id = null;
 
     /**
      * @return int|null
@@ -321,6 +323,26 @@ class OrderDTO implements \JsonSerializable
         $this->service_provider_user = $service_provider_user;
     }
 
+    public function getServiceProviderId(): ?int
+    {
+        return $this->service_provider_id;
+    }
+
+    public function setServiceProviderId(?int $service_provider_id): void
+    {
+        $this->service_provider_id = $service_provider_id;
+    }
+
+    public function getServiceProviderUserId(): ?int
+    {
+        return $this->service_provider_user_id;
+    }
+
+    public function setServiceProviderUserId(?int $service_provider_user_id): void
+    {
+        $this->service_provider_user_id = $service_provider_user_id;
+    }
+
     public function jsonSerialize()
     {
         return [
@@ -347,6 +369,8 @@ class OrderDTO implements \JsonSerializable
             'client'=> $this->getClient(),
             'service_provider'=> $this->getServiceProvider(),
             'service_provider_user'=> $this->getServiceProvider(),
+            'service_provider_user_id'=> $this->getServiceProviderUserId(),
+            'service_provider_id'=> $this->getServiceProviderId(),
 
         ];
     }
