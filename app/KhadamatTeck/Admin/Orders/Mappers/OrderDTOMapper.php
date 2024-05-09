@@ -12,6 +12,9 @@ use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
 use App\KhadamatTeck\Merchant\Merchants\Mappers\MerchantDTOMapper;
 use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use App\KhadamatTeck\Merchant\MerchantUsers\Mappers\MerchantUserDTOMapper;
+use App\KhadamatTeck\ServiceProvider\ServiceProviders\DTOs\ServiceProviderDTO;
+use App\KhadamatTeck\ServiceProvider\ServiceProviders\Mappers\ServiceProviderDTOMapper;
+use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Mappers\ServiceProviderUserDTOMapper;
 use Illuminate\Support\Collection;
 
 class OrderDTOMapper extends BaseDTOMapper
@@ -77,6 +80,11 @@ class OrderDTOMapper extends BaseDTOMapper
 
         if (request('includeOrderMerchant', false) && $data->merchant)
             $dto->setMerchant(MerchantDTOMapper::fromModel($data->merchant));
+        if (request('includeOrderSP', false) && $data->merchant)
+            $dto->setMerchant(ServiceProviderDTOMapper::fromModel($data->serviceProvider));
+        if (request('includeOrderSPUser', false) && $data->merchant)
+            $dto->setMerchant(ServiceProviderUserDTOMapper::fromModel($data->serviceProviderUser));
+
 
         return $dto;
     }
