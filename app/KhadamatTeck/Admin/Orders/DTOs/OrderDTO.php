@@ -368,7 +368,7 @@ class OrderDTO implements \JsonSerializable
             'creator'=> $this->getCreator(),
             'client'=> $this->getClient(),
             'service_provider'=> $this->getServiceProvider(),
-            'service_provider_user'=> $this->getServiceProvider(),
+            'service_provider_user'=> $this->getServiceProviderUser(),
             'service_provider_user_id'=> $this->getServiceProviderUserId(),
             'service_provider_id'=> $this->getServiceProviderId(),
 
