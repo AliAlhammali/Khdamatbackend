@@ -13,6 +13,7 @@ use App\KhadamatTeck\Admin\OrderTotals\Models\OrderTotal;
 use App\KhadamatTeck\Base\BaseModel;
 use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\Models\ServiceProvider;
+use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models\ServiceProviderUser;
 use Kleemans\AttributeEvents;
 
 class Order extends BaseModel
@@ -77,7 +78,7 @@ class Order extends BaseModel
     }
     function serviceProviderUser()
     {
-        return $this->belongsTo(ServiceProvider::class);
+        return $this->belongsTo(ServiceProviderUser::class);
     }
 
     function merchantUser()
