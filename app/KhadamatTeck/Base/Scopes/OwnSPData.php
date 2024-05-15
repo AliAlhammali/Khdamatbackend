@@ -17,9 +17,9 @@ class OwnSPData implements Scope
         if (SPAuth()->check()) {
             $role = SPAuth()->user()->role;
             if ($role == 'Admin')
-                $builder->where(['service_provider_id'=>SPAuth()->user()->service_provider_id]);
+                $builder->where([$model->getTable() . '.service_provider_id' => SPAuth()->user()->service_provider_id]);
             else
-                $builder->where('service_provider_id', SPAuth()->user()->service_provider_id)->where('service_provider_user_id', SPAuth()->user()->id);
+                $builder->where($model->getTable() . '.service_provider_id', SPAuth()->user()->service_provider_id)->where($model->getTable() . '.service_provider_user_id', SPAuth()->user()->id);
         }
     }
 }

@@ -1,17 +1,17 @@
 <?php
+
 namespace App\KhadamatTeck\ServiceProvider\Dashboard\Services;
 
 use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\Base\Response;
 use App\KhadamatTeck\Base\Service;
-use App\KhadamatTeck\ServiceProvider\Dashboard\Mappers\DashboardDTOMapper;
-use App\KhadamatTeck\ServiceProvider\Dashboard\Models\Dashboard;
+use App\KhadamatTeck\Merchant\Orders\Models\Order;
 use App\KhadamatTeck\ServiceProvider\Dashboard\Repositories\DashboardRepository;
-use App\KhadamatTeck\ServiceProvider\Dashboard\Requests\CreateDashboardRequest;
-use App\KhadamatTeck\ServiceProvider\Dashboard\Requests\DeleteDashboardRequest;
-use App\KhadamatTeck\ServiceProvider\Dashboard\Requests\ListDashboardRequest;
-use App\KhadamatTeck\ServiceProvider\Dashboard\Requests\UpdateDashboardRequest;
 use App\KhadamatTeck\ServiceProvider\Dashboard\Requests\ViewDashboardRequest;
+use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models\ServiceProviderUser;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class DashboardService extends Service
 {
@@ -23,64 +23,62 @@ class DashboardService extends Service
 
     public function __construct(DashboardRepository $dashboardRepository)
     {
-    parent::__construct($dashboardRepository);
+        parent::__construct($dashboardRepository);
         $this->dashboardRepository = $dashboardRepository;
     }
 
-    public function paginateDashboard(ListDashboardRequest $request): Response
+    public function figures(ViewDashboardRequest $request)
     {
-        $response = $this->response();
-        if ($request->has('listing')) {
-            $data = $this->dashboardRepository->minimalListWithFilter();
-            $response->setData($data);
-        } else {
-            $data = $this->dashboardRepository->paginateDashboard(
-                $request->query(),
-                $request->query('perPage')
-            );
-            $data = DashboardDTOMapper::fromPaginator($data);
-            $response->setData($data['items'])->setMeta($data['meta']);
+        $order = Order::query();
+        $users = ServiceProviderUser::where(['status' => 'active'])->count();
+        if (SPAuth()?->user()?->role == 'Staff') {
+            $order->where(['service_provider_user_id' => SPAuth()->user()->id]);
+            $users = 0;
         }
-        return $response->setStatusCode(HttpStatus::HTTP_OK);
-    }
 
-
-    public function createDashboard(CreateDashboardRequest $request): Response
-    {
-        $data  =$this->dashboardRepository->createDashboard($request->all());
         return $this->response()
-            ->setData($data)
+            ->setData([
+                'count_of_active_staff' => $users,
+                'count_of_new_orders' => $order->where(['status' => 'new'])->count(),
+                'count_of_in_progress_orders' => $order->where(['status' => 'in_progress'])->count(),
+                'count_of_completed_orders' => $order->where(['status' => 'completed'])->count(),
+            ])
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function updateDashboard(UpdateDashboardRequest $request,$id): Response
+    public function top_staff_by_orders(ViewDashboardRequest $request): JsonResponse|Response
     {
-        $model = $this->dashboardRepository->findDashboard($id);
-        $data = $this->dashboardRepository->updateDashboard(
-            $model,
-            $request->all()
-        );
-
+        $top_merchants = QueryBuilder::for(
+            Order::join('service_provider_users', 'service_provider_users.id', '=', 'orders.service_provider_user_id')
+                ->select('service_provider_users.name', DB::raw('COUNT(orders.id) as order_count'))
+        )
+            ->allowedFilters(Order::getAllowedFilters())
+            ->groupBy('service_provider_users.id')
+            ->orderByDesc('order_count')
+            ->limit(6)
+            ->get();
         return $this->response()
-            ->setData($data)
+            ->setData($top_merchants)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function deleteDashboard(DeleteDashboardRequest $request,$id): Response
+    public function top_staff_completed_orders(ViewDashboardRequest $request)
     {
-        $model = $this->dashboardRepository->findDashboard($id);
+        $top_merchants = QueryBuilder::for(
+            Order::join('service_provider_users', 'service_provider_users.id', '=', 'orders.service_provider_user_id')
+                ->select('service_provider_users.name', DB::raw('COUNT(orders.id) as order_count'))->where(['orders.status' => 'completed'])
+        )
+            ->allowedFilters(Order::getAllowedFilters())
+            ->groupBy('service_provider_users.id')
+            ->orderByDesc('order_count')
+            ->limit(6)
+            ->get();
         return $this->response()
-            ->setData($this->dashboardRepository->deleteDashboard($model))
+            ->setData($top_merchants)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function findDashboard(ViewDashboardRequest $request, $id): Response
+    public function calender_orders(ViewDashboardRequest $request)
     {
-        $model = $this->dashboardRepository->findDashboard($id);
-        $data = DashboardDTOMapper::mapFromDB($model);
-
-        return $this->response()
-            ->setData($data)
-            ->setStatusCode(HttpStatus::HTTP_OK);
     }
 }

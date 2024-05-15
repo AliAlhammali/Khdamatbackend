@@ -22,29 +22,25 @@ class DashboardController extends Controller
         $this->dashboardService = $dashboardService;
     }
 
-    public function index(ListDashboardRequest $request)
+    public function figures(ViewDashboardRequest $request)
     {
-        return $this->dashboardService->paginateDashboard($request);
-    }
-
-    public function create(CreateDashboardRequest $request)
-    {
-        return $this->dashboardService->createDashboard($request);
+        return $this->dashboardService->figures($request);
     }
 
 
-    public function show(ViewDashboardRequest $request, string $id): Response
+    public function top_staff_by_orders(ViewDashboardRequest $request)
     {
-        return $this->dashboardService->findDashboard($request, $id);
+        return $this->dashboardService->top_staff_by_orders($request);
     }
 
-    public function update(UpdateDashboardRequest $request,string $id)
+
+    public function top_staff_completed_orders(ViewDashboardRequest $request)
     {
-        return $this->dashboardService->updateDashboard($request,$id);
+        return $this->dashboardService->top_staff_completed_orders($request);
     }
 
-    public function delete(DeleteDashboardRequest $request,string $id)
+    public function calender_orders(ViewDashboardRequest $request)
     {
-        return $this->dashboardService->deleteDashboard($request,$id);
+        return $this->dashboardService->calender_orders($request);
     }
 }

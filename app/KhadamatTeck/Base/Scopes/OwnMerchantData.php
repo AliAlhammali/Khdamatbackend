@@ -13,10 +13,9 @@ class OwnMerchantData implements Scope
      */
     public function apply(Builder $builder, Model $model): void
     {
-
         if (MerchantAuth()->check()) {
             $role = MerchantAuth()->user()->role;
-            $builder->where('merchant_id', MerchantAuth()->user()->merchant_id);
+            $builder->where($model->getTable() . '.merchant_id', MerchantAuth()->user()->merchant_id);
 //            if($role == 'Admin')
 //                $builder->where('merchant_id', MerchantAuth()->user()->merchant_id);
 //            else
