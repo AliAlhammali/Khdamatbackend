@@ -14,7 +14,10 @@ use App\KhadamatTeck\Base\BaseModel;
 use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\Models\ServiceProvider;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models\ServiceProviderUser;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Kleemans\AttributeEvents;
+use Spatie\QueryBuilder\AllowedFilter;
 
 class Order extends BaseModel
 {
@@ -38,6 +41,41 @@ class Order extends BaseModel
             'service_provider_id:*' => OrderSpAssigned::class,
             'service_provider_user_id:*' => OrderSpAssigned::class,
         ];
+
+    public static function getAllowedFilters(): array
+    {
+        return [
+            AllowedFilter::exact('id'),
+            AllowedFilter::exact('service_provider_id'),
+            AllowedFilter::exact('service_provider_user_id'),
+            AllowedFilter::exact('merchant_branch_id'),
+            AllowedFilter::exact('category_id'),
+            AllowedFilter::exact('main_category_id'),
+            AllowedFilter::exact('merchant_client_id'),
+            AllowedFilter::exact('merchant_id'),
+            AllowedFilter::exact('status'),
+            AllowedFilter::scope('date_from', 'createdFrom'),
+            AllowedFilter::scope('date_to', 'createdTo'),
+        ];
+    }
+
+    public function scopeCreatedFrom(Builder $query, $date): Builder
+    {
+        return $query->where(
+            'orders.created_at',
+            '>=',
+            Carbon::parse($date . ' 00:00:00')
+        );
+    }
+
+    public function scopeCreatedTo(Builder $query, $date): Builder
+    {
+        return $query->where(
+            'orders.created_at',
+            '<=',
+            Carbon::parse($date . ' 23:59:59')
+        );
+    }
     public static function getDefaultSort()
     {
         if (request('sortAsc', false)) {

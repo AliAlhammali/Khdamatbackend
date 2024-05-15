@@ -4,6 +4,7 @@ namespace App\KhadamatTeck\Merchant\Merchants\Models;
 
 use App\KhadamatTeck\Admin\Categories\Models\Category;
 use App\KhadamatTeck\Admin\MerchantUsers\Models\MerchantUser;
+use App\KhadamatTeck\Admin\Orders\Models\Order;
 use App\KhadamatTeck\Admin\Services\Models\ServiceModel;
 use App\KhadamatTeck\Base\BaseModel;
 use App\KhadamatTeck\Base\Filters\KeywordSearchFilter;
@@ -43,6 +44,11 @@ class Merchant extends BaseModel
     public function services()
     {
         return $this->hasMany(ServiceModel::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 
     public static function getAllowedFilters(): array

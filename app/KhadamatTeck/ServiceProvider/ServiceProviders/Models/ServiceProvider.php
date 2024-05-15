@@ -2,6 +2,7 @@
 
 namespace App\KhadamatTeck\ServiceProvider\ServiceProviders\Models;
 
+use App\KhadamatTeck\Admin\Orders\Models\Order;
 use App\KhadamatTeck\Base\BaseModel;
 use App\KhadamatTeck\Base\Filters\KeywordSearchFilter;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models\ServiceProviderUser;
@@ -30,6 +31,11 @@ class ServiceProvider extends BaseModel
     public function users()
     {
         return $this->hasMany(ServiceProviderUser::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 
     public static function getAllowedFilters(): array
