@@ -80,5 +80,15 @@ class DashboardService extends Service
 
     public function calender_orders(ViewDashboardRequest $request)
     {
+        $calender_orders = QueryBuilder::for(
+            Order::select(DB::raw("id as title"))->addSelect('started_at as start')->addSelect('id')
+                ->whereNotIn('orders.status',[ 'completed', 'cancelled' ])
+        )
+            ->allowedFilters(Order::getAllowedFilters())
+            ->get();
+
+        return $this->response()
+            ->setData($calender_orders)
+            ->setStatusCode(HttpStatus::HTTP_OK);
     }
 }
