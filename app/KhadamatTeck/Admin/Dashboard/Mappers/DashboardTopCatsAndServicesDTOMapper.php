@@ -44,7 +44,9 @@ class DashboardTopCatsAndServicesDTOMapper extends BaseDTOMapper
 
     private static function prepareData(DashboardTopCategoryServiceDTO $dto, $data)
     {
-        $dto->setName((array)json_decode($data->name));
+
+        $name = (array)json_decode($data->name);
+        $dto->setName($name??$data->name);
         $dto->setOrderCount($data->order_count);
         $dto->setCategoryId($data->category_id ?? null);
         $dto->setServiceId($data->services_id ?? null);

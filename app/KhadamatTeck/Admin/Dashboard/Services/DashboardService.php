@@ -84,7 +84,7 @@ class DashboardService extends Service
             ->join('order_items', 'order_items.order_id', '=', 'orders.id')
             ->join('services', 'order_items.item_id', '=', 'services.id')
             ->selectRaw(
-                "JSON_UNQUOTE(JSON_EXTRACT(services.title, '$.en')) as name",
+                "services.title as name",
             )
             ->selectRaw(
                 'services.id as services_id',
