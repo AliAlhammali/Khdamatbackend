@@ -2,6 +2,7 @@
 
 namespace App\KhadamatTeck\Admin\Dashboard\Services;
 
+use App\KhadamatTeck\Admin\Dashboard\Mappers\DashboardTopCatsAndServicesDTOMapper;
 use App\KhadamatTeck\Admin\Dashboard\Repositories\DashboardRepository;
 use App\KhadamatTeck\Admin\Dashboard\Requests\ViewDashboardRequest;
 use App\KhadamatTeck\Admin\Orders\Models\Order;
@@ -96,7 +97,7 @@ class DashboardService extends Service
             ->limit(6)
             ->get();
         return $this->response()
-            ->setData($orders)
+            ->setData(DashboardTopCatsAndServicesDTOMapper::fromCollection($orders))
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
@@ -120,7 +121,7 @@ class DashboardService extends Service
             $q
         )->allowedFilters(Order::getAllowedFilters())->orderByDesc('order_count')->get();
         return $this->response()
-            ->setData($orders)
+            ->setData(DashboardTopCatsAndServicesDTOMapper::fromCollection($orders))
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 }

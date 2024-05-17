@@ -138,5 +138,9 @@ class Order extends BaseModel
     {
         return $this->belongsTo(Category::class,'main_category_id');
     }
+    function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
 }
