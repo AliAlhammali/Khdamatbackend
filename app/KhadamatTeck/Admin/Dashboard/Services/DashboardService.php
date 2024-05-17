@@ -78,21 +78,21 @@ class DashboardService extends Service
     public function top_services(ViewDashboardRequest $request): JsonResponse|Response
     {
         $topProducts = Order::selectRaw(
-            'COUNT(*) as total_orders'
+            'COUNT(*) as order_count'
         )
             ->join('order_items', 'order_items.order_id', '=', 'orders.id')
             ->join('services', 'order_items.item_id', '=', 'services.id')
             ->selectRaw(
-                "JSON_UNQUOTE(JSON_EXTRACT(services.title, '$.en')) as services_name",
+                "JSON_UNQUOTE(JSON_EXTRACT(services.title, '$.en')) as name",
             )
             ->selectRaw(
                 'services.id as services_id',
             )
-            ->groupBy('services_id', 'services_name');
+            ->groupBy('services_id', 'name');
         $orders = QueryBuilder::for(
             $topProducts
         )->allowedFilters(Order::getAllowedFilters())
-            ->orderByDesc('total_orders')
+            ->orderByDesc('order_count')
             ->limit(6)
             ->get();
         return $this->response()
@@ -103,9 +103,9 @@ class DashboardService extends Service
     public function top_categories(ViewDashboardRequest $request): JsonResponse|Response
     {
         $q = Order::selectRaw(
-            'COUNT(*) as total_orders'
+            'COUNT(*) as order_count'
         )->selectRaw(
-            'categories.title as category_name',
+            'categories.title as name',
         )->selectRaw(
             'categories.id as category_id',
         )
@@ -114,11 +114,11 @@ class DashboardService extends Service
                 'categories.id',
                 '=',
                 'orders.main_category_id'
-            )->groupBy(['category_id', 'category_name']);
+            )->groupBy(['category_id', 'name']);
 
         $orders = QueryBuilder::for(
             $q
-        )->allowedFilters(Order::getAllowedFilters())->orderByDesc('total_orders')->get();
+        )->allowedFilters(Order::getAllowedFilters())->orderByDesc('order_count')->get();
         return $this->response()
             ->setData($orders)
             ->setStatusCode(HttpStatus::HTTP_OK);
