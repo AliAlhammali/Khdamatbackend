@@ -38,6 +38,8 @@ class MerchantBranch extends BaseModel
     {
         return [
             AllowedFilter::exact('merchant_id'),
+            AllowedFilter::exact('name'),
+            AllowedFilter::exact('address'),
             AllowedFilter::exact('is_active'),
             AllowedFilter::custom('keyword', new KeywordSearchFilter(['name', 'address'])),
         ];

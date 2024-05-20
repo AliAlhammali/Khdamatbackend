@@ -23,6 +23,7 @@ class Order extends BaseModel
 {
     // use SoftDeletes;
     use AttributeEvents;
+
     /**
      * The database table used by the model.
      *
@@ -35,17 +36,38 @@ class Order extends BaseModel
      * @var array
      */
 
-    protected $fillable = ['id', 'merchant_id', 'merchant_user_id', 'merchant_client_id', 'main_category_id', 'category_id', 'status', 'order_otp', 'created_at', 'pick_up_type', 'merchant_branch_id', 'started_at', 'profit_sup_total', 'profit_vat', 'profit_total','service_provider_id','service_provider_user_id', 'order_otp'];
+    protected $fillable = [
+        'id',
+        'merchant_id',
+        'merchant_user_id',
+        'merchant_client_id',
+        'main_category_id',
+        'category_id',
+        'status',
+        'order_otp',
+        'created_at',
+        'pick_up_type',
+        'merchant_branch_id',
+        'started_at',
+        'profit_sup_total',
+        'profit_vat',
+        'profit_total',
+        'service_provider_id',
+        'service_provider_user_id',
+        'order_otp'
+    ];
 
-        protected $dispatchesEvents = [
-            'service_provider_id:*' => OrderSpAssigned::class,
-            'service_provider_user_id:*' => OrderSpAssigned::class,
-        ];
+    protected $dispatchesEvents = [
+        'service_provider_id:*' => OrderSpAssigned::class,
+        'service_provider_user_id:*' => OrderSpAssigned::class,
+    ];
 
     public static function getAllowedFilters(): array
     {
         return [
             AllowedFilter::exact('id'),
+            AllowedFilter::exact('pick_up_type'),
+            AllowedFilter::exact('order_otp'),
             AllowedFilter::exact('service_provider_id'),
             AllowedFilter::exact('service_provider_user_id'),
             AllowedFilter::exact('merchant_branch_id'),
@@ -56,7 +78,27 @@ class Order extends BaseModel
             AllowedFilter::exact('status'),
             AllowedFilter::scope('date_from', 'createdFrom'),
             AllowedFilter::scope('date_to', 'createdTo'),
+            AllowedFilter::scope('started_from', 'startedFrom'),
+            AllowedFilter::scope('started_to', 'startedTo'),
         ];
+    }
+
+    public function scopeStartedFrom(Builder $query, $date): Builder
+    {
+        return $query->where(
+            'orders.started_at',
+            '>=',
+            Carbon::parse($date . ' 00:00:00')
+        );
+    }
+
+    public function scopeStartedTo(Builder $query, $date): Builder
+    {
+        return $query->where(
+            'orders.started_at',
+            '<=',
+            Carbon::parse($date . ' 23:59:59')
+        );
     }
 
     public function scopeCreatedFrom(Builder $query, $date): Builder
@@ -76,6 +118,7 @@ class Order extends BaseModel
             Carbon::parse($date . ' 23:59:59')
         );
     }
+
     public static function getDefaultSort()
     {
         if (request('sortAsc', false)) {
@@ -114,6 +157,7 @@ class Order extends BaseModel
     {
         return $this->belongsTo(ServiceProvider::class);
     }
+
     function serviceProviderUser()
     {
         return $this->belongsTo(ServiceProviderUser::class);
@@ -121,12 +165,12 @@ class Order extends BaseModel
 
     function merchantUser()
     {
-        return $this->belongsTo(MerchantUser::class,'merchant_user_id');
+        return $this->belongsTo(MerchantUser::class, 'merchant_user_id');
     }
 
     function merchantClient()
     {
-        return $this->belongsTo(MerchantClient::class,'merchant_client_id');
+        return $this->belongsTo(MerchantClient::class, 'merchant_client_id');
     }
 
     function merchant()
@@ -136,8 +180,9 @@ class Order extends BaseModel
 
     function mainCategory()
     {
-        return $this->belongsTo(Category::class,'main_category_id');
+        return $this->belongsTo(Category::class, 'main_category_id');
     }
+
     function category()
     {
         return $this->belongsTo(Category::class);

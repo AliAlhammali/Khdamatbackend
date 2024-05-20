@@ -56,6 +56,10 @@ class Merchant extends BaseModel
         return [
             AllowedFilter::custom('keyword', new KeywordSearchFilter(['title', 'phone'])),
             AllowedFilter::exact('status'),
+            AllowedFilter::exact('title'),
+            AllowedFilter::exact('address'),
+            AllowedFilter::exact('email'),
+            AllowedFilter::exact('phone'),
             AllowedFilter::exact('id'),
         ];
     }

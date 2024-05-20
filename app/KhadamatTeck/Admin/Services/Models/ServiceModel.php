@@ -4,6 +4,7 @@ namespace App\KhadamatTeck\Admin\Services\Models;
 
 use App\KhadamatTeck\Admin\Categories\Models\Category;
 use App\KhadamatTeck\Base\BaseModel;
+use App\KhadamatTeck\Base\Filters\KeywordSearchFilter;
 use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\Sluggable\HasTranslatableSlug;
@@ -27,7 +28,30 @@ class ServiceModel extends BaseModel
      * @var array
      */
 
-    protected $fillable = ['id', 'title', 'price', 'cost_price', 'sp_price', 'slug', 'description', 'status', 'merchant_id', 'category_id', 'main_category_id'];
+    protected $fillable = [
+        'id',
+        'title',
+        'price',
+        'cost_price',
+        'sp_price',
+        'slug',
+        'description',
+        'status',
+        'merchant_id',
+        'category_id',
+        'main_category_id'
+    ];
+
+    public static function getAllowedFilters(): array
+    {
+        return [
+            AllowedFilter::exact('merchant_id'),
+            AllowedFilter::exact('category_id'),
+            AllowedFilter::exact('main_category_id'),
+            AllowedFilter::exact('status'),
+            AllowedFilter::custom('keyword', new KeywordSearchFilter(['title'])),
+        ];
+    }
     public array $translatable = ['title', 'slug'];
 
     function category()
@@ -52,15 +76,7 @@ class ServiceModel extends BaseModel
         });
     }
 
-    public static function getAllowedFilters(): array
-    {
-        return [
-            AllowedFilter::exact('merchant_id'),
-            AllowedFilter::exact('category_id'),
-            AllowedFilter::exact('main_category_id'),
-            AllowedFilter::exact('status'),
-        ];
-    }
+
 
     public function getSlugOptions(): SlugOptions
     {

@@ -37,7 +37,11 @@ class MerchantClient extends BaseModel
     {
         return [
             AllowedFilter::exact('merchant_id'),
-//            AllowedFilter::exact('is_active'),
+            AllowedFilter::exact('name'),
+            AllowedFilter::exact('email'),
+            AllowedFilter::exact('address'),
+            AllowedFilter::exact('phone'),
+            AllowedFilter::exact('is_active'),
             AllowedFilter::custom('keyword', new KeywordSearchFilter(['name', 'phone'])),
         ];
     }

@@ -4,6 +4,7 @@ namespace App\KhadamatTeck\Admin\Categories\Models;
 
 use App\KhadamatTeck\Admin\Services\Models\ServiceModel;
 use App\KhadamatTeck\Base\BaseModel;
+use App\KhadamatTeck\Base\Filters\KeywordSearchFilter;
 use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use Kalnoy\Nestedset\NodeTrait;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -32,6 +33,18 @@ class Category extends BaseModel
 
     protected $fillable = ['id', 'title', 'slug', 'status', 'merchant_id', 'parent_id'];
 
+    public static function getAllowedFilters(): array
+    {
+        return [
+            AllowedFilter::exact('id'),
+            AllowedFilter::exact('parent_id'),
+            AllowedFilter::exact('merchant_id'),
+            AllowedFilter::exact('status'),
+            AllowedFilter::scope('isParent', 'isParent'),
+            AllowedFilter::custom('keyword', new KeywordSearchFilter(['title'])),
+        ];
+    }
+
     public array $translatable = ['title', 'slug'];
 
     public function merchant()
@@ -57,16 +70,6 @@ class Category extends BaseModel
         return $this->parent_id == null;
     }
 
-    public static function getAllowedFilters(): array
-    {
-        return [
-            AllowedFilter::exact('id'),
-            AllowedFilter::exact('parent_id'),
-            AllowedFilter::exact('merchant_id'),
-            AllowedFilter::exact('status'),
-            AllowedFilter::scope('isParent', 'isParent'),
-        ];
-    }
 
     public function scopeIsParent($query)
     {
