@@ -41,6 +41,7 @@ class ServiceProviderUser extends Authenticatable
         return [
             AllowedFilter::exact('service_provider_id'),
             AllowedFilter::exact('role'),
+            AllowedFilter::exact('status'),
             AllowedFilter::custom('keyword', new KeywordSearchFilter(['name', 'phone'])),
         ];
     }
