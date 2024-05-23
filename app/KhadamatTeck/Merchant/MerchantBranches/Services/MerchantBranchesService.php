@@ -31,7 +31,7 @@ class MerchantBranchesService extends Service
     {
         $response = $this->response();
         if ($request->has('listing')) {
-            $data = $this->merchantBranchesRepository->minimalListWithFilter();
+            $data = $this->merchantBranchesRepository->minimalListWithFilter(['id','name']);
             $response->setData($data);
         } else {
             $data = $this->merchantBranchesRepository->paginateMerchantBranches(

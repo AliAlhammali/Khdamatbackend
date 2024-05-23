@@ -31,7 +31,7 @@ class MerchantClientsService extends Service
     {
         $response = $this->response();
         if ($request->has('listing')) {
-            $data = $this->merchantClientsRepository->minimalListWithFilter();
+            $data = $this->merchantClientsRepository->minimalListWithFilter(['id','name']);
             $response->setData($data);
         } else {
             $data = $this->merchantClientsRepository->paginateMerchantClients(
