@@ -32,25 +32,45 @@ class DashboardService extends Service
         $order = Order::query();
         $users = ServiceProviderUser::where(['status' => 'active'])->count();
         if (SPAuth()?->user()?->role == 'Staff') {
-            $order->where(['service_provider_user_id' => SPAuth()->user()->id]);
+            $order->where(
+                [
+                    'service_provider_user_id' => SPAuth()->user()->id,
+                    'service_provider_id'      => SPAuth()->user(
+                    )->service_provider_id,
+                ]
+            );
             $users = 0;
         }
 
         return $this->response()
             ->setData([
-                'count_of_active_staff' => $users,
-                'count_of_new_orders' => $order->where(['status' => 'new'])->count(),
-                'count_of_in_progress_orders' => $order->where(['status' => 'in_progress'])->count(),
-                'count_of_completed_orders' => $order->where(['status' => 'completed'])->count(),
+                'count_of_active_staff'       => $users,
+                'count_of_new_orders'         => $order->where(
+                    ['status' => 'new']
+                )->count(),
+                'count_of_in_progress_orders' => $order->where(
+                    ['status' => 'in_progress']
+                )->count(),
+                'count_of_completed_orders'   => $order->where(
+                    ['status' => 'completed']
+                )->count(),
             ])
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function top_staff_by_orders(ViewDashboardRequest $request): JsonResponse|Response
-    {
+    public function top_staff_by_orders(ViewDashboardRequest $request
+    ): JsonResponse|Response {
         $top_merchants = QueryBuilder::for(
-            Order::join('service_provider_users', 'service_provider_users.id', '=', 'orders.service_provider_user_id')
-                ->select('service_provider_users.name', DB::raw('COUNT(orders.id) as order_count'))
+            Order::join(
+                'service_provider_users',
+                'service_provider_users.id',
+                '=',
+                'orders.service_provider_user_id'
+            )
+                ->select(
+                    'service_provider_users.name',
+                    DB::raw('COUNT(orders.id) as order_count')
+                )
         )
             ->allowedFilters(Order::getAllowedFilters())
             ->groupBy('service_provider_users.id')
@@ -65,8 +85,16 @@ class DashboardService extends Service
     public function top_staff_completed_orders(ViewDashboardRequest $request)
     {
         $top_merchants = QueryBuilder::for(
-            Order::join('service_provider_users', 'service_provider_users.id', '=', 'orders.service_provider_user_id')
-                ->select('service_provider_users.name', DB::raw('COUNT(orders.id) as order_count'))->where(['orders.status' => 'completed'])
+            Order::join(
+                'service_provider_users',
+                'service_provider_users.id',
+                '=',
+                'orders.service_provider_user_id'
+            )
+                ->select(
+                    'service_provider_users.name',
+                    DB::raw('COUNT(orders.id) as order_count')
+                )->where(['orders.status' => 'completed'])
         )
             ->allowedFilters(Order::getAllowedFilters())
             ->groupBy('service_provider_users.id')
@@ -80,10 +108,34 @@ class DashboardService extends Service
 
     public function calender_orders(ViewDashboardRequest $request)
     {
+        $query = Order::join(
+            'order_address',
+            'orders.id',
+            '=',
+            'order_address.order_id'
+        )
+            ->select(
+                DB::raw(
+                    "CONCAT(order_address.name, ' #', orders.id) as title"
+                )
+            )->addSelect('started_at as start')->addSelect('orders.id')
+            ->whereNotIn('orders.status', ['completed', 'cancelled'])
+            ->where(
+                [
+
+                    'service_provider_id' => SPAuth()->user(
+                    )->service_provider_id,
+                ]
+            );
+
+        if (PAuth()->user()->role == "Staff") {
+            $query->where([
+                'service_provider_user_id' => SPAuth()->user()->id,
+            ]);
+        }
+
         $calender_orders = QueryBuilder::for(
-            Order::join('order_address', 'orders.id', '=', 'order_address.order_id')
-                ->select(DB::raw("CONCAT(order_address.name, ' #', orders.id) as title"))->addSelect('started_at as start')->addSelect('orders.id')
-                ->whereNotIn('orders.status',[ 'completed', 'cancelled' ])
+            $query
         )
             ->allowedFilters(Order::getAllowedFilters())
             ->get();
