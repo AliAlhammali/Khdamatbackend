@@ -31,7 +31,8 @@ class ServiceProviderUsersService extends Service
     {
         $response = $this->response();
         if ($request->has('listing')) {
-            $data = $this->serviceProviderUsersRepository->minimalListWithFilter(listFields:['id','name']);
+            $spID = SPAuth()->user()->service_provider_id;
+            $data = $this->serviceProviderUsersRepository->minimalListWithFilter(listFields:['id','name'],with:[],where:['service_provider_id'=>$spID]);
             $response->setData($data);
         } else {
             $data = $this->serviceProviderUsersRepository->paginateServiceProviderUsers(
