@@ -38,7 +38,7 @@ class Category extends BaseModel
         return [
             AllowedFilter::exact('id'),
             AllowedFilter::exact('parent_id'),
-            AllowedFilter::exact('main_category_id','parent_id'),
+            AllowedFilter::exact('main_category_id', 'parent_id'),
             AllowedFilter::exact('status'),
             AllowedFilter::exact('merchant_id'),
             AllowedFilter::exact('status'),
