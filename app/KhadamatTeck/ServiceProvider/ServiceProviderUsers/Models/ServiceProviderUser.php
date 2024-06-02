@@ -2,6 +2,7 @@
 
 namespace App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Models;
 
+use App\KhadamatTeck\Base\BaseAuthModel;
 use App\KhadamatTeck\Base\Filters\KeywordSearchFilter;
 use App\KhadamatTeck\Base\Scopes\OwnSPData;
 use App\KhadamatTeck\ServiceProvider\ServiceProviders\Models\ServiceProvider;
@@ -12,9 +13,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\QueryBuilder\AllowedFilter;
 //#[ScopedBy([OwnSPData::class])]
-class ServiceProviderUser extends Authenticatable
+class ServiceProviderUser extends BaseAuthModel
 {
-    use HasApiTokens, HasFactory, Notifiable;
 
     // use SoftDeletes;
     /**

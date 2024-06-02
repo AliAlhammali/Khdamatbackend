@@ -2,15 +2,14 @@
 
 namespace App\KhadamatTeck\Admin\Users\Models;
 
+use App\KhadamatTeck\Base\BaseAuthModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
-class User extends Authenticatable
+class User extends BaseAuthModel
 {
-    use HasApiTokens, HasFactory, Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
