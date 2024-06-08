@@ -6,6 +6,7 @@ use App\KhadamatTeck\Admin\MerchantUsers\Models\MerchantUser;
 use App\KhadamatTeck\Admin\Users\Enums\UserOtpNotifyTypes;
 use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\Base\Response;
+use App\KhadamatTeck\Merchant\Merchants\Mappers\MerchantDTOMapper;
 use App\KhadamatTeck\Merchant\MerchantUsers\Mappers\MerchantUserDTOMapper;
 use App\KhadamatTeck\Merchant\MerchantUsers\Repositories\MerchantUsersRepository;
 use App\KhadamatTeck\Merchant\MerchantUsers\Requests\Auth\ForgotRequest;
@@ -64,7 +65,7 @@ class AuthService
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('MerchantUser')->accessToken;
-                $response = ['token' => $token, 'user' => MerchantUserDTOMapper::fromModel($user)];
+                $response = ['token' => $token, 'user' => MerchantUserDTOMapper::fromModel($user), 'merchant' => MerchantDTOMapper::fromModel($user->merchant)];
                 MerchantAuth()->setUser($user);
                 return response($response, 200);
             } else {
@@ -130,7 +131,8 @@ class AuthService
         return $this->response()
             ->setData([
                 'user' => MerchantUserDTOMapper::fromModel($user),
-                'token' => $this->usersRepository->createPersonalToken($user->id),
+                'token' => $this->usersRepository->createPersonalToken($user->id), 'merchant' => MerchantDTOMapper::fromModel($user->merchant)
+
             ])
             ->setStatusCode(HttpStatus::HTTP_OK)->json();
     }
@@ -257,7 +259,7 @@ class AuthService
         request()->merge(['includePermissionGroups' => true]);
         return $this->response()
             ->setData([
-                'user' => MerchantUserDTOMapper::fromModel(MerchantAuth()->user())
+                'user' => MerchantUserDTOMapper::fromModel(MerchantAuth()->user()), 'merchant' => MerchantDTOMapper::fromModel(MerchantAuth()->user()->merchant)
             ])
             ->setStatusCode(HttpStatus::HTTP_OK)->json();
     }
