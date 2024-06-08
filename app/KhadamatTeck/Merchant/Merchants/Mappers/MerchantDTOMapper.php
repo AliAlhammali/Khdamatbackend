@@ -56,7 +56,7 @@ class MerchantDTOMapper extends BaseDTOMapper
         $dto->setCrNumber($data->cr_number);
         $dto->setVatNumber($data->vat_number);
         $dto->setEmail($data->email);
-
+        $dto->setCode($data->code);
         return $dto;
     }
 }
