@@ -50,6 +50,10 @@ return [
             'driver' => 'passport',
             'provider' => 'merchants',
         ],
+        'client' => [
+            'driver' => 'passport',
+            'provider' => 'merchant-clients',
+        ],
         'service-provider' => [
             'driver' => 'passport',
             'provider' => 'service-providers',
@@ -85,6 +89,10 @@ return [
         'merchants' => [
             'driver' => 'eloquent',
             'model' => \App\KhadamatTeck\Admin\MerchantUsers\Models\MerchantUser::class,
+        ],
+        'merchant-clients' => [
+            'driver' => 'eloquent',
+            'model' => \App\KhadamatTeck\Client\MerchantClients\Models\MerchantClient::class,
         ],
         'service-providers' => [
             'driver' => 'eloquent',
