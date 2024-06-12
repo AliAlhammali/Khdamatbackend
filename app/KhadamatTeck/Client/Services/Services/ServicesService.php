@@ -31,7 +31,7 @@ class ServicesService extends Service
     {
         $response = $this->response();
         if ($request->has('listing')) {
-            $data = $this->servicesRepository->minimalListWithFilter();
+            $data = $this->servicesRepository->minimalListWithFilter(['id','title']);
             $data = ServiceDTOMapper::fromModel($data);
             $response->setData($data);
         } else {
