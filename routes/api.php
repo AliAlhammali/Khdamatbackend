@@ -32,7 +32,7 @@ Route::prefix('v1')->group(function () {
 
         // public
     Route::prefix('/public')->group(function () {
-        require __DIR__ . "/accounts/public/merchants.php";
+        require __DIR__ . "/accounts/public/master.php";
     });
 
 });
