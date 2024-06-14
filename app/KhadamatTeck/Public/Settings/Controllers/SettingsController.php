@@ -27,9 +27,9 @@ class SettingsController extends Controller
         return $this->settingsService->list($request, $group);
     }
 
-    public function show(ShowSettingRequest $request, $group = 'general'): Response
+    public function show(ShowSettingRequest $request, $group = 'general',$key = null): Response
     {
-        return $this->settingsService->find($request);
+        return $this->settingsService->find($request,$group,$key);
     }
 
     public function update(UpdateSettingRequest $request, $group = 'general'): Response

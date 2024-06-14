@@ -30,10 +30,17 @@ class SettingsService
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
-    public function find($request)
+    public function find($request, $group, $key)
     {
+        if($key){
+            $data = settings()->group($group)->get($key);
+            $data = [$key=>$data];
+        }else{
+            $data = settings()->group($group)->all();
+        }
+
         return $this->response()
-            ->setData([])
+            ->setData($data)
             ->setStatusCode(HttpStatus::HTTP_OK);
     }
 
