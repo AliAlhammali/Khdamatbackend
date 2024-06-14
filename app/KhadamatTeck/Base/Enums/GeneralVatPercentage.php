@@ -6,5 +6,5 @@ use BenSampo\Enum\Enum;
 
 class GeneralVatPercentage extends Enum
 {
-    const SaudiArabiaVat = 15;
+    const SaudiArabiaVat = 0;
 }
