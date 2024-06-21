@@ -13,6 +13,7 @@ Route::group([],function () {
     require __DIR__ . "/categories.php";
     require __DIR__ . "/services.php";
     require __DIR__ . "/orders.php";
+    require __DIR__ . "/settings.php";
 });
 
 

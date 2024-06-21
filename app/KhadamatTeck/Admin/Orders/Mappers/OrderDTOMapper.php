@@ -85,9 +85,8 @@ class OrderDTOMapper extends BaseDTOMapper
         if (request('includeOrderSPUser', false) && $data->serviceProviderUser)
             $dto->setServiceProviderUser(ServiceProviderUserDTOMapper::fromModel($data->serviceProviderUser));
 
-        $dto->setMerchantId($data->service_provider_id);
-        $dto->setMerchantUserId($data->service_provider_user_id);
-
+        $dto->setServiceProviderId($data->service_provider_id);
+        $dto->setServiceProviderUserId($data->service_provider_user_id);
 
         return $dto;
     }

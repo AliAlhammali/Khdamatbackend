@@ -31,7 +31,7 @@ class MerchantClientsService extends Service
     {
         $response = $this->response();
         if ($request->has('listing')) {
-            $data = $this->merchantClientsRepository->minimalListWithFilter(['id','name']);
+            $data = $this->merchantClientsRepository->minimalListWithFilter(['id', 'name']);
             $response->setData($data);
         } else {
             $data = $this->merchantClientsRepository->paginateMerchantClients(
@@ -47,6 +47,8 @@ class MerchantClientsService extends Service
 
     public function createMerchantClient(CreateMerchantClientRequest $request): Response
     {
+        if ($request->has('password'))
+            $request->merge(['password' => bcrypt($request->password)]);
         $data = $this->merchantClientsRepository->createMerchantClient($request->all());
         return $this->response()
             ->setData($data)
@@ -56,6 +58,8 @@ class MerchantClientsService extends Service
     public function updateMerchantClient(UpdateMerchantClientRequest $request, $id): Response
     {
         $model = $this->merchantClientsRepository->findMerchantClient($id);
+        if ($request->has('password'))
+            $request->merge(['password' => bcrypt($request->password)]);
         $data = $this->merchantClientsRepository->updateMerchantClient(
             $model,
             $request->all()

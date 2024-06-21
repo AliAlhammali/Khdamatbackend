@@ -17,6 +17,7 @@ class MerchantDTO implements \JsonSerializable
     private ?string $cr_number;
     private ?string $vat_number;
     private ?string $email;
+    private ?string $code;
 
     public function getId(): ?int
     {
@@ -148,6 +149,16 @@ class MerchantDTO implements \JsonSerializable
         $this->email = $email;
     }
 
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    public function setCode(?string $code): void
+    {
+        $this->code = $code;
+    }
+
 
     public function jsonSerialize()
     {
@@ -165,6 +176,7 @@ class MerchantDTO implements \JsonSerializable
             'cr_number' => $this->getCrNumber(),
             'vat_number' => $this->getVatNumber(),
             'email' => $this->getEmail(),
+            'code' => $this->getCode(),
 
         ];
     }

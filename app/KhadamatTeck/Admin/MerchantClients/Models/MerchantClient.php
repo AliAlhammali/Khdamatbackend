@@ -2,14 +2,14 @@
 
 namespace App\KhadamatTeck\Admin\MerchantClients\Models;
 
-use App\KhadamatTeck\Base\BaseModel;
+use App\KhadamatTeck\Base\BaseAuthModel;
 use App\KhadamatTeck\Base\Filters\KeywordSearchFilter;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use MatanYadaev\EloquentSpatial\Objects\Point;
 use MatanYadaev\EloquentSpatial\Traits\HasSpatial;
 use Spatie\QueryBuilder\AllowedFilter;
 
-class MerchantClient extends BaseModel
+class MerchantClient extends BaseAuthModel
 {
     use SoftDeletes;
     use HasSpatial;
@@ -26,7 +26,7 @@ class MerchantClient extends BaseModel
      * @var array
      */
 
-    protected $fillable = ['id', 'location', 'name', 'merchant_id', 'email', 'address', 'phone', 'is_active'];
+    protected $fillable = ['id', 'location', 'name', 'merchant_id', 'email', 'address', 'phone','password', 'is_active'];
 
     protected $casts = [
         'location' => Point::class,

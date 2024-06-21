@@ -2,6 +2,7 @@
 
 namespace App\KhadamatTeck\Admin\MerchantUsers\Models;
 
+use App\KhadamatTeck\Base\BaseAuthModel;
 use App\KhadamatTeck\Base\Filters\KeywordSearchFilter;
 use App\KhadamatTeck\Merchant\Merchants\Models\Merchant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,9 +11,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\QueryBuilder\AllowedFilter;
 
-class MerchantUser extends Authenticatable
+class MerchantUser extends BaseAuthModel
 {
-    use HasApiTokens, HasFactory, Notifiable;
 
     // use SoftDeletes;
     /**

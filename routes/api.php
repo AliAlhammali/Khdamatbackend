@@ -19,12 +19,20 @@ Route::prefix('v1')->group(function () {
     Route::prefix('merchant')->group(function () {
         require __DIR__ . "/accounts/merchant/master.php";
     });
+    Route::prefix('client')->group(function () {
+        require __DIR__ . "/accounts/client/master.php";
+    });
     Route::prefix('service-provider')->group(function () {
         require __DIR__ . "/accounts/service_provider/master.php";
     });
 
     Route::prefix('actions')->group(function () {
         Route::post('upload', UploadAction::class);
+    });
+
+        // public
+    Route::prefix('/public')->group(function () {
+        require __DIR__ . "/accounts/public/master.php";
     });
 
 });

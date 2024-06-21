@@ -1,6 +1,7 @@
 <?php
 use App\KhadamatTeck\Admin\Users\Controllers\AuthController;
 use App\KhadamatTeck\Admin\Users\Controllers\UsersController;
+use App\KhadamatTeck\Client\MerchantClients\Controllers\ClientAuthController;
 use App\KhadamatTeck\Merchant\MerchantUsers\Controllers\MerchantAuthController;
 use App\KhadamatTeck\ServiceProvider\ServiceProviderUsers\Controllers\ServiceProviderUsersAuthController;
 use Illuminate\Support\Facades\Route;
@@ -67,4 +68,24 @@ Route::prefix('sp-auth')->group(function () {
 
     Route::post('login/otp', [ServiceProviderUsersAuthController::class, 'loginWithOTP']);
     Route::post('login/verify', [ServiceProviderUsersAuthController::class, 'verifyWithOTP']);
+});
+
+Route::prefix('client-auth')->group(function () {
+    Route::post('logout', [MerchantAuthController::class, 'logout'])->middleware(
+        'auth:client'
+    );
+
+    Route::prefix('me')->middleware('auth:client')->group(function () {
+        Route::get('/', [ClientAuthController::class, 'me']);
+    });
+
+    Route::post('login', [ClientAuthController::class, 'login']);
+    Route::post('phone-login', [ClientAuthController::class, 'phoneLogin']);
+    Route::post('otp-verify', [ClientAuthController::class, 'verifyPhoneLogin']);
+    Route::post('register', [ClientAuthController::class, 'register']);
+    Route::post('forgot', [ClientAuthController::class, 'forgot']);
+    Route::post('reset', [ClientAuthController::class, 'reset']);
+
+    Route::post('login/otp', [ClientAuthController::class, 'loginWithOTP']);
+    Route::post('login/verify', [ClientAuthController::class, 'verifyWithOTP']);
 });

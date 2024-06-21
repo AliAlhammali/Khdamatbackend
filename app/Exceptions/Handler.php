@@ -4,8 +4,8 @@ namespace App\Exceptions;
 
 use App\KhadamatTeck\Base\Http\HttpStatus;
 use App\KhadamatTeck\Base\Http\KhadamatTeckRequest;
-use App\Munjz\Base\Http\MunjzRequest;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
@@ -51,6 +51,14 @@ class Handler extends ExceptionHandler
      */
     public function register(): void
     {
+        $this->renderable(function (ModelNotFoundException $e, Request $request) {
+
+            return response()->json([
+                'message' => 'Model not found.'
+            ], HttpStatus::HTTP_NOT_FOUND);
+
+        });
+
         $this->renderable(function (NotFoundHttpException $e, Request $request) {
 
             return response()->json([

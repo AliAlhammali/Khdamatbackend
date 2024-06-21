@@ -29,7 +29,7 @@ class Merchant extends BaseModel
      * @var array
      */
 
-    protected $fillable = ['id', 'title', 'description', 'status', 'address', 'email', 'phone', 'logo', 'vat_file', 'cr_file', 'sales_agreement_file', 'cr_number', 'vat_number'];
+    protected $fillable = ['id', 'title', 'description', 'status', 'address', 'email', 'phone', 'logo', 'vat_file', 'cr_file', 'sales_agreement_file', 'cr_number', 'vat_number','code'];
 
     public function users()
     {
@@ -60,6 +60,7 @@ class Merchant extends BaseModel
             AllowedFilter::exact('address'),
             AllowedFilter::exact('email'),
             AllowedFilter::exact('phone'),
+            AllowedFilter::exact('code'),
             AllowedFilter::exact('id'),
         ];
     }

@@ -37,9 +37,10 @@ class MerchantsRepository extends Repository
     public function createMerchant(array $data)
     {
         /* @var Merchant $merchant */
+        $data['code'] = uniqid();
         $merchant = Merchant::create($data);
         if ($data['owner']) {
-            $data['owner']['password'] = bcrypt($data['owner']['password']??123456);
+            $data['owner']['password'] = bcrypt($data['owner']['password'] ?? 123456);
             $data['owner']['status'] = 'active';
             $data['owner']['role'] = 'Admin';
             $merchant->users()->create($data['owner']);
@@ -50,6 +51,8 @@ class MerchantsRepository extends Repository
 
     public function updateMerchant($model, array $data)
     {
+        if (!$model->code)
+            $data['code'] = uniqid();
         $model->fill($data)->save();
         return MerchantDTOMapper::fromModel($model);
     }
@@ -63,5 +66,10 @@ class MerchantsRepository extends Repository
     public function getMinimalList()
     {
         return Merchant::listing()->get();
+    }
+
+    public function findMerchantByCode(string $code)
+    {
+        return Merchant::where(['code'=>$code])->firstOrFail();
     }
 }

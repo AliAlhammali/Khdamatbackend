@@ -33,6 +33,14 @@ if (!function_exists('SPAuth')) {
     }
 }
 
+if (!function_exists('ClientAuth')) {
+
+    function ClientAuth()
+    {
+        return auth('client');
+    }
+}
+
 if (!function_exists('IsApiRequest')) {
 
     function IsApiRequest($request)
