@@ -248,6 +248,7 @@ class AuthService
             ->setData([
                 'user' => $user,
                 'token' => $user->createToken('MerchantClient')->accessToken,
+
             ])
             ->setStatusCode(HttpStatus::HTTP_OK)->json();
     }
@@ -271,6 +272,11 @@ class AuthService
     public function registerUser(\App\KhadamatTeck\Client\MerchantClients\Requests\Auth\RegisterRequest $request)
     {
         $request->merge(['password' => bcrypt($request->password ?? 123456)]);
-        return MerchantClientDTOMapper::fromModel(MerchantClient::create($request->all()));
+        $Client = MerchantClient::create($request->all());
+        ClientAuth()->setUser($Client);
+        return [
+            'client' => $Client,
+            'token' => $Client->createToken('MerchantClient')->accessToken,
+        ];
     }
 }
