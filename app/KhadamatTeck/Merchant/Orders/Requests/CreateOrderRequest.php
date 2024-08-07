@@ -67,7 +67,8 @@ class CreateOrderRequest extends KhadamatTeckRequest
                 "sp_item_price" => (float)$service->sp_price,
                 "sp_sup_total" => (float)$sp_totals['price_before_vat'],
                 "sp_vat" => (float)$sp_totals['vat'],
-                "sp_total" => (float)$sp_totals['price_with_vat']
+                "sp_total" => (float)$sp_totals['price_with_vat'],
+                "category_id" => $service->category_id,
             ];
 
         }

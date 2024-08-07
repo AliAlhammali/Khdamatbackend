@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('service_providers', function (Blueprint $table) {
-            $table->boolean('can_collect_vat')->default(true);
+        Schema::table('order_items', function (Blueprint $table) {
+            $table->string('category_id')->nullable();
+        });
+        Schema::table('orders', function (Blueprint $table) {
+            $table->string('category_id')->nullable()->change();
         });
     }
 
@@ -21,7 +24,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('service_providers', function (Blueprint $table) {
+        Schema::table('order_items', function (Blueprint $table) {
             //
         });
     }
