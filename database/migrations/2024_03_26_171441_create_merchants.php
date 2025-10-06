@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('merchants', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique()->nullable();
+            $table->string('email')->nullable();
             $table->string('title')->nullable();
             $table->string('description')->nullable();
             $table->string('address')->nullable();
@@ -47,6 +49,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('merchant_users');
         Schema::dropIfExists('merchants');
     }
 };
