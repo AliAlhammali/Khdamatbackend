@@ -9,9 +9,7 @@ abstract class KhadamatTeckRequest extends FormRequest
 {
     use RequestValidator;
 
-    public function authorize()
-    {
-    }
+    public function authorize() {}
 
     public function rules(): array
     {
